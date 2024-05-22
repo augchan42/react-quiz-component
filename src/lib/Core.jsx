@@ -119,6 +119,7 @@ function Core({
     let { answerSelectionType } = question;
     let answerBtnCorrectClassName;
     let answerBtnIncorrectClassName;
+    let answerBtnClassName;
 
     // Default single to avoid code breaking due to automatic version upgrade
     answerSelectionType = answerSelectionType || 'single';
