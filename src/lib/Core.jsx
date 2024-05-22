@@ -128,7 +128,7 @@ function Core({
         // correctAnswer - is string
         answerBtnCorrectClassName = `${index + 1}` === correctAnswer ? 'correct' : '';
         answerBtnIncorrectClassName = `${userInputIndex}` !== correctAnswer
-        && `${index + 1}` === `${userInputIndex}` ? 'incorrect' : '';
+          && `${index + 1}` === `${userInputIndex}` ? 'incorrect' : '';
 
         if (userInputIndex === undefined && `${index + 1}` !== correctAnswer) {
           answerBtnIncorrectClassName = 'unanswered';
@@ -139,7 +139,7 @@ function Core({
           ? 'correct'
           : '';
         answerBtnIncorrectClassName = !correctAnswer.includes(index + 1)
-        && userInputIndex?.includes(index + 1) ? 'incorrect' : '';
+          && userInputIndex?.includes(index + 1) ? 'incorrect' : '';
 
         if (userInputIndex === undefined && !correctAnswer.includes(index + 1)) {
           answerBtnIncorrectClassName = 'unanswered';
@@ -225,8 +225,7 @@ function Core({
         <div className="result-answer-wrapper" key={nanoid()}>
           <h3
             dangerouslySetInnerHTML={rawMarkup(
-              `Q${question.questionIndex}: ${
-                question.question
+              `Q${question.questionIndex}: ${question.question
               } ${appLocale.marksOfQuestion.replace('<marks>', question.point)}`,
             )}
           />
@@ -235,8 +234,8 @@ function Core({
           )}
           {renderTags(
             answerSelectionType,
-            question.correctAnswer.length,
-            question.segment,
+            (answerSelectionType !== 'personality' && question.correctAnswer && Array.isArray(question.correctAnswer)) ? question.correctAnswer.length : 1,
+            question.segment || 'defaultSegment'
           )}
           <div className="result-answer">
             {renderAnswerInResult(question, userInputIndex)}
@@ -302,11 +301,10 @@ function Core({
             <button
               type="button"
               disabled={answerButtons[index].disabled || false}
-              className={`${answerButtons[index].className} answerBtn btn ${
-                isCorrectCheck(index + 1, correctAnswer) && showInstantFeedback
+              className={`${answerButtons[index].className} answerBtn btn ${isCorrectCheck(index + 1, correctAnswer) && showInstantFeedback
                   ? 'correct'
                   : ''
-              }`}
+                }`}
               onClick={() => (revealAnswerOnSubmit ? onSelectAnswer(index) : onClickAnswer(index))}
             >
               {questionType === 'text' && <span>{answer}</span>}
@@ -378,9 +376,8 @@ function Core({
     const minutes = Math.floor((time % 3600) / 60);
     const seconds = time % 60;
 
-    return `${formatTime(hours)}${hours}:${formatTime(minutes)}${minutes}:${
-      formatTime(seconds)
-    }${seconds}`;
+    return `${formatTime(hours)}${hours}:${formatTime(minutes)}${minutes}:${formatTime(seconds)
+      }${seconds}`;
   };
 
   const handleTimeUp = () => {
@@ -415,9 +412,8 @@ function Core({
       {!endQuiz && (
         <div className="questionWrapperBody">
           <div>
-            {`${appLocale.question} ${currentQuestionIndex + 1} / ${
-              questions.length
-            }:`}
+            {`${appLocale.question} ${currentQuestionIndex + 1} / ${questions.length
+              }:`}
             <br />
             {timer && allowPauseTimer && (
               <button type="button" className="timerBtn" onClick={toggleTimer}>
@@ -429,8 +425,7 @@ function Core({
             <>
               <h3
                 dangerouslySetInnerHTML={rawMarkup(
-                  `${
-                    activeQuestion && activeQuestion.question
+                  `${activeQuestion && activeQuestion.question
                   } ${appLocale.marksOfQuestion.replace(
                     '<marks>',
                     activeQuestion.point,
@@ -489,9 +484,9 @@ function Core({
         </div>
       )}
       {endQuiz && showDefaultResultState && customResultPage === undefined
-          && renderResult()}
+        && renderResult()}
       {endQuiz && !showDefaultResultState && customResultPage !== undefined
-          && customResultPage(questionSummary)}
+        && customResultPage(questionSummary)}
     </div>
   );
 }

@@ -82,6 +82,11 @@ export const checkAnswer = (index, correctAnswer, answerSelectionType, answers, 
       setIsCorrect(false);
       setIncorrect(incorrect);
     }
+  } else if (answerSelectionType === 'personality') {
+    // For personality quizzes, always set correct and do not check against a correctAnswer
+    setIsCorrect(true);
+    setIncorrectAnswer(false);
+    setShowNextQuestionButton(true);
   } else {
     const maxNumberOfMultipleSelection = correctAnswer.length;
 
