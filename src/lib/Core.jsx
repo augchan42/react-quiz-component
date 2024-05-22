@@ -302,8 +302,8 @@ function Core({
               type="button"
               disabled={answerButtons[index].disabled || false}
               className={`${answerButtons[index].className} answerBtn btn ${isCorrectCheck(index + 1, correctAnswer) && showInstantFeedback
-                  ? 'correct'
-                  : ''
+                ? 'correct'
+                : ''
                 }`}
               onClick={() => (revealAnswerOnSubmit ? onSelectAnswer(index) : onClickAnswer(index))}
             >
@@ -435,12 +435,11 @@ function Core({
               {activeQuestion && activeQuestion.questionPic && (
                 <img src={activeQuestion.questionPic} alt="question" />
               )}
-              {activeQuestion
-                && renderTags(
-                  answerSelectionTypeState,
-                  activeQuestion.correctAnswer.length,
-                  activeQuestion.segment,
-                )}
+              {activeQuestion && renderTags(
+                answerSelectionTypeState,
+                answerSelectionTypeState === 'personality' ? 1 : (activeQuestion.correctAnswer && Array.isArray(activeQuestion.correctAnswer) ? activeQuestion.correctAnswer.length : 0),
+                activeQuestion.segment || 'defaultSegment'
+              )}
               <div className="questionModal">
                 <InstantFeedback
                   question={activeQuestion}
