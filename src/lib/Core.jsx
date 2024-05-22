@@ -310,8 +310,8 @@ function Core({
               onClick={() => (revealAnswerOnSubmit ? onSelectAnswer(index) : onClickAnswer(index))}
               className={`answerBtn btn ${(allowNavigation && checkSelectedAnswer(index + 1)) ? 'selected' : null}`}
             >
-              {questionType === 'text' && answer}
-              {questionType === 'photo' && <img src={answer} alt="answer" />}
+              {questionType === 'text' && <span>{answer.option}</span>}
+              {questionType === 'photo' && <img src={answer.option} alt="answer" />}
             </button>
           )}
       </Fragment>

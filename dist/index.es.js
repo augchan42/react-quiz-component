@@ -2425,36 +2425,33 @@ function Core(_ref) {
       correctAnswer = question.correctAnswer,
       questionType = question.questionType;
     var answerSelectionType = question.answerSelectionType;
-    var answerBtnCorrectClassName;
-    var answerBtnIncorrectClassName;
 
     // Default single to avoid code breaking due to automatic version upgrade
     answerSelectionType = answerSelectionType || 'single';
     return answers.map(function (answer, index) {
-      if (answerSelectionType === 'single') {
+      if (answerSelectionType === 'personality') {
+        // For personality type, you might want to apply a generic class or no class at all
+        answerBtnClassName = 'personality';
+      } else if (answerSelectionType === 'single') {
         // correctAnswer - is string
-        answerBtnCorrectClassName = "".concat(index + 1) === correctAnswer ? 'correct' : '';
-        answerBtnIncorrectClassName = "".concat(userInputIndex) !== correctAnswer && "".concat(index + 1) === "".concat(userInputIndex) ? 'incorrect' : '';
-        if (userInputIndex === undefined && "".concat(index + 1) !== correctAnswer) {
-          answerBtnIncorrectClassName = 'unanswered';
-        }
+        var _isCorrect = "".concat(index + 1) === correctAnswer;
+        var isUserAnswer = "".concat(index + 1) === "".concat(userInputIndex);
+        answerBtnClassName = _isCorrect ? 'correct' : isUserAnswer ? 'incorrect' : '';
       } else {
         // correctAnswer - is array of numbers
-        answerBtnCorrectClassName = correctAnswer.includes(index + 1) ? 'correct' : '';
-        answerBtnIncorrectClassName = !correctAnswer.includes(index + 1) && userInputIndex !== null && userInputIndex !== void 0 && userInputIndex.includes(index + 1) ? 'incorrect' : '';
-        if (userInputIndex === undefined && !correctAnswer.includes(index + 1)) {
-          answerBtnIncorrectClassName = 'unanswered';
-        }
+        var _isCorrect2 = correctAnswer.includes(index + 1);
+        var _isUserAnswer = userInputIndex === null || userInputIndex === void 0 ? void 0 : userInputIndex.includes(index + 1);
+        answerBtnClassName = _isCorrect2 ? 'correct' : _isUserAnswer ? 'incorrect' : '';
       }
       return /*#__PURE__*/jsxRuntimeExports.jsx("div", {
         children: /*#__PURE__*/jsxRuntimeExports.jsxs("button", {
           type: "button",
           disabled: true,
-          className: "answerBtn btn ".concat(answerBtnCorrectClassName).concat(answerBtnIncorrectClassName),
+          className: "answerBtn btn ".concat(answerBtnClassName),
           children: [questionType === 'text' && /*#__PURE__*/jsxRuntimeExports.jsx("span", {
-            children: answer
+            children: answer.option
           }), questionType === 'photo' && /*#__PURE__*/jsxRuntimeExports.jsx("img", {
-            src: answer,
+            src: answer.option,
             alt: "answer"
           })]
         })
@@ -2592,9 +2589,9 @@ function Core(_ref) {
             return revealAnswerOnSubmit ? onSelectAnswer(index) : onClickAnswer(index);
           },
           children: [questionType === 'text' && /*#__PURE__*/jsxRuntimeExports.jsx("span", {
-            children: answer
+            children: answer.option
           }), questionType === 'photo' && /*#__PURE__*/jsxRuntimeExports.jsx("img", {
-            src: answer,
+            src: answer.option,
             alt: "answer"
           })]
         }) : /*#__PURE__*/jsxRuntimeExports.jsxs("button", {
@@ -2603,8 +2600,10 @@ function Core(_ref) {
             return revealAnswerOnSubmit ? onSelectAnswer(index) : onClickAnswer(index);
           },
           className: "answerBtn btn ".concat(allowNavigation && checkSelectedAnswer(index + 1) ? 'selected' : null),
-          children: [questionType === 'text' && answer, questionType === 'photo' && /*#__PURE__*/jsxRuntimeExports.jsx("img", {
-            src: answer,
+          children: [questionType === 'text' && /*#__PURE__*/jsxRuntimeExports.jsx("span", {
+            children: answer.option
+          }), questionType === 'photo' && /*#__PURE__*/jsxRuntimeExports.jsx("img", {
+            src: answer.option,
             alt: "answer"
           })]
         })
