@@ -153,6 +153,25 @@ export const checkAnswer = (index, correctAnswer, answerSelectionType, answers, 
   setUserInput(userInputCopy);
 };
 
+// Add a new function to tally results
+const tallyResults = (userInput, questions) => {
+  const results = {};
+  userInput.forEach((answerIndex, questionIndex) => {
+    const trigram = questions[questionIndex].answers[answerIndex].trigram;
+    if (results[trigram]) {
+      results[trigram]++;
+    } else {
+      results[trigram] = 1;
+    }
+  });
+  return results;
+};
+
+const onComplete = () => {
+  const finalResults = tallyResults(userInput);
+  console.log(finalResults); // Handle the results as needed
+};
+
 export const selectAnswer = (index, correctAnswer, answerSelectionType, answers, {
   userInput,
   currentQuestionIndex,
@@ -166,7 +185,21 @@ export const selectAnswer = (index, correctAnswer, answerSelectionType, answers,
 }) => {
   const selectedButtons = Object.keys(answers).map(() => ({ selected: false }));
   const userInputCopy = [...userInput];
-  if (answerSelectionType === 'single') {
+
+  // Check if it's a personality quiz type
+  if (answerSelectionType === 'personality') {
+    userInputCopy[currentQuestionIndex] = index; // Simply record the user's choice
+
+    setButtons((prevState) => ({
+      ...prevState,
+      ...selectedButtons,
+      [index - 1]: {
+        className: 'selected',
+      },
+    }));
+
+    setShowNextQuestionButton(true);
+  } else if (answerSelectionType === 'single') {
     correctAnswer = Number(correctAnswer);
     userInputCopy[currentQuestionIndex] = index;
 
@@ -198,6 +231,7 @@ export const selectAnswer = (index, correctAnswer, answerSelectionType, answers,
 
     setShowNextQuestionButton(true);
   } else {
+    // Handle multiple selection type
     if (userInputCopy[currentQuestionIndex] === undefined) {
       userInputCopy[currentQuestionIndex] = [];
     }
@@ -209,7 +243,6 @@ export const selectAnswer = (index, correctAnswer, answerSelectionType, answers,
 
     if (userInputCopy[currentQuestionIndex].length === correctAnswer.length) {
       let exactMatch = true;
-      // eslint-disable-next-line no-restricted-syntax
       for (const input of userInput[currentQuestionIndex]) {
         if (!correctAnswer.includes(input)) {
           exactMatch = false;

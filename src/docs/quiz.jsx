@@ -5,106 +5,288 @@ const segment = {
 };
 
 const quiz = {
-  quizTitle: 'React Quiz Component Demo',
-  quizSynopsis: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim',
-  nrOfQuestions: '6',
+  quizTitle: 'I-Ching Personality Test',
+  quizSynopsis: 'You will be asked questions that will try to find the hexagrams that best represent your personality.',
+  nrOfQuestions: '12',
   questions: [
     {
-      question: 'How can you access the state of a component from inside of a member function?',
-      questionPic: 'https://dummyimage.com/600x400/000/fff&text=X',
+      question: 'If you were offered the red pill or the blue pill, which would you choose?',
       questionType: 'text',
-      answerSelectionType: 'single',
+      answerSelectionType: 'personality',
       answers: [
-        'this.getState()',
-        'this.prototype.stateValue',
-        'this.state',
-        'this.values',
+        { option: 'I would choose the red pill and embrace the sometimes painful truth of reality.', trigram: 'Qian' },
+        { option: 'I would choose the blue pill and stay in the comfort of the illusion.', trigram: 'Kun' },
+        { option: 'I would find a way to take both pills and create my own reality.', trigram: 'Zhen' },
+        { option: 'I would ask for more information before making a decision.', trigram: 'Xun' }
       ],
-      correctAnswer: '3',
-      messageForCorrectAnswer: 'Correct answer. Good job.',
-      messageForIncorrectAnswer: 'Incorrect answer. Please try again.',
-      explanation: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      point: '20',
-      segment: segment.advanced,
+      explanation: '',
     },
     {
-      question: 'ReactJS is developed by ?',
-      questionType: 'text',
-      answerSelectionType: 'single',
+      question: "How do you approach a glitch in the Matrix?",
+      questionType: "text",
+      answerSelectionType: "personality",
       answers: [
-        'Google Engineers',
-        'Facebook Engineers',
+        {
+          option: "I analyze the glitch to understand its underlying cause.",
+          trigram: "Li"
+        },
+        {
+          option: "I go with the flow and adapt to the glitch.",
+          trigram: "Kan"
+        },
+        {
+          option: "I see the glitch as an opportunity for growth and self-discovery.",
+          trigram: "Gen"
+        },
+        {
+          option: "I use the glitch to my advantage and have some fun with it.",
+          trigram: "Dui"
+        }
       ],
-      correctAnswer: '2',
-      messageForCorrectAnswer: 'Correct answer. Good job.',
-      messageForIncorrectAnswer: 'Incorrect answer. Please try again.',
-      explanation: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      point: '20',
-      segment: segment.basic,
+      explanation: ""
     },
     {
-      question: 'ReactJS is an MVC based framework?',
-      questionType: 'text',
-      answerSelectionType: 'single',
+      question: "What role would you play in the resistance against the machines?",
+      questionType: "text",
+      answerSelectionType: "personality",
       answers: [
-        'True',
-        'False',
+        {
+          option: "I would be a fearless leader, inspiring others to fight.",
+          trigram: "Zhen"
+        },
+        {
+          option: "I would be a strategist, planning our next moves.",
+          trigram: "Xun"
+        },
+        {
+          option: "I would be a mentor, guiding others to find their own path.",
+          trigram: "Qian"
+        },
+        {
+          option: "I would be a caretaker, ensuring everyone's well-being.",
+          trigram: "Kun"
+        }
       ],
-      correctAnswer: '2',
-      messageForCorrectAnswer: 'Correct answer. Good job.',
-      messageForIncorrectAnswer: 'Incorrect answer. Please try again.',
-      explanation: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      point: '10',
+      explanation: ""
     },
     {
-      question: 'Which of the following concepts is/are key to ReactJS?',
-      questionType: 'text',
-      answerSelectionType: 'single',
+      question: "How do you respond to Agent Smith's interrogation?",
+      questionType: "text",
+      answerSelectionType: "personality",
       answers: [
-        'Component-oriented design',
-        'Event delegation model',
-        'Both of the above',
+        {
+          option: "I remain calm and composed, revealing nothing.",
+          trigram: "Gen"
+        },
+        {
+          option: "I engage in witty banter, trying to throw him off balance.",
+          trigram: "Dui"
+        },
+        {
+          option: "I analyze his questions, looking for hidden meanings.",
+          trigram: "Li"
+        },
+        {
+          option: "I trust my instincts and say whatever feels right in the moment.",
+          trigram: "Kan"
+        }
       ],
-      correctAnswer: '3',
-      messageForCorrectAnswer: 'Correct answer. Good job.',
-      messageForIncorrectAnswer: 'Incorrect answer. Please try again.',
-      explanation: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      point: '30',
-      segment: segment.medium,
+      explanation: ""
     },
     {
-      question: 'How does the initial page of any react project looks like if we create the project using vite',
-      questionType: 'photo',
-      answerSelectionType: 'single',
+      question: "What aspect of the Matrix world would you find most appealing?",
+      questionType: "text",
+      answerSelectionType: "personality",
       answers: [
-        'https://github.com/wingkwong/react-quiz-component/assets/35857179/e169cd44-13a7-4301-9d30-6c0859d3ac35',
-        'https://github.com/wingkwong/react-quiz-component/assets/35857179/30b4aa3d-2523-4d73-9e3b-27ce44ffd50a',
-        'https://github.com/wingkwong/react-quiz-component/assets/35857179/64da0348-30b7-4a13-9fea-791537c49109',
-        'https://github.com/wingkwong/react-quiz-component/assets/35857179/660e9255-8a16-4e0f-a7e4-81ba6ac0f9bc',
+        {
+          option: "The ability to bend the rules of reality to my will.",
+          trigram: "Qian"
+        },
+        {
+          option: "The opportunity to explore and learn about a new world.",
+          trigram: "Kun"
+        },
+        {
+          option: "The thrill of fighting against the system.",
+          trigram: "Zhen"
+        },
+        {
+          option: "The chance to connect with others who share my experiences.",
+          trigram: "Xun"
+        }
       ],
-      correctAnswer: '1',
-      messageForCorrectAnswer: 'Correct answer. Good job.',
-      messageForIncorrectAnswer: 'Incorrect answer. Please try again.',
-      explanation: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      point: '20',
+      explanation: ""
     },
     {
-      question: 'What are the advantages of React JS?',
-      questionType: 'text',
-      answerSelectionType: 'multiple',
+      question: "How would you describe your fighting style in the Matrix?",
+      questionType: "text",
+      answerSelectionType: "personality",
       answers: [
-        'React can be used on client and as well as server side too',
-        'Using React increases readability and makes maintainability easier. Component, Data patterns improves readability and thus makes it easier for manitaining larger apps',
-        'React components have lifecycle events that fall into State/Property Updates',
-        'React can be used with any other framework (Backbone.js, Angular.js) as it is only a view layer',
+        {
+          option: "Precise and calculated, always thinking several moves ahead.",
+          trigram: "Li"
+        },
+        {
+          option: "Fluid and adaptable, responding to my opponent's moves.",
+          trigram: "Kan"
+        },
+        {
+          option: "Solid and grounded, using my strength and stability to my advantage.",
+          trigram: "Gen"
+        },
+        {
+          option: "Creative and unpredictable, catching my opponents off guard.",
+          trigram: "Dui"
+        }
       ],
-      correctAnswer: [1, 2, 4],
-      messageForCorrectAnswer: 'Correct answer. Good job.',
-      messageForIncorrectAnswer: 'Incorrect answer. Please try again.',
-      explanation: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      point: '20',
+      explanation: ""
     },
-  ],
+    {
+      question: "What would be your motivation for joining the resistance?",
+      questionType: "text",
+      answerSelectionType: "personality",
+      answers: [
+        {
+          option: "To unlock my full potential and abilities.",
+          trigram: "Zhen"
+        },
+        {
+          option: "To understand the true nature of reality.",
+          trigram: "Xun"
+        },
+        {
+          option: "To lead others to freedom and enlightenment.",
+          trigram: "Qian"
+        },
+        {
+          option: "To protect and care for those who cannot fight for themselves.",
+          trigram: "Kun"
+        }
+      ],
+      explanation: ""
+    },
+
+    {
+      question: "How would you react to the revelation that the world you know is a simulation?",
+      questionType: "text",
+      answerSelectionType: "personality",
+      answers: [
+        {
+          option: "I would be intrigued and want to learn more.",
+          trigram: "Gen"
+        },
+        {
+          option: "I would be excited by the possibilities this revelation presents.",
+          trigram: "Dui"
+        },
+        {
+          option: "I would be determined to uncover the truth behind the simulation.",
+          trigram: "Li"
+        },
+        {
+          option: "I would feel a sense of unease and uncertainty about my existence.",
+          trigram: "Kan"
+        }
+      ],
+      explanation: ""
+    },
+    {
+      question: "What would be your approach to training in the Construct?",
+      questionType: "text",
+      answerSelectionType: "personality",
+      answers: [
+        {
+          option: "I would push myself to my limits, always striving to improve.",
+          trigram: "Qian"
+        },
+        {
+          option: "I would take my time, gradually building my skills and knowledge.",
+          trigram: "Kun"
+        },
+        {
+          option: "I would embrace the challenge, eager to test my abilities.",
+          trigram: "Zhen"
+        },
+        {
+          option: "I would focus on developing my mental discipline and perception.",
+          trigram: "Xun"
+        }
+      ],
+      explanation: ""
+    },
+    {
+      question: "How would you deal with the loss of a crew member?",
+      questionType: "text",
+      answerSelectionType: "personality",
+      answers: [
+        {
+          option: "I would honor their memory by continuing the fight with renewed determination.",
+          trigram: "Li"
+        },
+        {
+          option: "I would take time to grieve and process my emotions.",
+          trigram: "Kan"
+        },
+        {
+          option: "I would use their loss as a reminder of the impermanence of life.",
+          trigram: "Gen"
+        },
+        {
+          option: "I would celebrate their life and the time we had together.",
+          trigram: "Dui"
+        }
+      ],
+      explanation: ""
+    },
+    {
+      question: "What would be your role in the final battle against the machines?",
+      questionType: "text",
+      answerSelectionType: "personality",
+      answers: [
+        {
+          option: "I would be on the front lines, leading the charge.",
+          trigram: "Zhen"
+        },
+        {
+          option: "I would be coordinating our efforts and adapting our strategy as needed.",
+          trigram: "Xun"
+        },
+        {
+          option: "I would be a source of strength and inspiration for the others.",
+          trigram: "Qian"
+        },
+        {
+          option: "I would be tending to the wounded and ensuring everyone is cared for.",
+          trigram: "Kun"
+        }
+      ],
+      explanation: ""
+    },
+    {
+      question: "How do you think you would react to meeting the Oracle?",
+      questionType: "text",
+      answerSelectionType: "personality",
+      answers: [
+        {
+          option: "I would be skeptical of her abilities and question her motives.",
+          trigram: "Gen"
+        },
+        {
+          option: "I would be open to her insights and curious about what she has to say.",
+          trigram: "Dui"
+        },
+        {
+          option: "I would analyze her words for hidden meanings and try to understand her true nature.",
+          trigram: "Li"
+        },
+        {
+          option: "I would trust my instincts and let the meeting unfold naturally.",
+          trigram: "Kan"
+        }
+      ],
+      explanation: ""
+    }
+  ]
 };
 
 export default quiz;

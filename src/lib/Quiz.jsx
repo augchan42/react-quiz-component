@@ -141,8 +141,9 @@ function Quiz({
         return false;
       }
 
-      if (!correctAnswer) {
-        console.error("Field 'correctAnswer' is required.");
+      // Skip correctAnswer check for personality type questions
+      if (answerSelectionType !== 'personality' && !correctAnswer) {
+        console.error("Field 'correctAnswer' is required for non-personality questions.");
         return false;
       }
 
