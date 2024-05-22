@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "webpack-dev-server --mode development",
     "docs": "webpack --mode production",
-    "build": "rollup -c",
+    "build": "rollup -c --environment NODE_ENV:development",
+    "build:dev": "webpack --config webpack.config.js --mode development --devtool source-map",
     "lint": "eslint src --ext .jsx --ext .js --fix"
   },
   "keywords": [
@@ -45,6 +46,7 @@
     "rollup": "^4.3.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-sourcemaps": "^0.6.3",
     "terser-webpack-plugin": "^5.3.9",
     "webpack": "^5.69.1",
     "webpack-cli": "^5.1.4",

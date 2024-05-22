@@ -22,12 +22,14 @@ export default [
         file: 'dist/index.js',
         format: 'cjs',
         globals,
+        sourcemap: true
       },
       {
         file: 'dist/index.es.js',
         format: 'es',
         exports: 'named',
         globals,
+        sourcemap: true
       },
     ],
     external: Object.keys(globals),
@@ -61,6 +63,7 @@ export default [
         include: 'node_modules/**',
       }),
       terser(),
+      sourceMaps()
     ],
   },
 ];
