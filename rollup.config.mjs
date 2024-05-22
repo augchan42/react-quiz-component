@@ -14,6 +14,9 @@ const globals = {
 
 const extensions = ['.ts', '.tsx', '.js', '.jsx'];
 
+// Determine if the build is for production
+const isProduction = process.env.NODE_ENV === 'production';
+
 export default [
   {
     input: './src/lib/Quiz.jsx',
@@ -62,8 +65,12 @@ export default [
       commonjs({
         include: 'node_modules/**',
       }),
-      terser(),
-      sourceMaps()
-    ],
+      isProduction && terser({
+        keep_classnames: true,
+        keep_fnames: true,
+        sourceMap: true,
+      }),
+      // sourceMaps()
+    ].filter(Boolean), // This filter removes any falsy values from the plugins array
   },
 ];

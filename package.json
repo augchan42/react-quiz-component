@@ -5,10 +5,11 @@
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "scripts": {
-    "dev": "webpack-dev-server --mode development",
+    "dev": "webpack-dev-server --mode development --devtool source-map",
     "docs": "webpack --mode production",
     "build": "rollup -c --environment NODE_ENV:development",
-    "build:dev": "webpack --config webpack.config.js --mode development --devtool source-map",
+    "build:dev": "NODE_ENV=development rollup -c",
+    "build:prod": "NODE_ENV=production rollup -c",
     "lint": "eslint src --ext .jsx --ext .js --fix"
   },
   "keywords": [

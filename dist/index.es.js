@@ -1,2 +1,2980 @@
-import e,{useState as t,useRef as n,useEffect as r,useCallback as o,Fragment as i}from"react";function a(e,t){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(e);t&&(r=r.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),n.push.apply(n,r)}return n}function c(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{};t%2?a(Object(n),!0).forEach((function(t){l(e,t,n[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(n)):a(Object(n)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(n,t))}))}return e}function s(e){return s="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},s(e)}function l(e,t,n){return(t=function(e){var t=function(e,t){if("object"!=typeof e||null===e)return e;var n=e[Symbol.toPrimitive];if(void 0!==n){var r=n.call(e,t||"default");if("object"!=typeof r)return r;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===t?String:Number)(e)}(e,"string");return"symbol"==typeof t?t:String(t)}(t))in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function u(e,t){return function(e){if(Array.isArray(e))return e}(e)||function(e,t){var n=null==e?null:"undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(null!=n){var r,o,i,a,c=[],s=!0,l=!1;try{if(i=(n=n.call(e)).next,0===t);else for(;!(s=(r=i.call(n)).done)&&(c.push(r.value),c.length!==t);s=!0);}catch(e){l=!0,o=e}finally{try{if(!s&&null!=n.return&&(a=n.return(),Object(a)!==a))return}finally{if(l)throw o}}return c}}(e,t)||p(e,t)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function d(e){return function(e){if(Array.isArray(e))return f(e)}(e)||function(e){if("undefined"!=typeof Symbol&&null!=e[Symbol.iterator]||null!=e["@@iterator"])return Array.from(e)}(e)||p(e)||function(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function p(e,t){if(e){if("string"==typeof e)return f(e,t);var n=Object.prototype.toString.call(e).slice(8,-1);return"Object"===n&&e.constructor&&(n=e.constructor.name),"Map"===n||"Set"===n?Array.from(e):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?f(e,t):void 0}}function f(e,t){(null==t||t>e.length)&&(t=e.length);for(var n=0,r=new Array(t);n<t;n++)r[n]=e[n];return r}let m=(e=21)=>{let t="",n=crypto.getRandomValues(new Uint8Array(e));for(;e--;)t+="useandom-26T198340PX75pxJACKVERYMINDBUSHWOLF_GQZbfghjklqvwyzrict"[63&n[e]];return t};"undefined"!=typeof globalThis?globalThis:"undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self&&self;function h(e){return e&&e.__esModule&&Object.prototype.hasOwnProperty.call(e,"default")?e.default:e}var g={exports:{}},b={},y=e,x=Symbol.for("react.element"),w=Symbol.for("react.fragment"),v=Object.prototype.hasOwnProperty,T=y.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner,_={key:!0,ref:!0,__self:!0,__source:!0};function A(e,t,n){var r,o={},i=null,a=null;for(r in void 0!==n&&(i=""+n),void 0!==t.key&&(i=""+t.key),void 0!==t.ref&&(a=t.ref),t)v.call(t,r)&&!_.hasOwnProperty(r)&&(o[r]=t[r]);if(e&&e.defaultProps)for(r in t=e.defaultProps)void 0===o[r]&&(o[r]=t[r]);return{$$typeof:x,type:e,key:i,ref:a,props:o,_owner:T.current}}b.Fragment=w,b.jsx=A,b.jsxs=A,g.exports=b;var S=g.exports;function N(e){var o=e.filteredValue,i=e.handleChange,a=e.appLocale,c=u(t(!1),2),s=c[0],l=c[1],d=n(null),p=function(){l(!s)},f=function(e){i({target:{value:e}}),l(!1)},m=s?"selected-open":"",h={all:a.resultFilterAll,correct:a.resultFilterCorrect,incorrect:a.resultFilterIncorrect,unanswered:a.resultFilterUnanswered};return r((function(){var e=function(e){s&&d.current&&!d.current.contains(e.target)&&l(!1)};return document.addEventListener("click",e),function(){document.removeEventListener("click",e)}}),[s]),S.jsxs("div",{className:"quiz-result-filter",children:[S.jsxs("div",{ref:d,className:"filter-dropdown-select ".concat(s?"open":""),onClick:p,onKeyDown:function(e){"Enter"===e.key&&p()},role:"button",tabIndex:0,children:[S.jsx("div",{className:"selected-option ".concat(m),children:h[o]}),S.jsx("span",{className:"arrow ".concat(s?"up":"down")})]}),s&&S.jsxs("div",{className:"dropdown-options",role:"menu","aria-labelledby":"quiz-filter",children:[S.jsx("div",{className:"dropdown-options-item ".concat("all"===o?"selected":""),onClick:function(){return f("all")},onKeyDown:function(e){"Enter"===e.key&&f("all")},role:"menuitem",tabIndex:0,children:a.resultFilterAll}),S.jsx("div",{className:"dropdown-options-item ".concat("correct"===o?"selected":""),onClick:function(){return f("correct")},onKeyDown:function(e){"Enter"===e.key&&f("correct")},role:"menuitem",tabIndex:0,children:a.resultFilterCorrect}),S.jsx("div",{className:"dropdown-options-item ".concat("incorrect"===o?"selected":""),onClick:function(){return f("incorrect")},onKeyDown:function(e){"Enter"===e.key&&f("incorrect")},role:"menuitem",tabIndex:0,children:a.resultFilterIncorrect}),S.jsx("div",{className:"dropdown-options-item ".concat("unanswered"===o?"selected":""),onClick:function(){return f("unanswered")},onKeyDown:function(e){"Enter"===e.key&&f("unanswered")},role:"menuitem",tabIndex:0,children:a.resultFilterUnanswered})]})]})}var E={"":["<em>","</em>"],_:["<strong>","</strong>"],"*":["<strong>","</strong>"],"~":["<s>","</s>"],"\n":["<br />"]," ":["<br />"],"-":["<hr />"]};function O(e){return e.replace(RegExp("^"+(e.match(/^(\t| )+/)||"")[0],"gm"),"")}function k(e){return(e+"").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}function C(e,t){var n,r,o,i,a,c=/((?:^|\n+)(?:\n---+|\* \*(?: \*)+)\n)|(?:^``` *(\w*)\n([\s\S]*?)\n```$)|((?:(?:^|\n+)(?:\t|  {2,}).+)+\n*)|((?:(?:^|\n)([>*+-]|\d+\.)\s+.*)+)|(?:!\[([^\]]*?)\]\(([^)]+?)\))|(\[)|(\](?:\(([^)]+?)\))?)|(?:(?:^|\n+)([^\s].*)\n(-{3,}|={3,})(?:\n+|$))|(?:(?:^|\n+)(#{1,6})\s*(.+)(?:\n+|$))|(?:`([^`].*?)`)|(  \n\n*|\n{2,}|__|\*\*|[_*]|~~)/gm,s=[],l="",u=t||{},d=0;function p(e){var t=E[e[1]||""],n=s[s.length-1]==e;return t?t[1]?(n?s.pop():s.push(e),t[0|n]):t[0]:e}function f(){for(var e="";s.length;)e+=p(s[s.length-1]);return e}for(e=e.replace(/^\[(.+?)\]:\s*(.+)$/gm,(function(e,t,n){return u[t.toLowerCase()]=n,""})).replace(/^\n+|\n+$/g,"");o=c.exec(e);)r=e.substring(d,o.index),d=c.lastIndex,n=o[0],r.match(/[^\\](\\\\)*\\$/)||((a=o[3]||o[4])?n='<pre class="code '+(o[4]?"poetry":o[2].toLowerCase())+'"><code'+(o[2]?' class="language-'+o[2].toLowerCase()+'"':"")+">"+O(k(a).replace(/^\n+|\n+$/g,""))+"</code></pre>":(a=o[6])?(a.match(/\./)&&(o[5]=o[5].replace(/^\d+/gm,"")),i=C(O(o[5].replace(/^\s*[>*+.-]/gm,""))),">"==a?a="blockquote":(a=a.match(/\./)?"ol":"ul",i=i.replace(/^(.*)(\n|$)/gm,"<li>$1</li>")),n="<"+a+">"+i+"</"+a+">"):o[8]?n='<img src="'+k(o[8])+'" alt="'+k(o[7])+'">':o[10]?(l=l.replace("<a>",'<a href="'+k(o[11]||u[r.toLowerCase()])+'">'),n=f()+"</a>"):o[9]?n="<a>":o[12]||o[14]?n="<"+(a="h"+(o[14]?o[14].length:o[13]>"="?1:2))+">"+C(o[12]||o[15],u)+"</"+a+">":o[16]?n="<code>"+k(o[16])+"</code>":(o[17]||o[1])&&(n=p(o[17]||"--"))),l+=r,l+=n;return(l+e.substring(d)+f()).replace(/^\n+|\n+$/g,"")}var I={exports:{}};
-/*! @license DOMPurify 3.1.3 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.1.3/LICENSE */I.exports=function(){const{entries:e,setPrototypeOf:t,isFrozen:n,getPrototypeOf:r,getOwnPropertyDescriptor:o}=Object;let{freeze:i,seal:a,create:c}=Object,{apply:s,construct:l}="undefined"!=typeof Reflect&&Reflect;i||(i=function(e){return e}),a||(a=function(e){return e}),s||(s=function(e,t,n){return e.apply(t,n)}),l||(l=function(e,t){return new e(...t)});const u=_(Array.prototype.forEach),d=_(Array.prototype.pop),p=_(Array.prototype.push),f=_(String.prototype.toLowerCase),m=_(String.prototype.toString),h=_(String.prototype.match),g=_(String.prototype.replace),b=_(String.prototype.indexOf),y=_(String.prototype.trim),x=_(Object.prototype.hasOwnProperty),w=_(RegExp.prototype.test),v=A(TypeError),T=_(Number.isNaN);function _(e){return function(t){for(var n=arguments.length,r=new Array(n>1?n-1:0),o=1;o<n;o++)r[o-1]=arguments[o];return s(e,t,r)}}function A(e){return function(){for(var t=arguments.length,n=new Array(t),r=0;r<t;r++)n[r]=arguments[r];return l(e,n)}}function S(e,r){let o=arguments.length>2&&void 0!==arguments[2]?arguments[2]:f;t&&t(e,null);let i=r.length;for(;i--;){let t=r[i];if("string"==typeof t){const e=o(t);e!==t&&(n(r)||(r[i]=e),t=e)}e[t]=!0}return e}function N(e){for(let t=0;t<e.length;t++)x(e,t)||(e[t]=null);return e}function E(t){const n=c(null);for(const[r,o]of e(t))x(t,r)&&(Array.isArray(o)?n[r]=N(o):o&&"object"==typeof o&&o.constructor===Object?n[r]=E(o):n[r]=o);return n}function O(e,t){for(;null!==e;){const n=o(e,t);if(n){if(n.get)return _(n.get);if("function"==typeof n.value)return _(n.value)}e=r(e)}function n(){return null}return n}const k=i(["a","abbr","acronym","address","area","article","aside","audio","b","bdi","bdo","big","blink","blockquote","body","br","button","canvas","caption","center","cite","code","col","colgroup","content","data","datalist","dd","decorator","del","details","dfn","dialog","dir","div","dl","dt","element","em","fieldset","figcaption","figure","font","footer","form","h1","h2","h3","h4","h5","h6","head","header","hgroup","hr","html","i","img","input","ins","kbd","label","legend","li","main","map","mark","marquee","menu","menuitem","meter","nav","nobr","ol","optgroup","option","output","p","picture","pre","progress","q","rp","rt","ruby","s","samp","section","select","shadow","small","source","spacer","span","strike","strong","style","sub","summary","sup","table","tbody","td","template","textarea","tfoot","th","thead","time","tr","track","tt","u","ul","var","video","wbr"]),C=i(["svg","a","altglyph","altglyphdef","altglyphitem","animatecolor","animatemotion","animatetransform","circle","clippath","defs","desc","ellipse","filter","font","g","glyph","glyphref","hkern","image","line","lineargradient","marker","mask","metadata","mpath","path","pattern","polygon","polyline","radialgradient","rect","stop","style","switch","symbol","text","textpath","title","tref","tspan","view","vkern"]),I=i(["feBlend","feColorMatrix","feComponentTransfer","feComposite","feConvolveMatrix","feDiffuseLighting","feDisplacementMap","feDistantLight","feDropShadow","feFlood","feFuncA","feFuncB","feFuncG","feFuncR","feGaussianBlur","feImage","feMerge","feMergeNode","feMorphology","feOffset","fePointLight","feSpecularLighting","feSpotLight","feTile","feTurbulence"]),R=i(["animate","color-profile","cursor","discard","font-face","font-face-format","font-face-name","font-face-src","font-face-uri","foreignobject","hatch","hatchpath","mesh","meshgradient","meshpatch","meshrow","missing-glyph","script","set","solidcolor","unknown","use"]),L=i(["math","menclose","merror","mfenced","mfrac","mglyph","mi","mlabeledtr","mmultiscripts","mn","mo","mover","mpadded","mphantom","mroot","mrow","ms","mspace","msqrt","mstyle","msub","msup","msubsup","mtable","mtd","mtext","mtr","munder","munderover","mprescripts"]),j=i(["maction","maligngroup","malignmark","mlongdiv","mscarries","mscarry","msgroup","mstack","msline","msrow","semantics","annotation","annotation-xml","mprescripts","none"]),D=i(["#text"]),q=i(["accept","action","align","alt","autocapitalize","autocomplete","autopictureinpicture","autoplay","background","bgcolor","border","capture","cellpadding","cellspacing","checked","cite","class","clear","color","cols","colspan","controls","controlslist","coords","crossorigin","datetime","decoding","default","dir","disabled","disablepictureinpicture","disableremoteplayback","download","draggable","enctype","enterkeyhint","face","for","headers","height","hidden","high","href","hreflang","id","inputmode","integrity","ismap","kind","label","lang","list","loading","loop","low","max","maxlength","media","method","min","minlength","multiple","muted","name","nonce","noshade","novalidate","nowrap","open","optimum","pattern","placeholder","playsinline","poster","preload","pubdate","radiogroup","readonly","rel","required","rev","reversed","role","rows","rowspan","spellcheck","scope","selected","shape","size","sizes","span","srclang","start","src","srcset","step","style","summary","tabindex","title","translate","type","usemap","valign","value","width","wrap","xmlns","slot"]),P=i(["accent-height","accumulate","additive","alignment-baseline","ascent","attributename","attributetype","azimuth","basefrequency","baseline-shift","begin","bias","by","class","clip","clippathunits","clip-path","clip-rule","color","color-interpolation","color-interpolation-filters","color-profile","color-rendering","cx","cy","d","dx","dy","diffuseconstant","direction","display","divisor","dur","edgemode","elevation","end","fill","fill-opacity","fill-rule","filter","filterunits","flood-color","flood-opacity","font-family","font-size","font-size-adjust","font-stretch","font-style","font-variant","font-weight","fx","fy","g1","g2","glyph-name","glyphref","gradientunits","gradienttransform","height","href","id","image-rendering","in","in2","k","k1","k2","k3","k4","kerning","keypoints","keysplines","keytimes","lang","lengthadjust","letter-spacing","kernelmatrix","kernelunitlength","lighting-color","local","marker-end","marker-mid","marker-start","markerheight","markerunits","markerwidth","maskcontentunits","maskunits","max","mask","media","method","mode","min","name","numoctaves","offset","operator","opacity","order","orient","orientation","origin","overflow","paint-order","path","pathlength","patterncontentunits","patterntransform","patternunits","points","preservealpha","preserveaspectratio","primitiveunits","r","rx","ry","radius","refx","refy","repeatcount","repeatdur","restart","result","rotate","scale","seed","shape-rendering","specularconstant","specularexponent","spreadmethod","startoffset","stddeviation","stitchtiles","stop-color","stop-opacity","stroke-dasharray","stroke-dashoffset","stroke-linecap","stroke-linejoin","stroke-miterlimit","stroke-opacity","stroke","stroke-width","style","surfacescale","systemlanguage","tabindex","targetx","targety","transform","transform-origin","text-anchor","text-decoration","text-rendering","textlength","type","u1","u2","unicode","values","viewbox","visibility","version","vert-adv-y","vert-origin-x","vert-origin-y","width","word-spacing","wrap","writing-mode","xchannelselector","ychannelselector","x","x1","x2","xmlns","y","y1","y2","z","zoomandpan"]),z=i(["accent","accentunder","align","bevelled","close","columnsalign","columnlines","columnspan","denomalign","depth","dir","display","displaystyle","encoding","fence","frame","height","href","id","largeop","length","linethickness","lspace","lquote","mathbackground","mathcolor","mathsize","mathvariant","maxsize","minsize","movablelimits","notation","numalign","open","rowalign","rowlines","rowspacing","rowspan","rspace","rquote","scriptlevel","scriptminsize","scriptsizemultiplier","selection","separator","separators","stretchy","subscriptshift","supscriptshift","symmetric","voffset","width","xmlns"]),M=i(["xlink:href","xml:id","xlink:title","xml:space","xmlns:xlink"]),F=a(/\{\{[\w\W]*|[\w\W]*\}\}/gm),U=a(/<%[\w\W]*|[\w\W]*%>/gm),B=a(/\${[\w\W]*}/gm),H=a(/^data-[\-\w.\u00B7-\uFFFF]/),Q=a(/^aria-[\-\w]+$/),W=a(/^(?:(?:(?:f|ht)tps?|mailto|tel|callto|sms|cid|xmpp):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i),Y=a(/^(?:\w+script|data):/i),G=a(/[\u0000-\u0020\u00A0\u1680\u180E\u2000-\u2029\u205F\u3000]/g),$=a(/^html$/i),K=a(/^[a-z][.\w]*(-[.\w]+)+$/i);var X=Object.freeze({__proto__:null,MUSTACHE_EXPR:F,ERB_EXPR:U,TMPLIT_EXPR:B,DATA_ATTR:H,ARIA_ATTR:Q,IS_ALLOWED_URI:W,IS_SCRIPT_OR_DATA:Y,ATTR_WHITESPACE:G,DOCTYPE_NAME:$,CUSTOM_ELEMENT:K});const V={element:1,attribute:2,text:3,cdataSection:4,entityReference:5,entityNode:6,progressingInstruction:7,comment:8,document:9,documentType:10,documentFragment:11,notation:12},Z=function(){return"undefined"==typeof window?null:window},J=function(e,t){if("object"!=typeof e||"function"!=typeof e.createPolicy)return null;let n=null;const r="data-tt-policy-suffix";t&&t.hasAttribute(r)&&(n=t.getAttribute(r));const o="dompurify"+(n?"#"+n:"");try{return e.createPolicy(o,{createHTML:e=>e,createScriptURL:e=>e})}catch(e){return console.warn("TrustedTypes policy "+o+" could not be created."),null}};function ee(){let t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:Z();const n=e=>ee(e);if(n.version="3.1.3",n.removed=[],!t||!t.document||t.document.nodeType!==V.document)return n.isSupported=!1,n;let{document:r}=t;const o=r,a=o.currentScript,{DocumentFragment:s,HTMLTemplateElement:l,Node:_,Element:A,NodeFilter:N,NamedNodeMap:F=t.NamedNodeMap||t.MozNamedAttrMap,HTMLFormElement:U,DOMParser:B,trustedTypes:H}=t,Q=A.prototype,Y=O(Q,"cloneNode"),G=O(Q,"nextSibling"),K=O(Q,"childNodes"),te=O(Q,"parentNode");if("function"==typeof l){const e=r.createElement("template");e.content&&e.content.ownerDocument&&(r=e.content.ownerDocument)}let ne,re="";const{implementation:oe,createNodeIterator:ie,createDocumentFragment:ae,getElementsByTagName:ce}=r,{importNode:se}=o;let le={};n.isSupported="function"==typeof e&&"function"==typeof te&&oe&&void 0!==oe.createHTMLDocument;const{MUSTACHE_EXPR:ue,ERB_EXPR:de,TMPLIT_EXPR:pe,DATA_ATTR:fe,ARIA_ATTR:me,IS_SCRIPT_OR_DATA:he,ATTR_WHITESPACE:ge,CUSTOM_ELEMENT:be}=X;let{IS_ALLOWED_URI:ye}=X,xe=null;const we=S({},[...k,...C,...I,...L,...D]);let ve=null;const Te=S({},[...q,...P,...z,...M]);let _e=Object.seal(c(null,{tagNameCheck:{writable:!0,configurable:!1,enumerable:!0,value:null},attributeNameCheck:{writable:!0,configurable:!1,enumerable:!0,value:null},allowCustomizedBuiltInElements:{writable:!0,configurable:!1,enumerable:!0,value:!1}})),Ae=null,Se=null,Ne=!0,Ee=!0,Oe=!1,ke=!0,Ce=!1,Ie=!0,Re=!1,Le=!1,je=!1,De=!1,qe=!1,Pe=!1,ze=!0,Me=!1;const Fe="user-content-";let Ue=!0,Be=!1,He={},Qe=null;const We=S({},["annotation-xml","audio","colgroup","desc","foreignobject","head","iframe","math","mi","mn","mo","ms","mtext","noembed","noframes","noscript","plaintext","script","style","svg","template","thead","title","video","xmp"]);let Ye=null;const Ge=S({},["audio","video","img","source","image","track"]);let $e=null;const Ke=S({},["alt","class","for","id","label","name","pattern","placeholder","role","summary","title","value","style","xmlns"]),Xe="http://www.w3.org/1998/Math/MathML",Ve="http://www.w3.org/2000/svg",Ze="http://www.w3.org/1999/xhtml";let Je=Ze,et=!1,tt=null;const nt=S({},[Xe,Ve,Ze],m);let rt=null;const ot=["application/xhtml+xml","text/html"],it="text/html";let at=null,ct=null;const st=255,lt=r.createElement("form"),ut=function(e){return e instanceof RegExp||e instanceof Function},dt=function(){let e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};if(!ct||ct!==e){if(e&&"object"==typeof e||(e={}),e=E(e),rt=-1===ot.indexOf(e.PARSER_MEDIA_TYPE)?it:e.PARSER_MEDIA_TYPE,at="application/xhtml+xml"===rt?m:f,xe=x(e,"ALLOWED_TAGS")?S({},e.ALLOWED_TAGS,at):we,ve=x(e,"ALLOWED_ATTR")?S({},e.ALLOWED_ATTR,at):Te,tt=x(e,"ALLOWED_NAMESPACES")?S({},e.ALLOWED_NAMESPACES,m):nt,$e=x(e,"ADD_URI_SAFE_ATTR")?S(E(Ke),e.ADD_URI_SAFE_ATTR,at):Ke,Ye=x(e,"ADD_DATA_URI_TAGS")?S(E(Ge),e.ADD_DATA_URI_TAGS,at):Ge,Qe=x(e,"FORBID_CONTENTS")?S({},e.FORBID_CONTENTS,at):We,Ae=x(e,"FORBID_TAGS")?S({},e.FORBID_TAGS,at):{},Se=x(e,"FORBID_ATTR")?S({},e.FORBID_ATTR,at):{},He=!!x(e,"USE_PROFILES")&&e.USE_PROFILES,Ne=!1!==e.ALLOW_ARIA_ATTR,Ee=!1!==e.ALLOW_DATA_ATTR,Oe=e.ALLOW_UNKNOWN_PROTOCOLS||!1,ke=!1!==e.ALLOW_SELF_CLOSE_IN_ATTR,Ce=e.SAFE_FOR_TEMPLATES||!1,Ie=!1!==e.SAFE_FOR_XML,Re=e.WHOLE_DOCUMENT||!1,De=e.RETURN_DOM||!1,qe=e.RETURN_DOM_FRAGMENT||!1,Pe=e.RETURN_TRUSTED_TYPE||!1,je=e.FORCE_BODY||!1,ze=!1!==e.SANITIZE_DOM,Me=e.SANITIZE_NAMED_PROPS||!1,Ue=!1!==e.KEEP_CONTENT,Be=e.IN_PLACE||!1,ye=e.ALLOWED_URI_REGEXP||W,Je=e.NAMESPACE||Ze,_e=e.CUSTOM_ELEMENT_HANDLING||{},e.CUSTOM_ELEMENT_HANDLING&&ut(e.CUSTOM_ELEMENT_HANDLING.tagNameCheck)&&(_e.tagNameCheck=e.CUSTOM_ELEMENT_HANDLING.tagNameCheck),e.CUSTOM_ELEMENT_HANDLING&&ut(e.CUSTOM_ELEMENT_HANDLING.attributeNameCheck)&&(_e.attributeNameCheck=e.CUSTOM_ELEMENT_HANDLING.attributeNameCheck),e.CUSTOM_ELEMENT_HANDLING&&"boolean"==typeof e.CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements&&(_e.allowCustomizedBuiltInElements=e.CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements),Ce&&(Ee=!1),qe&&(De=!0),He&&(xe=S({},D),ve=[],!0===He.html&&(S(xe,k),S(ve,q)),!0===He.svg&&(S(xe,C),S(ve,P),S(ve,M)),!0===He.svgFilters&&(S(xe,I),S(ve,P),S(ve,M)),!0===He.mathMl&&(S(xe,L),S(ve,z),S(ve,M))),e.ADD_TAGS&&(xe===we&&(xe=E(xe)),S(xe,e.ADD_TAGS,at)),e.ADD_ATTR&&(ve===Te&&(ve=E(ve)),S(ve,e.ADD_ATTR,at)),e.ADD_URI_SAFE_ATTR&&S($e,e.ADD_URI_SAFE_ATTR,at),e.FORBID_CONTENTS&&(Qe===We&&(Qe=E(Qe)),S(Qe,e.FORBID_CONTENTS,at)),Ue&&(xe["#text"]=!0),Re&&S(xe,["html","head","body"]),xe.table&&(S(xe,["tbody"]),delete Ae.tbody),e.TRUSTED_TYPES_POLICY){if("function"!=typeof e.TRUSTED_TYPES_POLICY.createHTML)throw v('TRUSTED_TYPES_POLICY configuration option must provide a "createHTML" hook.');if("function"!=typeof e.TRUSTED_TYPES_POLICY.createScriptURL)throw v('TRUSTED_TYPES_POLICY configuration option must provide a "createScriptURL" hook.');ne=e.TRUSTED_TYPES_POLICY,re=ne.createHTML("")}else void 0===ne&&(ne=J(H,a)),null!==ne&&"string"==typeof re&&(re=ne.createHTML(""));i&&i(e),ct=e}},pt=S({},["mi","mo","mn","ms","mtext"]),ft=S({},["foreignobject","annotation-xml"]),mt=S({},["title","style","font","a","script"]),ht=S({},[...C,...I,...R]),gt=S({},[...L,...j]),bt=function(e){let t=te(e);t&&t.tagName||(t={namespaceURI:Je,tagName:"template"});const n=f(e.tagName),r=f(t.tagName);return!!tt[e.namespaceURI]&&(e.namespaceURI===Ve?t.namespaceURI===Ze?"svg"===n:t.namespaceURI===Xe?"svg"===n&&("annotation-xml"===r||pt[r]):Boolean(ht[n]):e.namespaceURI===Xe?t.namespaceURI===Ze?"math"===n:t.namespaceURI===Ve?"math"===n&&ft[r]:Boolean(gt[n]):e.namespaceURI===Ze?!(t.namespaceURI===Ve&&!ft[r])&&!(t.namespaceURI===Xe&&!pt[r])&&!gt[n]&&(mt[n]||!ht[n]):!("application/xhtml+xml"!==rt||!tt[e.namespaceURI]))},yt=function(e){p(n.removed,{element:e});try{e.parentNode.removeChild(e)}catch(t){e.remove()}},xt=function(e,t){try{p(n.removed,{attribute:t.getAttributeNode(e),from:t})}catch(e){p(n.removed,{attribute:null,from:t})}if(t.removeAttribute(e),"is"===e&&!ve[e])if(De||qe)try{yt(t)}catch(e){}else try{t.setAttribute(e,"")}catch(e){}},wt=function(e){let t=null,n=null;if(je)e="<remove></remove>"+e;else{const t=h(e,/^[\r\n\t ]+/);n=t&&t[0]}"application/xhtml+xml"===rt&&Je===Ze&&(e='<html xmlns="http://www.w3.org/1999/xhtml"><head></head><body>'+e+"</body></html>");const o=ne?ne.createHTML(e):e;if(Je===Ze)try{t=(new B).parseFromString(o,rt)}catch(e){}if(!t||!t.documentElement){t=oe.createDocument(Je,"template",null);try{t.documentElement.innerHTML=et?re:o}catch(e){}}const i=t.body||t.documentElement;return e&&n&&i.insertBefore(r.createTextNode(n),i.childNodes[0]||null),Je===Ze?ce.call(t,Re?"html":"body")[0]:Re?t.documentElement:i},vt=function(e){return ie.call(e.ownerDocument||e,e,N.SHOW_ELEMENT|N.SHOW_COMMENT|N.SHOW_TEXT|N.SHOW_PROCESSING_INSTRUCTION|N.SHOW_CDATA_SECTION,null)},Tt=function(e){return e instanceof U&&(void 0!==e.__depth&&"number"!=typeof e.__depth||void 0!==e.__removalCount&&"number"!=typeof e.__removalCount||"string"!=typeof e.nodeName||"string"!=typeof e.textContent||"function"!=typeof e.removeChild||!(e.attributes instanceof F)||"function"!=typeof e.removeAttribute||"function"!=typeof e.setAttribute||"string"!=typeof e.namespaceURI||"function"!=typeof e.insertBefore||"function"!=typeof e.hasChildNodes)},_t=function(e){return"function"==typeof _&&e instanceof _},At=function(e,t,r){le[e]&&u(le[e],(e=>{e.call(n,t,r,ct)}))},St=function(e){let t=null;if(At("beforeSanitizeElements",e,null),Tt(e))return yt(e),!0;const r=at(e.nodeName);if(At("uponSanitizeElement",e,{tagName:r,allowedTags:xe}),e.hasChildNodes()&&!_t(e.firstElementChild)&&w(/<[/\w]/g,e.innerHTML)&&w(/<[/\w]/g,e.textContent))return yt(e),!0;if(e.nodeType===V.progressingInstruction)return yt(e),!0;if(Ie&&e.nodeType===V.comment&&w(/<[/\w]/g,e.data))return yt(e),!0;if(!xe[r]||Ae[r]){if(!Ae[r]&&Et(r)){if(_e.tagNameCheck instanceof RegExp&&w(_e.tagNameCheck,r))return!1;if(_e.tagNameCheck instanceof Function&&_e.tagNameCheck(r))return!1}if(Ue&&!Qe[r]){const t=te(e)||e.parentNode,n=K(e)||e.childNodes;if(n&&t)for(let r=n.length-1;r>=0;--r){const o=Y(n[r],!0);o.__removalCount=(e.__removalCount||0)+1,t.insertBefore(o,G(e))}}return yt(e),!0}return e instanceof A&&!bt(e)?(yt(e),!0):"noscript"!==r&&"noembed"!==r&&"noframes"!==r||!w(/<\/no(script|embed|frames)/i,e.innerHTML)?(Ce&&e.nodeType===V.text&&(t=e.textContent,u([ue,de,pe],(e=>{t=g(t,e," ")})),e.textContent!==t&&(p(n.removed,{element:e.cloneNode()}),e.textContent=t)),At("afterSanitizeElements",e,null),!1):(yt(e),!0)},Nt=function(e,t,n){if(ze&&("id"===t||"name"===t)&&(n in r||n in lt||"__depth"===n||"__removalCount"===n))return!1;if(Ee&&!Se[t]&&w(fe,t));else if(Ne&&w(me,t));else if(!ve[t]||Se[t]){if(!(Et(e)&&(_e.tagNameCheck instanceof RegExp&&w(_e.tagNameCheck,e)||_e.tagNameCheck instanceof Function&&_e.tagNameCheck(e))&&(_e.attributeNameCheck instanceof RegExp&&w(_e.attributeNameCheck,t)||_e.attributeNameCheck instanceof Function&&_e.attributeNameCheck(t))||"is"===t&&_e.allowCustomizedBuiltInElements&&(_e.tagNameCheck instanceof RegExp&&w(_e.tagNameCheck,n)||_e.tagNameCheck instanceof Function&&_e.tagNameCheck(n))))return!1}else if($e[t]);else if(w(ye,g(n,ge,"")));else if("src"!==t&&"xlink:href"!==t&&"href"!==t||"script"===e||0!==b(n,"data:")||!Ye[e])if(Oe&&!w(he,g(n,ge,"")));else if(n)return!1;return!0},Et=function(e){return"annotation-xml"!==e&&h(e,be)},Ot=function(e){At("beforeSanitizeAttributes",e,null);const{attributes:t}=e;if(!t)return;const r={attrName:"",attrValue:"",keepAttr:!0,allowedAttributes:ve};let o=t.length;for(;o--;){const i=t[o],{name:a,namespaceURI:c,value:s}=i,l=at(a);let p="value"===a?s:y(s);if(r.attrName=l,r.attrValue=p,r.keepAttr=!0,r.forceKeepAttr=void 0,At("uponSanitizeAttribute",e,r),p=r.attrValue,r.forceKeepAttr)continue;if(xt(a,e),!r.keepAttr)continue;if(!ke&&w(/\/>/i,p)){xt(a,e);continue}if(Ie&&w(/((--!?|])>)|<\/(style|title)/i,p)){xt(a,e);continue}Ce&&u([ue,de,pe],(e=>{p=g(p,e," ")}));const f=at(e.nodeName);if(Nt(f,l,p)){if(!Me||"id"!==l&&"name"!==l||(xt(a,e),p=Fe+p),ne&&"object"==typeof H&&"function"==typeof H.getAttributeType)if(c);else switch(H.getAttributeType(f,l)){case"TrustedHTML":p=ne.createHTML(p);break;case"TrustedScriptURL":p=ne.createScriptURL(p)}try{c?e.setAttributeNS(c,a,p):e.setAttribute(a,p),Tt(e)?yt(e):d(n.removed)}catch(e){}}}At("afterSanitizeAttributes",e,null)},kt=function e(t){let n=null;const r=vt(t);for(At("beforeSanitizeShadowDOM",t,null);n=r.nextNode();){if(At("uponSanitizeShadowNode",n,null),St(n))continue;const t=te(n);n.nodeType===V.element&&(t&&t.__depth?n.__depth=(n.__removalCount||0)+t.__depth+1:n.__depth=1),(n.__depth>=st||n.__depth<0||T(n.__depth))&&yt(n),n.content instanceof s&&(n.content.__depth=n.__depth,e(n.content)),Ot(n)}At("afterSanitizeShadowDOM",t,null)};return n.sanitize=function(e){let t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=null,i=null,a=null,c=null;if(et=!e,et&&(e="\x3c!--\x3e"),"string"!=typeof e&&!_t(e)){if("function"!=typeof e.toString)throw v("toString is not a function");if("string"!=typeof(e=e.toString()))throw v("dirty is not a string, aborting")}if(!n.isSupported)return e;if(Le||dt(t),n.removed=[],"string"==typeof e&&(Be=!1),Be){if(e.nodeName){const t=at(e.nodeName);if(!xe[t]||Ae[t])throw v("root node is forbidden and cannot be sanitized in-place")}}else if(e instanceof _)r=wt("\x3c!----\x3e"),i=r.ownerDocument.importNode(e,!0),i.nodeType===V.element&&"BODY"===i.nodeName||"HTML"===i.nodeName?r=i:r.appendChild(i);else{if(!De&&!Ce&&!Re&&-1===e.indexOf("<"))return ne&&Pe?ne.createHTML(e):e;if(r=wt(e),!r)return De?null:Pe?re:""}r&&je&&yt(r.firstChild);const l=vt(Be?e:r);for(;a=l.nextNode();){if(St(a))continue;const e=te(a);a.nodeType===V.element&&(e&&e.__depth?a.__depth=(a.__removalCount||0)+e.__depth+1:a.__depth=1),(a.__depth>=st||a.__depth<0||T(a.__depth))&&yt(a),a.content instanceof s&&(a.content.__depth=a.__depth,kt(a.content)),Ot(a)}if(Be)return e;if(De){if(qe)for(c=ae.call(r.ownerDocument);r.firstChild;)c.appendChild(r.firstChild);else c=r;return(ve.shadowroot||ve.shadowrootmode)&&(c=se.call(o,c,!0)),c}let d=Re?r.outerHTML:r.innerHTML;return Re&&xe["!doctype"]&&r.ownerDocument&&r.ownerDocument.doctype&&r.ownerDocument.doctype.name&&w($,r.ownerDocument.doctype.name)&&(d="<!DOCTYPE "+r.ownerDocument.doctype.name+">\n"+d),Ce&&u([ue,de,pe],(e=>{d=g(d,e," ")})),ne&&Pe?ne.createHTML(d):d},n.setConfig=function(){dt(arguments.length>0&&void 0!==arguments[0]?arguments[0]:{}),Le=!0},n.clearConfig=function(){ct=null,Le=!1},n.isValidAttribute=function(e,t,n){ct||dt({});const r=at(e),o=at(t);return Nt(r,o,n)},n.addHook=function(e,t){"function"==typeof t&&(le[e]=le[e]||[],p(le[e],t))},n.removeHook=function(e){if(le[e])return d(le[e])},n.removeHooks=function(e){le[e]&&(le[e]=[])},n.removeAllHooks=function(){le={}},n}var te=ee();return te}();var R=h(I.exports),L=function(e){return{__html:C((0,R.sanitize)(e))}},j=function(e,t,n,r,o){var i=o.userInput,a=o.userAttempt,s=o.currentQuestionIndex,u=o.continueTillCorrect,p=o.showNextQuestionButton,f=o.incorrect,m=o.correct,h=o.setButtons,g=o.setIsCorrect,b=o.setIncorrectAnswer,y=o.setCorrect,x=o.setIncorrect,w=o.setShowNextQuestionButton,v=o.setUserInput,T=o.setUserAttempt,_="".concat(e),A=Object.keys(r).map((function(){return{disabled:!0}})),S=d(i);if("single"===n)void 0===S[s]&&(S[s]=e),_===t?(f.indexOf(s)<0&&m.indexOf(s)<0&&m.push(s),h((function(n){return c(c(c({},n),A),{},l({},e-1,{className:_===t?"correct":"incorrect"}))})),g(!0),b(!1),y(m),w(!0)):(m.indexOf(s)<0&&f.indexOf(s)<0&&f.push(s),u?h((function(t){return c(c({},t),{},l({},e-1,{disabled:!t[e-1]}))})):(h((function(n){return c(c(c({},n),A),{},l({},e-1,{className:_===t?"correct":"incorrect"}))})),w(!0)),b(!0),g(!1),x(f));else if("personality"===n)g(!0),b(!1),w(!0);else{var N=t.length;if(void 0===S[s]&&(S[s]=[]),S[s].length<N&&(S[s].push(e),t.includes(e)?S[s].length<=N&&h((function(n){return c(c({},n),{},l({},e-1,{disabled:!n[e-1],className:t.includes(e)?"correct":"incorrect"}))})):S[s].length<=N&&h((function(n){return c(c({},n),{},l({},e-1,{className:t.includes(e)?"correct":"incorrect"}))}))),N===a){for(var E=0,O=0;O<t.length;O+=1)S[s].includes(t[O])&&(E+=1);for(var k=function(e){t.includes(e+1)&&h((function(t){return c(c({},t),{},l({},e,{}))}))},C=0;C<r.length;C+=1)k(C);E===N?(m.push(s),g(!0),b(!1),y(m),w(!0),T(1)):(f.push(s),b(!0),g(!1),x(f),w(!0),T(1))}else p||T(a+1)}v(S)},D=function(e,t,n,r,o){var i=o.userInput,a=o.currentQuestionIndex,s=o.setButtons,u=o.setShowNextQuestionButton,f=o.incorrect,m=o.correct,h=o.setCorrect,g=o.setIncorrect,b=o.setUserInput,y=Object.keys(r).map((function(){return{selected:!1}})),x=d(i);if("personality"===n)x[a]=e,s((function(t){return c(c(c({},t),y),{},l({},e-1,{className:"selected"}))})),u(!0);else if("single"===n)t=Number(t),x[a]=e,e===t?(m.indexOf(a)<0&&m.push(a),f.indexOf(a)>=0&&f.splice(f.indexOf(a),1)):(f.indexOf(a)<0&&f.push(a),m.indexOf(a)>=0&&m.splice(m.indexOf(a),1)),h(m),g(f),s((function(t){return c(c(c({},t),y),{},l({},e-1,{className:"selected"}))})),u(!0);else{if(void 0===x[a]&&(x[a]=[]),x[a].includes(e)?x[a].splice(x[a].indexOf(e),1):x[a].push(e),x[a].length===t.length){var w,v=!0,T=function(e,t){var n="undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(!n){if(Array.isArray(e)||(n=p(e))||t){n&&(e=n);var r=0,o=function(){};return{s:o,n:function(){return r>=e.length?{done:!0}:{done:!1,value:e[r++]}},e:function(e){throw e},f:o}}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}var i,a=!0,c=!1;return{s:function(){n=n.call(e)},n:function(){var e=n.next();return a=e.done,e},e:function(e){c=!0,i=e},f:function(){try{a||null==n.return||n.return()}finally{if(c)throw i}}}}(i[a]);try{for(T.s();!(w=T.n()).done;){var _=w.value;if(!t.includes(_)){v=!1,f.indexOf(a)<0&&f.push(a),m.indexOf(a)>=0&&m.splice(m.indexOf(a),1);break}}}catch(e){T.e(e)}finally{T.f()}v&&(m.indexOf(a)<0&&m.push(a),f.indexOf(a)>=0&&f.splice(f.indexOf(a),1))}else f.indexOf(a)<0&&f.push(a),m.indexOf(a)>=0&&m.splice(m.indexOf(a),1);h(m),g(f),s((function(t){return c(c({},t),{},l({},e-1,{className:x[a].includes(e)?"selected":void 0}))})),x[a].length>0&&u(!0)}b(x)};function q(e){var t=e.question,n=e.isResultPage,r=t.explanation;return r?n?S.jsx("div",{className:"explanation",children:r}):S.jsxs("div",{children:[S.jsx("br",{}),r]}):null}var P=function(e){return e.messageForCorrectAnswer||"You are correct. Please click Next to continue."},z=function(e){return e.messageForIncorrectAnswer||"Incorrect answer. Please try again."};function M(e){var t=e.showInstantFeedback,n=e.incorrectAnswer,o=e.correctAnswer,i=e.question,a=e.onQuestionSubmit,c=e.userAnswer;return r((function(){a&&(o||n)&&a({question:i,userAnswer:c,isCorrect:o})}),[o,n]),S.jsxs(S.Fragment,{children:[n&&t&&S.jsx("div",{className:"alert incorrect",children:z(i)}),o&&t&&S.jsxs("div",{className:"alert correct",children:[P(i),S.jsx(q,{question:i,isResultPage:!1})]})]})}function F(e){var n=e.questions,a=e.appLocale,c=e.showDefaultResult,l=e.onComplete,p=e.customResultPage,f=e.showInstantFeedback,h=e.continueTillCorrect,g=e.revealAnswerOnSubmit,b=e.allowNavigation,y=e.onQuestionSubmit,x=e.timer,w=e.allowPauseTimer,v=u(t(!1),2),T=v[0],_=v[1],A=u(t(!1),2),E=A[0],O=A[1],k=u(t(!1),2),C=k[0],I=k[1],R=u(t(!1),2),P=R[0],z=R[1],F=u(t(0),2),U=F[0],B=F[1],H=u(t({}),2),Q=H[0],W=H[1],Y=u(t([]),2),G=Y[0],$=Y[1],K=u(t([]),2),X=K[0],V=K[1],Z=u(t([]),2),J=Z[0],ee=Z[1],te=u(t([]),2),ne=te[0],re=te[1],oe=u(t("all"),2),ie=oe[0],ae=oe[1],ce=u(t(1),2),se=ce[0],le=ce[1],ue=u(t(!0),2),de=ue[0],pe=ue[1],fe=u(t(void 0),2),me=fe[0],he=fe[1],ge=u(t(0),2),be=ge[0],ye=ge[1],xe=u(t(0),2),we=xe[0],ve=xe[1],Te=u(t(n[U]),2),_e=Te[0],Ae=Te[1],Se=u(t(void 0),2),Ne=Se[0],Ee=Se[1],Oe=u(t(x),2),ke=Oe[0],Ce=Oe[1],Ie=u(t(!0),2),Re=Ie[0],Le=Ie[1];r((function(){pe(void 0===c||c)}),[c]),r((function(){Ae(n[U])}),[U,n]),r((function(){var e=_e.answerSelectionType;he(e||"single")}),[_e,U]),r((function(){if(P){Le(!1);for(var e=0,t=0,r=0;r<n.length;r+=1){var o=n[r].point||0;("string"==typeof o||o instanceof String)&&(o=parseInt(o,10)),e+=o,G.includes(r)&&(t+=o)}ye(e),ve(t)}}),[P]),r((function(){Ee({numberOfQuestions:n.length,numberOfCorrectAnswers:G.length,numberOfIncorrectAnswers:X.length,questions:n,userInput:ne,totalPoints:be,correctPoints:we})}),[be,we]),r((function(){P&&void 0!==l&&void 0!==Ne&&l(Ne)}),[Ne]);var je=function(e){if(_(!1),O(!1),I(!1),W({}),e+1===n.length)if(ne.length!==n.length)alert("Quiz is incomplete");else if(b){confirm("You have finished all the questions. Submit Quiz now?")&&z(!0)}else z(!0);else B(e+1)},De=function(e){ae(e.target.value)},qe=function(e,t){var n,r,o=e.answers,i=e.correctAnswer,a=e.questionType,c=e.answerSelectionType;return c=c||"single",o.map((function(e,o){return"single"===c?(n="".concat(o+1)===i?"correct":"",r="".concat(t)!==i&&"".concat(o+1)==="".concat(t)?"incorrect":"",void 0===t&&"".concat(o+1)!==i&&(r="unanswered")):(n=i.includes(o+1)?"correct":"",r=!i.includes(o+1)&&null!=t&&t.includes(o+1)?"incorrect":"",void 0!==t||i.includes(o+1)||(r="unanswered")),S.jsx("div",{children:S.jsxs("button",{type:"button",disabled:!0,className:"answerBtn btn ".concat(n).concat(r),children:["text"===a&&S.jsx("span",{children:e}),"photo"===a&&S.jsx("img",{src:e,alt:"answer"})]})},m())}))},Pe=function(e,t,n){var r=a.singleSelectionTagText,o=a.multipleSelectionTagText,i=a.pickNumberOfSelection;return S.jsxs("div",{className:"tag-container",children:["single"===e&&S.jsx("span",{className:"single selection-tag",children:r}),"multiple"===e&&S.jsx("span",{className:"multiple selection-tag",children:o}),S.jsx("span",{className:"number-of-selection",children:i.replace("<numberOfSelection>",t)}),n&&S.jsx("span",{className:"selection-tag segment",children:n})]})},ze=function(e,t){return"string"==typeof t?e===Number(t):"object"===s(t)&&void 0!==t.find((function(t){return t===e}))},Me=o((function(){var e,t;if("all"!==ie){var r=J;"correct"===ie?r=G:"incorrect"===ie&&(r=X),e=n.filter((function(e,t){return-1!==r.indexOf(t)})),t=ne.filter((function(e,t){return-1!==r.indexOf(t)}))}return(e||n).map((function(e,n){var r=t?t[n]:ne[n],o=e.answerSelectionType||"single";return S.jsxs("div",{className:"result-answer-wrapper",children:[S.jsx("h3",{dangerouslySetInnerHTML:L("Q".concat(e.questionIndex,": ").concat(e.question," ").concat(a.marksOfQuestion.replace("<marks>",e.point)))}),e.questionPic&&S.jsx("img",{src:e.questionPic,alt:"question"}),Pe(o,"personality"!==o&&e.correctAnswer&&Array.isArray(e.correctAnswer)?e.correctAnswer.length:1,e.segment||"defaultSegment"),S.jsx("div",{className:"result-answer",children:qe(e,r)}),S.jsx(q,{question:e,isResultPage:!0})]},m())}))}),[P,ie]);r((function(){var e;return x&&Re&&ke>0&&(e=setInterval((function(){Ce((function(e){return e-1}))}),1e3)),function(){return x&&clearInterval(e)}}),[Re,ke,x]);var Fe,Ue,Be,He,Qe,We,Ye,Ge,$e,Ke,Xe=function(e){return e<10?"0":""},Ve=function(e){var t=Math.floor(e/3600),n=Math.floor(e%3600/60),r=e%60;return"".concat(Xe(t)).concat(t,":").concat(Xe(n)).concat(n,":").concat(Xe(r)).concat(r)};return S.jsxs("div",{className:"questionWrapper",children:[x&&!Re&&S.jsxs("div",{children:[a.timerTimeTaken,":"," ",S.jsx("b",{children:Ve(x-ke)})]}),x&&Re&&S.jsxs("div",{children:[a.timerTimeRemaining,":"," ",S.jsx("b",{children:Ve(ke)})]}),x&&0===ke&&Re&&(Le(!1),z(!0),void n.forEach((function(e,t){void 0===ne[t]&&ee((function(e){return[].concat(d(e),[t])}))}))),!P&&S.jsxs("div",{className:"questionWrapperBody",children:[S.jsxs("div",{children:["".concat(a.question," ").concat(U+1," / ").concat(n.length,":"),S.jsx("br",{}),x&&w&&S.jsx("button",{type:"button",className:"timerBtn",onClick:function(){Le(!Re)},children:Re?a.pauseScreenPause:a.pauseScreenResume})]}),Re?S.jsxs(S.Fragment,{children:[S.jsx("h3",{dangerouslySetInnerHTML:L("".concat(_e&&_e.question," ").concat(a.marksOfQuestion.replace("<marks>",_e.point)))}),_e&&_e.questionPic&&S.jsx("img",{src:_e.questionPic,alt:"question"}),_e&&Pe(me,"personality"===me?1:_e.correctAnswer&&Array.isArray(_e.correctAnswer)?_e.correctAnswer.length:0,_e.segment||"defaultSegment"),S.jsx("div",{className:"questionModal",children:S.jsx(M,{question:_e,showInstantFeedback:f,correctAnswer:E,incorrectAnswer:T,onQuestionSubmit:y,userAnswer:d(ne).pop()})}),_e&&(Fe=_e,Ue=Q,Be=Fe.answers,He=Fe.correctAnswer,Qe=Fe.questionType,We=Fe.questionIndex,Ye=Fe.answerSelectionType,Ge=function(e){return j(e+1,He,Ye,Be,{userInput:ne,userAttempt:se,currentQuestionIndex:U,continueTillCorrect:h,showNextQuestionButton:C,incorrect:X,correct:G,setButtons:W,setIsCorrect:O,setIncorrectAnswer:_,setCorrect:$,setIncorrect:V,setShowNextQuestionButton:I,setUserInput:re,setUserAttempt:le})},$e=function(e){return D(e+1,He,Ye,Be,{userInput:ne,currentQuestionIndex:U,setButtons:W,setShowNextQuestionButton:I,incorrect:X,correct:G,setCorrect:$,setIncorrect:V,setUserInput:re})},Ke=function(e){return void 0!==ne[We-1]&&("single"===Ye?ne[We-1]===e:Array.isArray(ne[We-1])&&ne[We-1].includes(e))},Ye=Ye||"single",Be.map((function(e,t){return S.jsx(i,{children:void 0!==Ue[t]?S.jsxs("button",{type:"button",disabled:Ue[t].disabled||!1,className:"".concat(Ue[t].className," answerBtn btn ").concat(ze(t+1,He)&&f?"correct":""),onClick:function(){return g?$e(t):Ge(t)},children:["text"===Qe&&S.jsx("span",{children:e}),"photo"===Qe&&S.jsx("img",{src:e,alt:"answer"})]}):S.jsxs("button",{type:"button",onClick:function(){return g?$e(t):Ge(t)},className:"answerBtn btn ".concat(b&&Ke(t+1)?"selected":null),children:["text"===Qe&&e,"photo"===Qe&&S.jsx("img",{src:e,alt:"answer"})]})},m())}))),(C||b)&&S.jsxs("div",{className:"questionBtnContainer",children:[b&&U>0&&S.jsx("button",{onClick:function(){return je(U-2)},className:"prevQuestionBtn btn",type:"button",children:a.prevQuestionBtn}),S.jsx("button",{onClick:function(){return je(U)},className:"nextQuestionBtn btn",type:"button",children:a.nextQuestionBtn})]})]}):S.jsxs("span",{className:"timerPauseScreen dark:text-white text-black",children:[S.jsx("br",{}),S.jsx("br",{}),a.pauseScreenDisplay]})]}),P&&de&&void 0===p&&S.jsxs("div",{className:"card-body",children:[S.jsx("h2",{children:a.resultPageHeaderText.replace("<correctIndexLength>",G.length).replace("<questionLength>",n.length)}),S.jsx("h2",{children:a.resultPagePoint.replace("<correctPoints>",we).replace("<totalPoints>",be)}),S.jsx("br",{}),S.jsx(N,{filteredValue:ie,handleChange:De,appLocale:a}),Me()]}),P&&!de&&void 0!==p&&p(Ne)]})}var U={landingHeaderText:"<questionLength> Questions",question:"Question",startQuizBtn:"Start Quiz",resultFilterAll:"All",resultFilterCorrect:"Correct",resultFilterIncorrect:"Incorrect",resultFilterUnanswered:"Unanswered",nextQuestionBtn:"Next",prevQuestionBtn:"Prev",resultPageHeaderText:"You have completed the quiz. You got <correctIndexLength> out of <questionLength> questions.",resultPagePoint:"You scored <correctPoints> out of <totalPoints>.",pauseScreenDisplay:"Test is paused. Clicked the Resume button to continue",timerTimeRemaining:"Time Remaining",timerTimeTaken:"Time Taken",pauseScreenPause:"Pause",pauseScreenResume:"Resume",singleSelectionTagText:"Single Selection",multipleSelectionTagText:"Multiple Selection",pickNumberOfSelection:"Pick <numberOfSelection>",marksOfQuestion:"(<marks> marks)"};function B(e){var n=e.quiz,i=e.shuffle,a=e.shuffleAnswer,s=e.showDefaultResult,l=e.onComplete,d=e.customResultPage,p=e.showInstantFeedback,f=e.continueTillCorrect,m=e.revealAnswerOnSubmit,h=e.allowNavigation,g=e.onQuestionSubmit,b=e.disableSynopsis,y=e.timer,x=e.allowPauseTimer,w=u(t(!1),2),v=w[0],T=w[1],_=u(t(n.questions),2),A=_[0],N=_[1],E=n.nrOfQuestions&&n.nrOfQuestions<n.questions.length?n.nrOfQuestions:n.questions.length,O=o((function(e){for(var t=e.length-1;t>0;t-=1){var n=Math.floor(Math.random()*(t+1)),r=[e[n],e[t]];e[t]=r[0],e[n]=r[1]}return e}),[]);r((function(){b&&T(!0)}),[]),r((function(){var e=n.questions;i&&(e=O(e)),a&&(e=function(){return(arguments.length>0&&void 0!==arguments[0]?arguments[0]:[]).map((function(e){var t,n=(null===(t=e.answers)||void 0===t?void 0:t.map((function(e,t){return[e,t]}))).sort((function(){return Math.random()-.5})),r=n.map((function(e){return e[0]}));if("single"===e.answerSelectionType){var o=e.correctAnswer,i=n.findIndex((function(e){return"".concat(e[1]+1)==="".concat(o)}))+1;return c(c({},e),{},{correctAnswer:"".concat(i),answers:r})}if("multiple"===e.answerSelectionType){var a=e.correctAnswer.map((function(e){return n.findIndex((function(t){return"".concat(t[1]+1)==="".concat(e)}))+1}));return c(c({},e),{},{correctAnswer:a,answers:r})}return e}))}(e)),e.length=E,e=e.map((function(e,t){return c(c({},e),{},{questionIndex:t+1})})),N(e)}),[v]);if(!function(e){if(!e)return console.error("Quiz object is required."),!1;if(y&&"number"!=typeof y||y<1)return console.error(y&&"number"!=typeof y?"timer must be a number":"timer must be a number greater than 0"),!1;if(x&&"boolean"!=typeof x)return console.error("allowPauseTimer must be a Boolean"),!1;for(var t=0;t<A.length;t+=1){var n=A[t],r=n.question,o=n.questionType,i=n.answerSelectionType,a=n.answers,c=n.correctAnswer;if(!r)return console.error("Field 'question' is required."),!1;if(!o)return console.error("Field 'questionType' is required."),!1;if("text"!==o&&"photo"!==o)return console.error("The value of 'questionType' is either 'text' or 'photo'."),!1;if(!a)return console.error("Field 'answers' is required."),!1;if(!Array.isArray(a))return console.error("Field 'answers' has to be an Array"),!1;if("personality"!==i&&!c)return console.error("Field 'correctAnswer' is required for non-personality questions."),!1;var s=i;if(i||(console.warn("Field answerSelectionType should be defined since v0.3.0. Use single by default."),s=i||"single"),"single"===s&&!("string"==typeof s||s instanceof String))return console.error("answerSelectionType is single but expecting String in the field correctAnswer"),!1;if("multiple"===s&&!Array.isArray(c))return console.error("answerSelectionType is multiple but expecting Array in the field correctAnswer"),!1}return!0}(n))return null;var k=c(c({},U),n.appLocale);return S.jsxs("div",{className:"react-quiz-container",children:[!v&&S.jsxs("div",{children:[S.jsx("h2",{children:n.quizTitle}),S.jsx("div",{children:k.landingHeaderText.replace("<questionLength>",E)}),n.quizSynopsis&&S.jsx("div",{className:"quiz-synopsis",children:n.quizSynopsis}),S.jsx("div",{className:"startQuizWrapper",children:S.jsx("button",{type:"button",onClick:function(){return T(!0)},className:"startQuizBtn btn",children:k.startQuizBtn})})]}),v&&S.jsx(F,{questions:A,showDefaultResult:s,onComplete:l,customResultPage:d,showInstantFeedback:p,continueTillCorrect:f,revealAnswerOnSubmit:m,allowNavigation:h,appLocale:k,onQuestionSubmit:g,timer:y,allowPauseTimer:x})]})}!function(e,t){void 0===t&&(t={});var n=t.insertAt;if("undefined"!=typeof document){var r=document.head||document.getElementsByTagName("head")[0],o=document.createElement("style");o.type="text/css","top"===n&&r.firstChild?r.insertBefore(o,r.firstChild):r.appendChild(o),o.styleSheet?o.styleSheet.cssText=e:o.appendChild(document.createTextNode(e))}}('.react-quiz-container{margin:20px;max-width:500px}.react-quiz-container .startQuizWrapper{margin-top:10px}.react-quiz-container .btn{background-image:none;border:1px solid transparent;cursor:pointer;font-weight:600;margin-bottom:0;padding:11px 12px;text-align:center;touch-action:manipulation;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;white-space:nowrap}.react-quiz-container .questionWrapper .btn{border:1px solid #e8e8e8;border-radius:4px;display:block;font-size:15px;margin-bottom:10px;margin-top:10px;text-align:unset;white-space:normal}.react-quiz-container .questionWrapper .btn.correct,.timerBtn{background:green;color:#fff}.timerBtn{border:0!important;border-radius:10px;cursor:pointer;float:right;padding:5px;position:relative;top:-35px;width:80px}.timerPauseScreen{font-size:30px}.react-quiz-container .questionModal .alert{border:1px solid transparent;border-radius:2px;color:#fff;margin-bottom:21px;padding:20px}.react-quiz-container .correct{background:green}.react-quiz-container .incorrect{background:red;color:#fff}.react-quiz-container .unanswered{background:grey;color:#fff}.react-quiz-container .answerBtn,.react-quiz-container .questionWrapper img{width:100%}.react-quiz-container .selected{background:#007bff;color:#fff}.react-quiz-container .startQuizWrapper .startQuizBtn{background-color:#fff;border:1px solid #d9d9d9;border-radius:2px;color:rgba(0,0,0,.65);font-size:15px;line-height:1.35135}.react-quiz-container .result-answer-wrapper{border:1px solid #e8e8e8;border-bottom-left-radius:5px;border-bottom-right-radius:5px;margin-bottom:20px}.react-quiz-container .result-answer-wrapper h3{background-color:#fafafa;border-top-left-radius:5px;border-top-right-radius:5px;color:rgba(0,0,0,.9);margin:0;opacity:.8;padding:10px}.react-quiz-container .result-answer-wrapper .explanation{border:1px solid #e8e8e8;margin:0 20px 20px;padding:20px}.react-quiz-container .result-answer-wrapper .tag-container{margin:20px}.react-quiz-container .result-answer{padding:0 20px}.react-quiz-container .quiz-synopsis{margin:15px 0}.react-quiz-container .tag-container{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:20px;margin-top:20px}.react-quiz-container .number-of-selection,.react-quiz-container .selection-tag{border-radius:5px;color:#fff;padding:7px}.react-quiz-container .number-of-selection{background:#673ab7;margin-left:5px}.react-quiz-container .selection-tag.single{background:#3f51b5}.react-quiz-container .selection-tag.multiple{background:#ff9800}.react-quiz-container .selection-tag.segment{background:#3db4b9;margin-left:5px}.react-quiz-container .questionBtnContainer{display:flex;justify-content:space-between}.react-quiz-container .quiz-result-filter{bottom:15px;position:relative;width:120px;.filter-dropdown-select{background-color:#fcfcfc;border:2px solid #c2c5c7;border-radius:7px;bottom:10px;color:#333;cursor:pointer;font-size:16px;height:12px;margin-top:2px;padding:8px;position:relative;text-transform:capitalize}.filter-dropdown-select:after{color:#a5a5a5;content:"▼";font-size:11px;position:absolute;right:10px;top:57%;transform:translateY(-50%);transition:all .3s ease}.filter-dropdown-select:hover{border:2px solid #51aae6;box-shadow:0 0 6px rgba(109,179,250,.5)}.dropdown-options{background-color:#fcfcfc;border-radius:10px;box-shadow:0 0 10px hsla(210,2%,56%,.5);left:0;list-style:none;margin:0;padding:0;position:absolute;top:85%;width:100%;z-index:1}.filter-dropdown-select.open{border:2px solid #51aae6;box-shadow:0 0 6px rgba(109,179,250,.5)}.dropdown-options .dropdown-options-item{cursor:pointer;font-size:16px;padding:10px}.dropdown-options .dropdown-options-item:hover{background-color:hsla(0,0%,89%,.852);border-radius:5px}.dropdown-options .dropdown-options-item:focus{background-color:#d7f1f9;font-weight:700}.filter-dropdown-select .selected-option.selected-open{color:#c6c2c2;font-weight:lighter}.filter-dropdown-select .selected-option{bottom:2px;font-size:16px;position:relative}.filter-dropdown-select:focus+.dropdown-options{max-height:200px}.dropdown-options .dropdown-options-item.selected{background-color:#d7f1f9;color:#333;font-weight:700}.dropdown-options.open{max-height:200px}}');export{B as default};
+import require$$0, { useState, useRef, useEffect, useCallback, Fragment } from 'react';
+
+function _iterableToArrayLimit(r, l) {
+  var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
+  if (null != t) {
+    var e,
+      n,
+      i,
+      u,
+      a = [],
+      f = !0,
+      o = !1;
+    try {
+      if (i = (t = t.call(r)).next, 0 === l) ; else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0);
+    } catch (r) {
+      o = !0, n = r;
+    } finally {
+      try {
+        if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return;
+      } finally {
+        if (o) throw n;
+      }
+    }
+    return a;
+  }
+}
+function ownKeys(e, r) {
+  var t = Object.keys(e);
+  if (Object.getOwnPropertySymbols) {
+    var o = Object.getOwnPropertySymbols(e);
+    r && (o = o.filter(function (r) {
+      return Object.getOwnPropertyDescriptor(e, r).enumerable;
+    })), t.push.apply(t, o);
+  }
+  return t;
+}
+function _objectSpread2(e) {
+  for (var r = 1; r < arguments.length; r++) {
+    var t = null != arguments[r] ? arguments[r] : {};
+    r % 2 ? ownKeys(Object(t), !0).forEach(function (r) {
+      _defineProperty(e, r, t[r]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) {
+      Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r));
+    });
+  }
+  return e;
+}
+function _typeof(o) {
+  "@babel/helpers - typeof";
+
+  return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) {
+    return typeof o;
+  } : function (o) {
+    return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
+  }, _typeof(o);
+}
+function _defineProperty(obj, key, value) {
+  key = _toPropertyKey(key);
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
+}
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
+}
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
+}
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
+}
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+function _iterableToArray(iter) {
+  if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
+}
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
+  return arr2;
+}
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _createForOfIteratorHelper(o, allowArrayLike) {
+  var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"];
+  if (!it) {
+    if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike  ) {
+      if (it) o = it;
+      var i = 0;
+      var F = function () {};
+      return {
+        s: F,
+        n: function () {
+          if (i >= o.length) return {
+            done: true
+          };
+          return {
+            done: false,
+            value: o[i++]
+          };
+        },
+        e: function (e) {
+          throw e;
+        },
+        f: F
+      };
+    }
+    throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+  }
+  var normalCompletion = true,
+    didErr = false,
+    err;
+  return {
+    s: function () {
+      it = it.call(o);
+    },
+    n: function () {
+      var step = it.next();
+      normalCompletion = step.done;
+      return step;
+    },
+    e: function (e) {
+      didErr = true;
+      err = e;
+    },
+    f: function () {
+      try {
+        if (!normalCompletion && it.return != null) it.return();
+      } finally {
+        if (didErr) throw err;
+      }
+    }
+  };
+}
+function _toPrimitive(input, hint) {
+  if (typeof input !== "object" || input === null) return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== undefined) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res !== "object") return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
+}
+function _toPropertyKey(arg) {
+  var key = _toPrimitive(arg, "string");
+  return typeof key === "symbol" ? key : String(key);
+}
+
+const urlAlphabet =
+  'useandom-26T198340PX75pxJACKVERYMINDBUSHWOLF_GQZbfghjklqvwyzrict';
+
+let nanoid = (size = 21) => {
+  let id = '';
+  let bytes = crypto.getRandomValues(new Uint8Array(size));
+  while (size--) {
+    id += urlAlphabet[bytes[size] & 63];
+  }
+  return id
+};
+
+var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+
+function getDefaultExportFromCjs (x) {
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+}
+
+var jsxRuntime = {exports: {}};
+
+var reactJsxRuntime_production_min = {};
+
+/**
+ * @license React
+ * react-jsx-runtime.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+var f=require$$0,k=Symbol.for("react.element"),l=Symbol.for("react.fragment"),m=Object.prototype.hasOwnProperty,n$1=f.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner,p={key:!0,ref:!0,__self:!0,__source:!0};
+function q(c,a,g){var b,d={},e=null,h=null;void 0!==g&&(e=""+g);void 0!==a.key&&(e=""+a.key);void 0!==a.ref&&(h=a.ref);for(b in a)m.call(a,b)&&!p.hasOwnProperty(b)&&(d[b]=a[b]);if(c&&c.defaultProps)for(b in a=c.defaultProps,a)void 0===d[b]&&(d[b]=a[b]);return {$$typeof:k,type:c,key:e,ref:h,props:d,_owner:n$1.current}}reactJsxRuntime_production_min.Fragment=l;reactJsxRuntime_production_min.jsx=q;reactJsxRuntime_production_min.jsxs=q;
+
+{
+  jsxRuntime.exports = reactJsxRuntime_production_min;
+}
+
+var jsxRuntimeExports = jsxRuntime.exports;
+
+function QuizResultFilter(_ref) {
+  var filteredValue = _ref.filteredValue,
+    handleChange = _ref.handleChange,
+    appLocale = _ref.appLocale;
+  var _useState = useState(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    isOpen = _useState2[0],
+    setIsOpen = _useState2[1];
+  var dropdownRef = useRef(null);
+  var toggleDropdown = function toggleDropdown() {
+    setIsOpen(!isOpen);
+  };
+  var handleOptionClick = function handleOptionClick(value) {
+    handleChange({
+      target: {
+        value: value
+      }
+    });
+    setIsOpen(false);
+  };
+  var selectedOptionClass = isOpen ? 'selected-open' : '';
+  var selectedValuesLocale = {
+    all: appLocale.resultFilterAll,
+    correct: appLocale.resultFilterCorrect,
+    incorrect: appLocale.resultFilterIncorrect,
+    unanswered: appLocale.resultFilterUnanswered
+  };
+  useEffect(function () {
+    var handleOutsideClick = function handleOutsideClick(e) {
+      if (isOpen && dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('click', handleOutsideClick);
+    return function () {
+      document.removeEventListener('click', handleOutsideClick);
+    };
+  }, [isOpen]);
+  return /*#__PURE__*/jsxRuntimeExports.jsxs("div", {
+    className: "quiz-result-filter",
+    children: [/*#__PURE__*/jsxRuntimeExports.jsxs("div", {
+      ref: dropdownRef,
+      className: "filter-dropdown-select ".concat(isOpen ? 'open' : ''),
+      onClick: toggleDropdown,
+      onKeyDown: function onKeyDown(e) {
+        if (e.key === 'Enter') {
+          toggleDropdown();
+        }
+      },
+      role: "button",
+      tabIndex: 0,
+      children: [/*#__PURE__*/jsxRuntimeExports.jsx("div", {
+        className: "selected-option ".concat(selectedOptionClass),
+        children: selectedValuesLocale[filteredValue]
+      }), /*#__PURE__*/jsxRuntimeExports.jsx("span", {
+        className: "arrow ".concat(isOpen ? 'up' : 'down')
+      })]
+    }), isOpen && /*#__PURE__*/jsxRuntimeExports.jsxs("div", {
+      className: "dropdown-options",
+      role: "menu",
+      "aria-labelledby": "quiz-filter",
+      children: [/*#__PURE__*/jsxRuntimeExports.jsx("div", {
+        className: "dropdown-options-item ".concat(filteredValue === 'all' ? 'selected' : ''),
+        onClick: function onClick() {
+          return handleOptionClick('all');
+        },
+        onKeyDown: function onKeyDown(e) {
+          if (e.key === 'Enter') {
+            handleOptionClick('all');
+          }
+        },
+        role: "menuitem",
+        tabIndex: 0,
+        children: appLocale.resultFilterAll
+      }), /*#__PURE__*/jsxRuntimeExports.jsx("div", {
+        className: "dropdown-options-item ".concat(filteredValue === 'correct' ? 'selected' : ''),
+        onClick: function onClick() {
+          return handleOptionClick('correct');
+        },
+        onKeyDown: function onKeyDown(e) {
+          if (e.key === 'Enter') {
+            handleOptionClick('correct');
+          }
+        },
+        role: "menuitem",
+        tabIndex: 0,
+        children: appLocale.resultFilterCorrect
+      }), /*#__PURE__*/jsxRuntimeExports.jsx("div", {
+        className: "dropdown-options-item ".concat(filteredValue === 'incorrect' ? 'selected' : ''),
+        onClick: function onClick() {
+          return handleOptionClick('incorrect');
+        },
+        onKeyDown: function onKeyDown(e) {
+          if (e.key === 'Enter') {
+            handleOptionClick('incorrect');
+          }
+        },
+        role: "menuitem",
+        tabIndex: 0,
+        children: appLocale.resultFilterIncorrect
+      }), /*#__PURE__*/jsxRuntimeExports.jsx("div", {
+        className: "dropdown-options-item ".concat(filteredValue === 'unanswered' ? 'selected' : ''),
+        onClick: function onClick() {
+          return handleOptionClick('unanswered');
+        },
+        onKeyDown: function onKeyDown(e) {
+          if (e.key === 'Enter') {
+            handleOptionClick('unanswered');
+          }
+        },
+        role: "menuitem",
+        tabIndex: 0,
+        children: appLocale.resultFilterUnanswered
+      })]
+    })]
+  });
+}
+
+var e={"":["<em>","</em>"],_:["<strong>","</strong>"],"*":["<strong>","</strong>"],"~":["<s>","</s>"],"\n":["<br />"]," ":["<br />"],"-":["<hr />"]};function n(e){return e.replace(RegExp("^"+(e.match(/^(\t| )+/)||"")[0],"gm"),"")}function r(e){return (e+"").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}function t(a,c){var o,l,g,s,p,u=/((?:^|\n+)(?:\n---+|\* \*(?: \*)+)\n)|(?:^``` *(\w*)\n([\s\S]*?)\n```$)|((?:(?:^|\n+)(?:\t|  {2,}).+)+\n*)|((?:(?:^|\n)([>*+-]|\d+\.)\s+.*)+)|(?:!\[([^\]]*?)\]\(([^)]+?)\))|(\[)|(\](?:\(([^)]+?)\))?)|(?:(?:^|\n+)([^\s].*)\n(-{3,}|={3,})(?:\n+|$))|(?:(?:^|\n+)(#{1,6})\s*(.+)(?:\n+|$))|(?:`([^`].*?)`)|(  \n\n*|\n{2,}|__|\*\*|[_*]|~~)/gm,m=[],h="",i=c||{},d=0;function f(n){var r=e[n[1]||""],t=m[m.length-1]==n;return r?r[1]?(t?m.pop():m.push(n),r[0|t]):r[0]:n}function $(){for(var e="";m.length;)e+=f(m[m.length-1]);return e}for(a=a.replace(/^\[(.+?)\]:\s*(.+)$/gm,function(e,n,r){return i[n.toLowerCase()]=r,""}).replace(/^\n+|\n+$/g,"");g=u.exec(a);)l=a.substring(d,g.index),d=u.lastIndex,o=g[0],l.match(/[^\\](\\\\)*\\$/)||((p=g[3]||g[4])?o='<pre class="code '+(g[4]?"poetry":g[2].toLowerCase())+'"><code'+(g[2]?' class="language-'+g[2].toLowerCase()+'"':"")+">"+n(r(p).replace(/^\n+|\n+$/g,""))+"</code></pre>":(p=g[6])?(p.match(/\./)&&(g[5]=g[5].replace(/^\d+/gm,"")),s=t(n(g[5].replace(/^\s*[>*+.-]/gm,""))),">"==p?p="blockquote":(p=p.match(/\./)?"ol":"ul",s=s.replace(/^(.*)(\n|$)/gm,"<li>$1</li>")),o="<"+p+">"+s+"</"+p+">"):g[8]?o='<img src="'+r(g[8])+'" alt="'+r(g[7])+'">':g[10]?(h=h.replace("<a>",'<a href="'+r(g[11]||i[l.toLowerCase()])+'">'),o=$()+"</a>"):g[9]?o="<a>":g[12]||g[14]?o="<"+(p="h"+(g[14]?g[14].length:g[13]>"="?1:2))+">"+t(g[12]||g[15],i)+"</"+p+">":g[16]?o="<code>"+r(g[16])+"</code>":(g[17]||g[1])&&(o=f(g[17]||"--"))),h+=l,h+=o;return (h+a.substring(d)+$()).replace(/^\n+|\n+$/g,"")}
+
+var purify = {exports: {}};
+
+/*! @license DOMPurify 3.1.3 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.1.3/LICENSE */
+
+(function (module, exports) {
+	(function (global, factory) {
+	  module.exports = factory() ;
+	})(commonjsGlobal, (function () {
+	  const {
+	    entries,
+	    setPrototypeOf,
+	    isFrozen,
+	    getPrototypeOf,
+	    getOwnPropertyDescriptor
+	  } = Object;
+	  let {
+	    freeze,
+	    seal,
+	    create
+	  } = Object; // eslint-disable-line import/no-mutable-exports
+	  let {
+	    apply,
+	    construct
+	  } = typeof Reflect !== 'undefined' && Reflect;
+	  if (!freeze) {
+	    freeze = function freeze(x) {
+	      return x;
+	    };
+	  }
+	  if (!seal) {
+	    seal = function seal(x) {
+	      return x;
+	    };
+	  }
+	  if (!apply) {
+	    apply = function apply(fun, thisValue, args) {
+	      return fun.apply(thisValue, args);
+	    };
+	  }
+	  if (!construct) {
+	    construct = function construct(Func, args) {
+	      return new Func(...args);
+	    };
+	  }
+	  const arrayForEach = unapply(Array.prototype.forEach);
+	  const arrayPop = unapply(Array.prototype.pop);
+	  const arrayPush = unapply(Array.prototype.push);
+	  const stringToLowerCase = unapply(String.prototype.toLowerCase);
+	  const stringToString = unapply(String.prototype.toString);
+	  const stringMatch = unapply(String.prototype.match);
+	  const stringReplace = unapply(String.prototype.replace);
+	  const stringIndexOf = unapply(String.prototype.indexOf);
+	  const stringTrim = unapply(String.prototype.trim);
+	  const objectHasOwnProperty = unapply(Object.prototype.hasOwnProperty);
+	  const regExpTest = unapply(RegExp.prototype.test);
+	  const typeErrorCreate = unconstruct(TypeError);
+	  const numberIsNaN = unapply(Number.isNaN);
+
+	  /**
+	   * Creates a new function that calls the given function with a specified thisArg and arguments.
+	   *
+	   * @param {Function} func - The function to be wrapped and called.
+	   * @returns {Function} A new function that calls the given function with a specified thisArg and arguments.
+	   */
+	  function unapply(func) {
+	    return function (thisArg) {
+	      for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+	        args[_key - 1] = arguments[_key];
+	      }
+	      return apply(func, thisArg, args);
+	    };
+	  }
+
+	  /**
+	   * Creates a new function that constructs an instance of the given constructor function with the provided arguments.
+	   *
+	   * @param {Function} func - The constructor function to be wrapped and called.
+	   * @returns {Function} A new function that constructs an instance of the given constructor function with the provided arguments.
+	   */
+	  function unconstruct(func) {
+	    return function () {
+	      for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+	        args[_key2] = arguments[_key2];
+	      }
+	      return construct(func, args);
+	    };
+	  }
+
+	  /**
+	   * Add properties to a lookup table
+	   *
+	   * @param {Object} set - The set to which elements will be added.
+	   * @param {Array} array - The array containing elements to be added to the set.
+	   * @param {Function} transformCaseFunc - An optional function to transform the case of each element before adding to the set.
+	   * @returns {Object} The modified set with added elements.
+	   */
+	  function addToSet(set, array) {
+	    let transformCaseFunc = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : stringToLowerCase;
+	    if (setPrototypeOf) {
+	      // Make 'in' and truthy checks like Boolean(set.constructor)
+	      // independent of any properties defined on Object.prototype.
+	      // Prevent prototype setters from intercepting set as a this value.
+	      setPrototypeOf(set, null);
+	    }
+	    let l = array.length;
+	    while (l--) {
+	      let element = array[l];
+	      if (typeof element === 'string') {
+	        const lcElement = transformCaseFunc(element);
+	        if (lcElement !== element) {
+	          // Config presets (e.g. tags.js, attrs.js) are immutable.
+	          if (!isFrozen(array)) {
+	            array[l] = lcElement;
+	          }
+	          element = lcElement;
+	        }
+	      }
+	      set[element] = true;
+	    }
+	    return set;
+	  }
+
+	  /**
+	   * Clean up an array to harden against CSPP
+	   *
+	   * @param {Array} array - The array to be cleaned.
+	   * @returns {Array} The cleaned version of the array
+	   */
+	  function cleanArray(array) {
+	    for (let index = 0; index < array.length; index++) {
+	      const isPropertyExist = objectHasOwnProperty(array, index);
+	      if (!isPropertyExist) {
+	        array[index] = null;
+	      }
+	    }
+	    return array;
+	  }
+
+	  /**
+	   * Shallow clone an object
+	   *
+	   * @param {Object} object - The object to be cloned.
+	   * @returns {Object} A new object that copies the original.
+	   */
+	  function clone(object) {
+	    const newObject = create(null);
+	    for (const [property, value] of entries(object)) {
+	      const isPropertyExist = objectHasOwnProperty(object, property);
+	      if (isPropertyExist) {
+	        if (Array.isArray(value)) {
+	          newObject[property] = cleanArray(value);
+	        } else if (value && typeof value === 'object' && value.constructor === Object) {
+	          newObject[property] = clone(value);
+	        } else {
+	          newObject[property] = value;
+	        }
+	      }
+	    }
+	    return newObject;
+	  }
+
+	  /**
+	   * This method automatically checks if the prop is function or getter and behaves accordingly.
+	   *
+	   * @param {Object} object - The object to look up the getter function in its prototype chain.
+	   * @param {String} prop - The property name for which to find the getter function.
+	   * @returns {Function} The getter function found in the prototype chain or a fallback function.
+	   */
+	  function lookupGetter(object, prop) {
+	    while (object !== null) {
+	      const desc = getOwnPropertyDescriptor(object, prop);
+	      if (desc) {
+	        if (desc.get) {
+	          return unapply(desc.get);
+	        }
+	        if (typeof desc.value === 'function') {
+	          return unapply(desc.value);
+	        }
+	      }
+	      object = getPrototypeOf(object);
+	    }
+	    function fallbackValue() {
+	      return null;
+	    }
+	    return fallbackValue;
+	  }
+
+	  const html$1 = freeze(['a', 'abbr', 'acronym', 'address', 'area', 'article', 'aside', 'audio', 'b', 'bdi', 'bdo', 'big', 'blink', 'blockquote', 'body', 'br', 'button', 'canvas', 'caption', 'center', 'cite', 'code', 'col', 'colgroup', 'content', 'data', 'datalist', 'dd', 'decorator', 'del', 'details', 'dfn', 'dialog', 'dir', 'div', 'dl', 'dt', 'element', 'em', 'fieldset', 'figcaption', 'figure', 'font', 'footer', 'form', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'head', 'header', 'hgroup', 'hr', 'html', 'i', 'img', 'input', 'ins', 'kbd', 'label', 'legend', 'li', 'main', 'map', 'mark', 'marquee', 'menu', 'menuitem', 'meter', 'nav', 'nobr', 'ol', 'optgroup', 'option', 'output', 'p', 'picture', 'pre', 'progress', 'q', 'rp', 'rt', 'ruby', 's', 'samp', 'section', 'select', 'shadow', 'small', 'source', 'spacer', 'span', 'strike', 'strong', 'style', 'sub', 'summary', 'sup', 'table', 'tbody', 'td', 'template', 'textarea', 'tfoot', 'th', 'thead', 'time', 'tr', 'track', 'tt', 'u', 'ul', 'var', 'video', 'wbr']);
+
+	  // SVG
+	  const svg$1 = freeze(['svg', 'a', 'altglyph', 'altglyphdef', 'altglyphitem', 'animatecolor', 'animatemotion', 'animatetransform', 'circle', 'clippath', 'defs', 'desc', 'ellipse', 'filter', 'font', 'g', 'glyph', 'glyphref', 'hkern', 'image', 'line', 'lineargradient', 'marker', 'mask', 'metadata', 'mpath', 'path', 'pattern', 'polygon', 'polyline', 'radialgradient', 'rect', 'stop', 'style', 'switch', 'symbol', 'text', 'textpath', 'title', 'tref', 'tspan', 'view', 'vkern']);
+	  const svgFilters = freeze(['feBlend', 'feColorMatrix', 'feComponentTransfer', 'feComposite', 'feConvolveMatrix', 'feDiffuseLighting', 'feDisplacementMap', 'feDistantLight', 'feDropShadow', 'feFlood', 'feFuncA', 'feFuncB', 'feFuncG', 'feFuncR', 'feGaussianBlur', 'feImage', 'feMerge', 'feMergeNode', 'feMorphology', 'feOffset', 'fePointLight', 'feSpecularLighting', 'feSpotLight', 'feTile', 'feTurbulence']);
+
+	  // List of SVG elements that are disallowed by default.
+	  // We still need to know them so that we can do namespace
+	  // checks properly in case one wants to add them to
+	  // allow-list.
+	  const svgDisallowed = freeze(['animate', 'color-profile', 'cursor', 'discard', 'font-face', 'font-face-format', 'font-face-name', 'font-face-src', 'font-face-uri', 'foreignobject', 'hatch', 'hatchpath', 'mesh', 'meshgradient', 'meshpatch', 'meshrow', 'missing-glyph', 'script', 'set', 'solidcolor', 'unknown', 'use']);
+	  const mathMl$1 = freeze(['math', 'menclose', 'merror', 'mfenced', 'mfrac', 'mglyph', 'mi', 'mlabeledtr', 'mmultiscripts', 'mn', 'mo', 'mover', 'mpadded', 'mphantom', 'mroot', 'mrow', 'ms', 'mspace', 'msqrt', 'mstyle', 'msub', 'msup', 'msubsup', 'mtable', 'mtd', 'mtext', 'mtr', 'munder', 'munderover', 'mprescripts']);
+
+	  // Similarly to SVG, we want to know all MathML elements,
+	  // even those that we disallow by default.
+	  const mathMlDisallowed = freeze(['maction', 'maligngroup', 'malignmark', 'mlongdiv', 'mscarries', 'mscarry', 'msgroup', 'mstack', 'msline', 'msrow', 'semantics', 'annotation', 'annotation-xml', 'mprescripts', 'none']);
+	  const text = freeze(['#text']);
+
+	  const html = freeze(['accept', 'action', 'align', 'alt', 'autocapitalize', 'autocomplete', 'autopictureinpicture', 'autoplay', 'background', 'bgcolor', 'border', 'capture', 'cellpadding', 'cellspacing', 'checked', 'cite', 'class', 'clear', 'color', 'cols', 'colspan', 'controls', 'controlslist', 'coords', 'crossorigin', 'datetime', 'decoding', 'default', 'dir', 'disabled', 'disablepictureinpicture', 'disableremoteplayback', 'download', 'draggable', 'enctype', 'enterkeyhint', 'face', 'for', 'headers', 'height', 'hidden', 'high', 'href', 'hreflang', 'id', 'inputmode', 'integrity', 'ismap', 'kind', 'label', 'lang', 'list', 'loading', 'loop', 'low', 'max', 'maxlength', 'media', 'method', 'min', 'minlength', 'multiple', 'muted', 'name', 'nonce', 'noshade', 'novalidate', 'nowrap', 'open', 'optimum', 'pattern', 'placeholder', 'playsinline', 'poster', 'preload', 'pubdate', 'radiogroup', 'readonly', 'rel', 'required', 'rev', 'reversed', 'role', 'rows', 'rowspan', 'spellcheck', 'scope', 'selected', 'shape', 'size', 'sizes', 'span', 'srclang', 'start', 'src', 'srcset', 'step', 'style', 'summary', 'tabindex', 'title', 'translate', 'type', 'usemap', 'valign', 'value', 'width', 'wrap', 'xmlns', 'slot']);
+	  const svg = freeze(['accent-height', 'accumulate', 'additive', 'alignment-baseline', 'ascent', 'attributename', 'attributetype', 'azimuth', 'basefrequency', 'baseline-shift', 'begin', 'bias', 'by', 'class', 'clip', 'clippathunits', 'clip-path', 'clip-rule', 'color', 'color-interpolation', 'color-interpolation-filters', 'color-profile', 'color-rendering', 'cx', 'cy', 'd', 'dx', 'dy', 'diffuseconstant', 'direction', 'display', 'divisor', 'dur', 'edgemode', 'elevation', 'end', 'fill', 'fill-opacity', 'fill-rule', 'filter', 'filterunits', 'flood-color', 'flood-opacity', 'font-family', 'font-size', 'font-size-adjust', 'font-stretch', 'font-style', 'font-variant', 'font-weight', 'fx', 'fy', 'g1', 'g2', 'glyph-name', 'glyphref', 'gradientunits', 'gradienttransform', 'height', 'href', 'id', 'image-rendering', 'in', 'in2', 'k', 'k1', 'k2', 'k3', 'k4', 'kerning', 'keypoints', 'keysplines', 'keytimes', 'lang', 'lengthadjust', 'letter-spacing', 'kernelmatrix', 'kernelunitlength', 'lighting-color', 'local', 'marker-end', 'marker-mid', 'marker-start', 'markerheight', 'markerunits', 'markerwidth', 'maskcontentunits', 'maskunits', 'max', 'mask', 'media', 'method', 'mode', 'min', 'name', 'numoctaves', 'offset', 'operator', 'opacity', 'order', 'orient', 'orientation', 'origin', 'overflow', 'paint-order', 'path', 'pathlength', 'patterncontentunits', 'patterntransform', 'patternunits', 'points', 'preservealpha', 'preserveaspectratio', 'primitiveunits', 'r', 'rx', 'ry', 'radius', 'refx', 'refy', 'repeatcount', 'repeatdur', 'restart', 'result', 'rotate', 'scale', 'seed', 'shape-rendering', 'specularconstant', 'specularexponent', 'spreadmethod', 'startoffset', 'stddeviation', 'stitchtiles', 'stop-color', 'stop-opacity', 'stroke-dasharray', 'stroke-dashoffset', 'stroke-linecap', 'stroke-linejoin', 'stroke-miterlimit', 'stroke-opacity', 'stroke', 'stroke-width', 'style', 'surfacescale', 'systemlanguage', 'tabindex', 'targetx', 'targety', 'transform', 'transform-origin', 'text-anchor', 'text-decoration', 'text-rendering', 'textlength', 'type', 'u1', 'u2', 'unicode', 'values', 'viewbox', 'visibility', 'version', 'vert-adv-y', 'vert-origin-x', 'vert-origin-y', 'width', 'word-spacing', 'wrap', 'writing-mode', 'xchannelselector', 'ychannelselector', 'x', 'x1', 'x2', 'xmlns', 'y', 'y1', 'y2', 'z', 'zoomandpan']);
+	  const mathMl = freeze(['accent', 'accentunder', 'align', 'bevelled', 'close', 'columnsalign', 'columnlines', 'columnspan', 'denomalign', 'depth', 'dir', 'display', 'displaystyle', 'encoding', 'fence', 'frame', 'height', 'href', 'id', 'largeop', 'length', 'linethickness', 'lspace', 'lquote', 'mathbackground', 'mathcolor', 'mathsize', 'mathvariant', 'maxsize', 'minsize', 'movablelimits', 'notation', 'numalign', 'open', 'rowalign', 'rowlines', 'rowspacing', 'rowspan', 'rspace', 'rquote', 'scriptlevel', 'scriptminsize', 'scriptsizemultiplier', 'selection', 'separator', 'separators', 'stretchy', 'subscriptshift', 'supscriptshift', 'symmetric', 'voffset', 'width', 'xmlns']);
+	  const xml = freeze(['xlink:href', 'xml:id', 'xlink:title', 'xml:space', 'xmlns:xlink']);
+
+	  // eslint-disable-next-line unicorn/better-regex
+	  const MUSTACHE_EXPR = seal(/\{\{[\w\W]*|[\w\W]*\}\}/gm); // Specify template detection regex for SAFE_FOR_TEMPLATES mode
+	  const ERB_EXPR = seal(/<%[\w\W]*|[\w\W]*%>/gm);
+	  const TMPLIT_EXPR = seal(/\${[\w\W]*}/gm);
+	  const DATA_ATTR = seal(/^data-[\-\w.\u00B7-\uFFFF]/); // eslint-disable-line no-useless-escape
+	  const ARIA_ATTR = seal(/^aria-[\-\w]+$/); // eslint-disable-line no-useless-escape
+	  const IS_ALLOWED_URI = seal(/^(?:(?:(?:f|ht)tps?|mailto|tel|callto|sms|cid|xmpp):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i // eslint-disable-line no-useless-escape
+	  );
+
+	  const IS_SCRIPT_OR_DATA = seal(/^(?:\w+script|data):/i);
+	  const ATTR_WHITESPACE = seal(/[\u0000-\u0020\u00A0\u1680\u180E\u2000-\u2029\u205F\u3000]/g // eslint-disable-line no-control-regex
+	  );
+
+	  const DOCTYPE_NAME = seal(/^html$/i);
+	  const CUSTOM_ELEMENT = seal(/^[a-z][.\w]*(-[.\w]+)+$/i);
+
+	  var EXPRESSIONS = /*#__PURE__*/Object.freeze({
+	    __proto__: null,
+	    MUSTACHE_EXPR: MUSTACHE_EXPR,
+	    ERB_EXPR: ERB_EXPR,
+	    TMPLIT_EXPR: TMPLIT_EXPR,
+	    DATA_ATTR: DATA_ATTR,
+	    ARIA_ATTR: ARIA_ATTR,
+	    IS_ALLOWED_URI: IS_ALLOWED_URI,
+	    IS_SCRIPT_OR_DATA: IS_SCRIPT_OR_DATA,
+	    ATTR_WHITESPACE: ATTR_WHITESPACE,
+	    DOCTYPE_NAME: DOCTYPE_NAME,
+	    CUSTOM_ELEMENT: CUSTOM_ELEMENT
+	  });
+
+	  // https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeType
+	  const NODE_TYPE = {
+	    element: 1,
+	    attribute: 2,
+	    text: 3,
+	    cdataSection: 4,
+	    entityReference: 5,
+	    // Deprecated
+	    entityNode: 6,
+	    // Deprecated
+	    progressingInstruction: 7,
+	    comment: 8,
+	    document: 9,
+	    documentType: 10,
+	    documentFragment: 11,
+	    notation: 12 // Deprecated
+	  };
+
+	  const getGlobal = function getGlobal() {
+	    return typeof window === 'undefined' ? null : window;
+	  };
+
+	  /**
+	   * Creates a no-op policy for internal use only.
+	   * Don't export this function outside this module!
+	   * @param {TrustedTypePolicyFactory} trustedTypes The policy factory.
+	   * @param {HTMLScriptElement} purifyHostElement The Script element used to load DOMPurify (to determine policy name suffix).
+	   * @return {TrustedTypePolicy} The policy created (or null, if Trusted Types
+	   * are not supported or creating the policy failed).
+	   */
+	  const _createTrustedTypesPolicy = function _createTrustedTypesPolicy(trustedTypes, purifyHostElement) {
+	    if (typeof trustedTypes !== 'object' || typeof trustedTypes.createPolicy !== 'function') {
+	      return null;
+	    }
+
+	    // Allow the callers to control the unique policy name
+	    // by adding a data-tt-policy-suffix to the script element with the DOMPurify.
+	    // Policy creation with duplicate names throws in Trusted Types.
+	    let suffix = null;
+	    const ATTR_NAME = 'data-tt-policy-suffix';
+	    if (purifyHostElement && purifyHostElement.hasAttribute(ATTR_NAME)) {
+	      suffix = purifyHostElement.getAttribute(ATTR_NAME);
+	    }
+	    const policyName = 'dompurify' + (suffix ? '#' + suffix : '');
+	    try {
+	      return trustedTypes.createPolicy(policyName, {
+	        createHTML(html) {
+	          return html;
+	        },
+	        createScriptURL(scriptUrl) {
+	          return scriptUrl;
+	        }
+	      });
+	    } catch (_) {
+	      // Policy creation failed (most likely another DOMPurify script has
+	      // already run). Skip creating the policy, as this will only cause errors
+	      // if TT are enforced.
+	      console.warn('TrustedTypes policy ' + policyName + ' could not be created.');
+	      return null;
+	    }
+	  };
+	  function createDOMPurify() {
+	    let window = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : getGlobal();
+	    const DOMPurify = root => createDOMPurify(root);
+
+	    /**
+	     * Version label, exposed for easier checks
+	     * if DOMPurify is up to date or not
+	     */
+	    DOMPurify.version = '3.1.3';
+
+	    /**
+	     * Array of elements that DOMPurify removed during sanitation.
+	     * Empty if nothing was removed.
+	     */
+	    DOMPurify.removed = [];
+	    if (!window || !window.document || window.document.nodeType !== NODE_TYPE.document) {
+	      // Not running in a browser, provide a factory function
+	      // so that you can pass your own Window
+	      DOMPurify.isSupported = false;
+	      return DOMPurify;
+	    }
+	    let {
+	      document
+	    } = window;
+	    const originalDocument = document;
+	    const currentScript = originalDocument.currentScript;
+	    const {
+	      DocumentFragment,
+	      HTMLTemplateElement,
+	      Node,
+	      Element,
+	      NodeFilter,
+	      NamedNodeMap = window.NamedNodeMap || window.MozNamedAttrMap,
+	      HTMLFormElement,
+	      DOMParser,
+	      trustedTypes
+	    } = window;
+	    const ElementPrototype = Element.prototype;
+	    const cloneNode = lookupGetter(ElementPrototype, 'cloneNode');
+	    const getNextSibling = lookupGetter(ElementPrototype, 'nextSibling');
+	    const getChildNodes = lookupGetter(ElementPrototype, 'childNodes');
+	    const getParentNode = lookupGetter(ElementPrototype, 'parentNode');
+
+	    // As per issue #47, the web-components registry is inherited by a
+	    // new document created via createHTMLDocument. As per the spec
+	    // (http://w3c.github.io/webcomponents/spec/custom/#creating-and-passing-registries)
+	    // a new empty registry is used when creating a template contents owner
+	    // document, so we use that as our parent document to ensure nothing
+	    // is inherited.
+	    if (typeof HTMLTemplateElement === 'function') {
+	      const template = document.createElement('template');
+	      if (template.content && template.content.ownerDocument) {
+	        document = template.content.ownerDocument;
+	      }
+	    }
+	    let trustedTypesPolicy;
+	    let emptyHTML = '';
+	    const {
+	      implementation,
+	      createNodeIterator,
+	      createDocumentFragment,
+	      getElementsByTagName
+	    } = document;
+	    const {
+	      importNode
+	    } = originalDocument;
+	    let hooks = {};
+
+	    /**
+	     * Expose whether this browser supports running the full DOMPurify.
+	     */
+	    DOMPurify.isSupported = typeof entries === 'function' && typeof getParentNode === 'function' && implementation && implementation.createHTMLDocument !== undefined;
+	    const {
+	      MUSTACHE_EXPR,
+	      ERB_EXPR,
+	      TMPLIT_EXPR,
+	      DATA_ATTR,
+	      ARIA_ATTR,
+	      IS_SCRIPT_OR_DATA,
+	      ATTR_WHITESPACE,
+	      CUSTOM_ELEMENT
+	    } = EXPRESSIONS;
+	    let {
+	      IS_ALLOWED_URI: IS_ALLOWED_URI$1
+	    } = EXPRESSIONS;
+
+	    /**
+	     * We consider the elements and attributes below to be safe. Ideally
+	     * don't add any new ones but feel free to remove unwanted ones.
+	     */
+
+	    /* allowed element names */
+	    let ALLOWED_TAGS = null;
+	    const DEFAULT_ALLOWED_TAGS = addToSet({}, [...html$1, ...svg$1, ...svgFilters, ...mathMl$1, ...text]);
+
+	    /* Allowed attribute names */
+	    let ALLOWED_ATTR = null;
+	    const DEFAULT_ALLOWED_ATTR = addToSet({}, [...html, ...svg, ...mathMl, ...xml]);
+
+	    /*
+	     * Configure how DOMPUrify should handle custom elements and their attributes as well as customized built-in elements.
+	     * @property {RegExp|Function|null} tagNameCheck one of [null, regexPattern, predicate]. Default: `null` (disallow any custom elements)
+	     * @property {RegExp|Function|null} attributeNameCheck one of [null, regexPattern, predicate]. Default: `null` (disallow any attributes not on the allow list)
+	     * @property {boolean} allowCustomizedBuiltInElements allow custom elements derived from built-ins if they pass CUSTOM_ELEMENT_HANDLING.tagNameCheck. Default: `false`.
+	     */
+	    let CUSTOM_ELEMENT_HANDLING = Object.seal(create(null, {
+	      tagNameCheck: {
+	        writable: true,
+	        configurable: false,
+	        enumerable: true,
+	        value: null
+	      },
+	      attributeNameCheck: {
+	        writable: true,
+	        configurable: false,
+	        enumerable: true,
+	        value: null
+	      },
+	      allowCustomizedBuiltInElements: {
+	        writable: true,
+	        configurable: false,
+	        enumerable: true,
+	        value: false
+	      }
+	    }));
+
+	    /* Explicitly forbidden tags (overrides ALLOWED_TAGS/ADD_TAGS) */
+	    let FORBID_TAGS = null;
+
+	    /* Explicitly forbidden attributes (overrides ALLOWED_ATTR/ADD_ATTR) */
+	    let FORBID_ATTR = null;
+
+	    /* Decide if ARIA attributes are okay */
+	    let ALLOW_ARIA_ATTR = true;
+
+	    /* Decide if custom data attributes are okay */
+	    let ALLOW_DATA_ATTR = true;
+
+	    /* Decide if unknown protocols are okay */
+	    let ALLOW_UNKNOWN_PROTOCOLS = false;
+
+	    /* Decide if self-closing tags in attributes are allowed.
+	     * Usually removed due to a mXSS issue in jQuery 3.0 */
+	    let ALLOW_SELF_CLOSE_IN_ATTR = true;
+
+	    /* Output should be safe for common template engines.
+	     * This means, DOMPurify removes data attributes, mustaches and ERB
+	     */
+	    let SAFE_FOR_TEMPLATES = false;
+
+	    /* Output should be safe even for XML used within HTML and alike.
+	     * This means, DOMPurify removes comments when containing risky content.
+	     */
+	    let SAFE_FOR_XML = true;
+
+	    /* Decide if document with <html>... should be returned */
+	    let WHOLE_DOCUMENT = false;
+
+	    /* Track whether config is already set on this instance of DOMPurify. */
+	    let SET_CONFIG = false;
+
+	    /* Decide if all elements (e.g. style, script) must be children of
+	     * document.body. By default, browsers might move them to document.head */
+	    let FORCE_BODY = false;
+
+	    /* Decide if a DOM `HTMLBodyElement` should be returned, instead of a html
+	     * string (or a TrustedHTML object if Trusted Types are supported).
+	     * If `WHOLE_DOCUMENT` is enabled a `HTMLHtmlElement` will be returned instead
+	     */
+	    let RETURN_DOM = false;
+
+	    /* Decide if a DOM `DocumentFragment` should be returned, instead of a html
+	     * string  (or a TrustedHTML object if Trusted Types are supported) */
+	    let RETURN_DOM_FRAGMENT = false;
+
+	    /* Try to return a Trusted Type object instead of a string, return a string in
+	     * case Trusted Types are not supported  */
+	    let RETURN_TRUSTED_TYPE = false;
+
+	    /* Output should be free from DOM clobbering attacks?
+	     * This sanitizes markups named with colliding, clobberable built-in DOM APIs.
+	     */
+	    let SANITIZE_DOM = true;
+
+	    /* Achieve full DOM Clobbering protection by isolating the namespace of named
+	     * properties and JS variables, mitigating attacks that abuse the HTML/DOM spec rules.
+	     *
+	     * HTML/DOM spec rules that enable DOM Clobbering:
+	     *   - Named Access on Window (§7.3.3)
+	     *   - DOM Tree Accessors (§3.1.5)
+	     *   - Form Element Parent-Child Relations (§4.10.3)
+	     *   - Iframe srcdoc / Nested WindowProxies (§4.8.5)
+	     *   - HTMLCollection (§4.2.10.2)
+	     *
+	     * Namespace isolation is implemented by prefixing `id` and `name` attributes
+	     * with a constant string, i.e., `user-content-`
+	     */
+	    let SANITIZE_NAMED_PROPS = false;
+	    const SANITIZE_NAMED_PROPS_PREFIX = 'user-content-';
+
+	    /* Keep element content when removing element? */
+	    let KEEP_CONTENT = true;
+
+	    /* If a `Node` is passed to sanitize(), then performs sanitization in-place instead
+	     * of importing it into a new Document and returning a sanitized copy */
+	    let IN_PLACE = false;
+
+	    /* Allow usage of profiles like html, svg and mathMl */
+	    let USE_PROFILES = {};
+
+	    /* Tags to ignore content of when KEEP_CONTENT is true */
+	    let FORBID_CONTENTS = null;
+	    const DEFAULT_FORBID_CONTENTS = addToSet({}, ['annotation-xml', 'audio', 'colgroup', 'desc', 'foreignobject', 'head', 'iframe', 'math', 'mi', 'mn', 'mo', 'ms', 'mtext', 'noembed', 'noframes', 'noscript', 'plaintext', 'script', 'style', 'svg', 'template', 'thead', 'title', 'video', 'xmp']);
+
+	    /* Tags that are safe for data: URIs */
+	    let DATA_URI_TAGS = null;
+	    const DEFAULT_DATA_URI_TAGS = addToSet({}, ['audio', 'video', 'img', 'source', 'image', 'track']);
+
+	    /* Attributes safe for values like "javascript:" */
+	    let URI_SAFE_ATTRIBUTES = null;
+	    const DEFAULT_URI_SAFE_ATTRIBUTES = addToSet({}, ['alt', 'class', 'for', 'id', 'label', 'name', 'pattern', 'placeholder', 'role', 'summary', 'title', 'value', 'style', 'xmlns']);
+	    const MATHML_NAMESPACE = 'http://www.w3.org/1998/Math/MathML';
+	    const SVG_NAMESPACE = 'http://www.w3.org/2000/svg';
+	    const HTML_NAMESPACE = 'http://www.w3.org/1999/xhtml';
+	    /* Document namespace */
+	    let NAMESPACE = HTML_NAMESPACE;
+	    let IS_EMPTY_INPUT = false;
+
+	    /* Allowed XHTML+XML namespaces */
+	    let ALLOWED_NAMESPACES = null;
+	    const DEFAULT_ALLOWED_NAMESPACES = addToSet({}, [MATHML_NAMESPACE, SVG_NAMESPACE, HTML_NAMESPACE], stringToString);
+
+	    /* Parsing of strict XHTML documents */
+	    let PARSER_MEDIA_TYPE = null;
+	    const SUPPORTED_PARSER_MEDIA_TYPES = ['application/xhtml+xml', 'text/html'];
+	    const DEFAULT_PARSER_MEDIA_TYPE = 'text/html';
+	    let transformCaseFunc = null;
+
+	    /* Keep a reference to config to pass to hooks */
+	    let CONFIG = null;
+
+	    /* Specify the maximum element nesting depth to prevent mXSS */
+	    const MAX_NESTING_DEPTH = 255;
+
+	    /* Ideally, do not touch anything below this line */
+	    /* ______________________________________________ */
+
+	    const formElement = document.createElement('form');
+	    const isRegexOrFunction = function isRegexOrFunction(testValue) {
+	      return testValue instanceof RegExp || testValue instanceof Function;
+	    };
+
+	    /**
+	     * _parseConfig
+	     *
+	     * @param  {Object} cfg optional config literal
+	     */
+	    // eslint-disable-next-line complexity
+	    const _parseConfig = function _parseConfig() {
+	      let cfg = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+	      if (CONFIG && CONFIG === cfg) {
+	        return;
+	      }
+
+	      /* Shield configuration object from tampering */
+	      if (!cfg || typeof cfg !== 'object') {
+	        cfg = {};
+	      }
+
+	      /* Shield configuration object from prototype pollution */
+	      cfg = clone(cfg);
+	      PARSER_MEDIA_TYPE =
+	      // eslint-disable-next-line unicorn/prefer-includes
+	      SUPPORTED_PARSER_MEDIA_TYPES.indexOf(cfg.PARSER_MEDIA_TYPE) === -1 ? DEFAULT_PARSER_MEDIA_TYPE : cfg.PARSER_MEDIA_TYPE;
+
+	      // HTML tags and attributes are not case-sensitive, converting to lowercase. Keeping XHTML as is.
+	      transformCaseFunc = PARSER_MEDIA_TYPE === 'application/xhtml+xml' ? stringToString : stringToLowerCase;
+
+	      /* Set configuration parameters */
+	      ALLOWED_TAGS = objectHasOwnProperty(cfg, 'ALLOWED_TAGS') ? addToSet({}, cfg.ALLOWED_TAGS, transformCaseFunc) : DEFAULT_ALLOWED_TAGS;
+	      ALLOWED_ATTR = objectHasOwnProperty(cfg, 'ALLOWED_ATTR') ? addToSet({}, cfg.ALLOWED_ATTR, transformCaseFunc) : DEFAULT_ALLOWED_ATTR;
+	      ALLOWED_NAMESPACES = objectHasOwnProperty(cfg, 'ALLOWED_NAMESPACES') ? addToSet({}, cfg.ALLOWED_NAMESPACES, stringToString) : DEFAULT_ALLOWED_NAMESPACES;
+	      URI_SAFE_ATTRIBUTES = objectHasOwnProperty(cfg, 'ADD_URI_SAFE_ATTR') ? addToSet(clone(DEFAULT_URI_SAFE_ATTRIBUTES),
+	      // eslint-disable-line indent
+	      cfg.ADD_URI_SAFE_ATTR,
+	      // eslint-disable-line indent
+	      transformCaseFunc // eslint-disable-line indent
+	      ) // eslint-disable-line indent
+	      : DEFAULT_URI_SAFE_ATTRIBUTES;
+	      DATA_URI_TAGS = objectHasOwnProperty(cfg, 'ADD_DATA_URI_TAGS') ? addToSet(clone(DEFAULT_DATA_URI_TAGS),
+	      // eslint-disable-line indent
+	      cfg.ADD_DATA_URI_TAGS,
+	      // eslint-disable-line indent
+	      transformCaseFunc // eslint-disable-line indent
+	      ) // eslint-disable-line indent
+	      : DEFAULT_DATA_URI_TAGS;
+	      FORBID_CONTENTS = objectHasOwnProperty(cfg, 'FORBID_CONTENTS') ? addToSet({}, cfg.FORBID_CONTENTS, transformCaseFunc) : DEFAULT_FORBID_CONTENTS;
+	      FORBID_TAGS = objectHasOwnProperty(cfg, 'FORBID_TAGS') ? addToSet({}, cfg.FORBID_TAGS, transformCaseFunc) : {};
+	      FORBID_ATTR = objectHasOwnProperty(cfg, 'FORBID_ATTR') ? addToSet({}, cfg.FORBID_ATTR, transformCaseFunc) : {};
+	      USE_PROFILES = objectHasOwnProperty(cfg, 'USE_PROFILES') ? cfg.USE_PROFILES : false;
+	      ALLOW_ARIA_ATTR = cfg.ALLOW_ARIA_ATTR !== false; // Default true
+	      ALLOW_DATA_ATTR = cfg.ALLOW_DATA_ATTR !== false; // Default true
+	      ALLOW_UNKNOWN_PROTOCOLS = cfg.ALLOW_UNKNOWN_PROTOCOLS || false; // Default false
+	      ALLOW_SELF_CLOSE_IN_ATTR = cfg.ALLOW_SELF_CLOSE_IN_ATTR !== false; // Default true
+	      SAFE_FOR_TEMPLATES = cfg.SAFE_FOR_TEMPLATES || false; // Default false
+	      SAFE_FOR_XML = cfg.SAFE_FOR_XML !== false; // Default true
+	      WHOLE_DOCUMENT = cfg.WHOLE_DOCUMENT || false; // Default false
+	      RETURN_DOM = cfg.RETURN_DOM || false; // Default false
+	      RETURN_DOM_FRAGMENT = cfg.RETURN_DOM_FRAGMENT || false; // Default false
+	      RETURN_TRUSTED_TYPE = cfg.RETURN_TRUSTED_TYPE || false; // Default false
+	      FORCE_BODY = cfg.FORCE_BODY || false; // Default false
+	      SANITIZE_DOM = cfg.SANITIZE_DOM !== false; // Default true
+	      SANITIZE_NAMED_PROPS = cfg.SANITIZE_NAMED_PROPS || false; // Default false
+	      KEEP_CONTENT = cfg.KEEP_CONTENT !== false; // Default true
+	      IN_PLACE = cfg.IN_PLACE || false; // Default false
+	      IS_ALLOWED_URI$1 = cfg.ALLOWED_URI_REGEXP || IS_ALLOWED_URI;
+	      NAMESPACE = cfg.NAMESPACE || HTML_NAMESPACE;
+	      CUSTOM_ELEMENT_HANDLING = cfg.CUSTOM_ELEMENT_HANDLING || {};
+	      if (cfg.CUSTOM_ELEMENT_HANDLING && isRegexOrFunction(cfg.CUSTOM_ELEMENT_HANDLING.tagNameCheck)) {
+	        CUSTOM_ELEMENT_HANDLING.tagNameCheck = cfg.CUSTOM_ELEMENT_HANDLING.tagNameCheck;
+	      }
+	      if (cfg.CUSTOM_ELEMENT_HANDLING && isRegexOrFunction(cfg.CUSTOM_ELEMENT_HANDLING.attributeNameCheck)) {
+	        CUSTOM_ELEMENT_HANDLING.attributeNameCheck = cfg.CUSTOM_ELEMENT_HANDLING.attributeNameCheck;
+	      }
+	      if (cfg.CUSTOM_ELEMENT_HANDLING && typeof cfg.CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements === 'boolean') {
+	        CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements = cfg.CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements;
+	      }
+	      if (SAFE_FOR_TEMPLATES) {
+	        ALLOW_DATA_ATTR = false;
+	      }
+	      if (RETURN_DOM_FRAGMENT) {
+	        RETURN_DOM = true;
+	      }
+
+	      /* Parse profile info */
+	      if (USE_PROFILES) {
+	        ALLOWED_TAGS = addToSet({}, text);
+	        ALLOWED_ATTR = [];
+	        if (USE_PROFILES.html === true) {
+	          addToSet(ALLOWED_TAGS, html$1);
+	          addToSet(ALLOWED_ATTR, html);
+	        }
+	        if (USE_PROFILES.svg === true) {
+	          addToSet(ALLOWED_TAGS, svg$1);
+	          addToSet(ALLOWED_ATTR, svg);
+	          addToSet(ALLOWED_ATTR, xml);
+	        }
+	        if (USE_PROFILES.svgFilters === true) {
+	          addToSet(ALLOWED_TAGS, svgFilters);
+	          addToSet(ALLOWED_ATTR, svg);
+	          addToSet(ALLOWED_ATTR, xml);
+	        }
+	        if (USE_PROFILES.mathMl === true) {
+	          addToSet(ALLOWED_TAGS, mathMl$1);
+	          addToSet(ALLOWED_ATTR, mathMl);
+	          addToSet(ALLOWED_ATTR, xml);
+	        }
+	      }
+
+	      /* Merge configuration parameters */
+	      if (cfg.ADD_TAGS) {
+	        if (ALLOWED_TAGS === DEFAULT_ALLOWED_TAGS) {
+	          ALLOWED_TAGS = clone(ALLOWED_TAGS);
+	        }
+	        addToSet(ALLOWED_TAGS, cfg.ADD_TAGS, transformCaseFunc);
+	      }
+	      if (cfg.ADD_ATTR) {
+	        if (ALLOWED_ATTR === DEFAULT_ALLOWED_ATTR) {
+	          ALLOWED_ATTR = clone(ALLOWED_ATTR);
+	        }
+	        addToSet(ALLOWED_ATTR, cfg.ADD_ATTR, transformCaseFunc);
+	      }
+	      if (cfg.ADD_URI_SAFE_ATTR) {
+	        addToSet(URI_SAFE_ATTRIBUTES, cfg.ADD_URI_SAFE_ATTR, transformCaseFunc);
+	      }
+	      if (cfg.FORBID_CONTENTS) {
+	        if (FORBID_CONTENTS === DEFAULT_FORBID_CONTENTS) {
+	          FORBID_CONTENTS = clone(FORBID_CONTENTS);
+	        }
+	        addToSet(FORBID_CONTENTS, cfg.FORBID_CONTENTS, transformCaseFunc);
+	      }
+
+	      /* Add #text in case KEEP_CONTENT is set to true */
+	      if (KEEP_CONTENT) {
+	        ALLOWED_TAGS['#text'] = true;
+	      }
+
+	      /* Add html, head and body to ALLOWED_TAGS in case WHOLE_DOCUMENT is true */
+	      if (WHOLE_DOCUMENT) {
+	        addToSet(ALLOWED_TAGS, ['html', 'head', 'body']);
+	      }
+
+	      /* Add tbody to ALLOWED_TAGS in case tables are permitted, see #286, #365 */
+	      if (ALLOWED_TAGS.table) {
+	        addToSet(ALLOWED_TAGS, ['tbody']);
+	        delete FORBID_TAGS.tbody;
+	      }
+	      if (cfg.TRUSTED_TYPES_POLICY) {
+	        if (typeof cfg.TRUSTED_TYPES_POLICY.createHTML !== 'function') {
+	          throw typeErrorCreate('TRUSTED_TYPES_POLICY configuration option must provide a "createHTML" hook.');
+	        }
+	        if (typeof cfg.TRUSTED_TYPES_POLICY.createScriptURL !== 'function') {
+	          throw typeErrorCreate('TRUSTED_TYPES_POLICY configuration option must provide a "createScriptURL" hook.');
+	        }
+
+	        // Overwrite existing TrustedTypes policy.
+	        trustedTypesPolicy = cfg.TRUSTED_TYPES_POLICY;
+
+	        // Sign local variables required by `sanitize`.
+	        emptyHTML = trustedTypesPolicy.createHTML('');
+	      } else {
+	        // Uninitialized policy, attempt to initialize the internal dompurify policy.
+	        if (trustedTypesPolicy === undefined) {
+	          trustedTypesPolicy = _createTrustedTypesPolicy(trustedTypes, currentScript);
+	        }
+
+	        // If creating the internal policy succeeded sign internal variables.
+	        if (trustedTypesPolicy !== null && typeof emptyHTML === 'string') {
+	          emptyHTML = trustedTypesPolicy.createHTML('');
+	        }
+	      }
+
+	      // Prevent further manipulation of configuration.
+	      // Not available in IE8, Safari 5, etc.
+	      if (freeze) {
+	        freeze(cfg);
+	      }
+	      CONFIG = cfg;
+	    };
+	    const MATHML_TEXT_INTEGRATION_POINTS = addToSet({}, ['mi', 'mo', 'mn', 'ms', 'mtext']);
+	    const HTML_INTEGRATION_POINTS = addToSet({}, ['foreignobject', 'annotation-xml']);
+
+	    // Certain elements are allowed in both SVG and HTML
+	    // namespace. We need to specify them explicitly
+	    // so that they don't get erroneously deleted from
+	    // HTML namespace.
+	    const COMMON_SVG_AND_HTML_ELEMENTS = addToSet({}, ['title', 'style', 'font', 'a', 'script']);
+
+	    /* Keep track of all possible SVG and MathML tags
+	     * so that we can perform the namespace checks
+	     * correctly. */
+	    const ALL_SVG_TAGS = addToSet({}, [...svg$1, ...svgFilters, ...svgDisallowed]);
+	    const ALL_MATHML_TAGS = addToSet({}, [...mathMl$1, ...mathMlDisallowed]);
+
+	    /**
+	     * @param  {Element} element a DOM element whose namespace is being checked
+	     * @returns {boolean} Return false if the element has a
+	     *  namespace that a spec-compliant parser would never
+	     *  return. Return true otherwise.
+	     */
+	    const _checkValidNamespace = function _checkValidNamespace(element) {
+	      let parent = getParentNode(element);
+
+	      // In JSDOM, if we're inside shadow DOM, then parentNode
+	      // can be null. We just simulate parent in this case.
+	      if (!parent || !parent.tagName) {
+	        parent = {
+	          namespaceURI: NAMESPACE,
+	          tagName: 'template'
+	        };
+	      }
+	      const tagName = stringToLowerCase(element.tagName);
+	      const parentTagName = stringToLowerCase(parent.tagName);
+	      if (!ALLOWED_NAMESPACES[element.namespaceURI]) {
+	        return false;
+	      }
+	      if (element.namespaceURI === SVG_NAMESPACE) {
+	        // The only way to switch from HTML namespace to SVG
+	        // is via <svg>. If it happens via any other tag, then
+	        // it should be killed.
+	        if (parent.namespaceURI === HTML_NAMESPACE) {
+	          return tagName === 'svg';
+	        }
+
+	        // The only way to switch from MathML to SVG is via`
+	        // svg if parent is either <annotation-xml> or MathML
+	        // text integration points.
+	        if (parent.namespaceURI === MATHML_NAMESPACE) {
+	          return tagName === 'svg' && (parentTagName === 'annotation-xml' || MATHML_TEXT_INTEGRATION_POINTS[parentTagName]);
+	        }
+
+	        // We only allow elements that are defined in SVG
+	        // spec. All others are disallowed in SVG namespace.
+	        return Boolean(ALL_SVG_TAGS[tagName]);
+	      }
+	      if (element.namespaceURI === MATHML_NAMESPACE) {
+	        // The only way to switch from HTML namespace to MathML
+	        // is via <math>. If it happens via any other tag, then
+	        // it should be killed.
+	        if (parent.namespaceURI === HTML_NAMESPACE) {
+	          return tagName === 'math';
+	        }
+
+	        // The only way to switch from SVG to MathML is via
+	        // <math> and HTML integration points
+	        if (parent.namespaceURI === SVG_NAMESPACE) {
+	          return tagName === 'math' && HTML_INTEGRATION_POINTS[parentTagName];
+	        }
+
+	        // We only allow elements that are defined in MathML
+	        // spec. All others are disallowed in MathML namespace.
+	        return Boolean(ALL_MATHML_TAGS[tagName]);
+	      }
+	      if (element.namespaceURI === HTML_NAMESPACE) {
+	        // The only way to switch from SVG to HTML is via
+	        // HTML integration points, and from MathML to HTML
+	        // is via MathML text integration points
+	        if (parent.namespaceURI === SVG_NAMESPACE && !HTML_INTEGRATION_POINTS[parentTagName]) {
+	          return false;
+	        }
+	        if (parent.namespaceURI === MATHML_NAMESPACE && !MATHML_TEXT_INTEGRATION_POINTS[parentTagName]) {
+	          return false;
+	        }
+
+	        // We disallow tags that are specific for MathML
+	        // or SVG and should never appear in HTML namespace
+	        return !ALL_MATHML_TAGS[tagName] && (COMMON_SVG_AND_HTML_ELEMENTS[tagName] || !ALL_SVG_TAGS[tagName]);
+	      }
+
+	      // For XHTML and XML documents that support custom namespaces
+	      if (PARSER_MEDIA_TYPE === 'application/xhtml+xml' && ALLOWED_NAMESPACES[element.namespaceURI]) {
+	        return true;
+	      }
+
+	      // The code should never reach this place (this means
+	      // that the element somehow got namespace that is not
+	      // HTML, SVG, MathML or allowed via ALLOWED_NAMESPACES).
+	      // Return false just in case.
+	      return false;
+	    };
+
+	    /**
+	     * _forceRemove
+	     *
+	     * @param  {Node} node a DOM node
+	     */
+	    const _forceRemove = function _forceRemove(node) {
+	      arrayPush(DOMPurify.removed, {
+	        element: node
+	      });
+	      try {
+	        // eslint-disable-next-line unicorn/prefer-dom-node-remove
+	        node.parentNode.removeChild(node);
+	      } catch (_) {
+	        node.remove();
+	      }
+	    };
+
+	    /**
+	     * _removeAttribute
+	     *
+	     * @param  {String} name an Attribute name
+	     * @param  {Node} node a DOM node
+	     */
+	    const _removeAttribute = function _removeAttribute(name, node) {
+	      try {
+	        arrayPush(DOMPurify.removed, {
+	          attribute: node.getAttributeNode(name),
+	          from: node
+	        });
+	      } catch (_) {
+	        arrayPush(DOMPurify.removed, {
+	          attribute: null,
+	          from: node
+	        });
+	      }
+	      node.removeAttribute(name);
+
+	      // We void attribute values for unremovable "is"" attributes
+	      if (name === 'is' && !ALLOWED_ATTR[name]) {
+	        if (RETURN_DOM || RETURN_DOM_FRAGMENT) {
+	          try {
+	            _forceRemove(node);
+	          } catch (_) {}
+	        } else {
+	          try {
+	            node.setAttribute(name, '');
+	          } catch (_) {}
+	        }
+	      }
+	    };
+
+	    /**
+	     * _initDocument
+	     *
+	     * @param  {String} dirty a string of dirty markup
+	     * @return {Document} a DOM, filled with the dirty markup
+	     */
+	    const _initDocument = function _initDocument(dirty) {
+	      /* Create a HTML document */
+	      let doc = null;
+	      let leadingWhitespace = null;
+	      if (FORCE_BODY) {
+	        dirty = '<remove></remove>' + dirty;
+	      } else {
+	        /* If FORCE_BODY isn't used, leading whitespace needs to be preserved manually */
+	        const matches = stringMatch(dirty, /^[\r\n\t ]+/);
+	        leadingWhitespace = matches && matches[0];
+	      }
+	      if (PARSER_MEDIA_TYPE === 'application/xhtml+xml' && NAMESPACE === HTML_NAMESPACE) {
+	        // Root of XHTML doc must contain xmlns declaration (see https://www.w3.org/TR/xhtml1/normative.html#strict)
+	        dirty = '<html xmlns="http://www.w3.org/1999/xhtml"><head></head><body>' + dirty + '</body></html>';
+	      }
+	      const dirtyPayload = trustedTypesPolicy ? trustedTypesPolicy.createHTML(dirty) : dirty;
+	      /*
+	       * Use the DOMParser API by default, fallback later if needs be
+	       * DOMParser not work for svg when has multiple root element.
+	       */
+	      if (NAMESPACE === HTML_NAMESPACE) {
+	        try {
+	          doc = new DOMParser().parseFromString(dirtyPayload, PARSER_MEDIA_TYPE);
+	        } catch (_) {}
+	      }
+
+	      /* Use createHTMLDocument in case DOMParser is not available */
+	      if (!doc || !doc.documentElement) {
+	        doc = implementation.createDocument(NAMESPACE, 'template', null);
+	        try {
+	          doc.documentElement.innerHTML = IS_EMPTY_INPUT ? emptyHTML : dirtyPayload;
+	        } catch (_) {
+	          // Syntax error if dirtyPayload is invalid xml
+	        }
+	      }
+	      const body = doc.body || doc.documentElement;
+	      if (dirty && leadingWhitespace) {
+	        body.insertBefore(document.createTextNode(leadingWhitespace), body.childNodes[0] || null);
+	      }
+
+	      /* Work on whole document or just its body */
+	      if (NAMESPACE === HTML_NAMESPACE) {
+	        return getElementsByTagName.call(doc, WHOLE_DOCUMENT ? 'html' : 'body')[0];
+	      }
+	      return WHOLE_DOCUMENT ? doc.documentElement : body;
+	    };
+
+	    /**
+	     * Creates a NodeIterator object that you can use to traverse filtered lists of nodes or elements in a document.
+	     *
+	     * @param  {Node} root The root element or node to start traversing on.
+	     * @return {NodeIterator} The created NodeIterator
+	     */
+	    const _createNodeIterator = function _createNodeIterator(root) {
+	      return createNodeIterator.call(root.ownerDocument || root, root,
+	      // eslint-disable-next-line no-bitwise
+	      NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_COMMENT | NodeFilter.SHOW_TEXT | NodeFilter.SHOW_PROCESSING_INSTRUCTION | NodeFilter.SHOW_CDATA_SECTION, null);
+	    };
+
+	    /**
+	     * _isClobbered
+	     *
+	     * @param  {Node} elm element to check for clobbering attacks
+	     * @return {Boolean} true if clobbered, false if safe
+	     */
+	    const _isClobbered = function _isClobbered(elm) {
+	      return elm instanceof HTMLFormElement && (
+	      // eslint-disable-next-line unicorn/no-typeof-undefined
+	      typeof elm.__depth !== 'undefined' && typeof elm.__depth !== 'number' ||
+	      // eslint-disable-next-line unicorn/no-typeof-undefined
+	      typeof elm.__removalCount !== 'undefined' && typeof elm.__removalCount !== 'number' || typeof elm.nodeName !== 'string' || typeof elm.textContent !== 'string' || typeof elm.removeChild !== 'function' || !(elm.attributes instanceof NamedNodeMap) || typeof elm.removeAttribute !== 'function' || typeof elm.setAttribute !== 'function' || typeof elm.namespaceURI !== 'string' || typeof elm.insertBefore !== 'function' || typeof elm.hasChildNodes !== 'function');
+	    };
+
+	    /**
+	     * Checks whether the given object is a DOM node.
+	     *
+	     * @param  {Node} object object to check whether it's a DOM node
+	     * @return {Boolean} true is object is a DOM node
+	     */
+	    const _isNode = function _isNode(object) {
+	      return typeof Node === 'function' && object instanceof Node;
+	    };
+
+	    /**
+	     * _executeHook
+	     * Execute user configurable hooks
+	     *
+	     * @param  {String} entryPoint  Name of the hook's entry point
+	     * @param  {Node} currentNode node to work on with the hook
+	     * @param  {Object} data additional hook parameters
+	     */
+	    const _executeHook = function _executeHook(entryPoint, currentNode, data) {
+	      if (!hooks[entryPoint]) {
+	        return;
+	      }
+	      arrayForEach(hooks[entryPoint], hook => {
+	        hook.call(DOMPurify, currentNode, data, CONFIG);
+	      });
+	    };
+
+	    /**
+	     * _sanitizeElements
+	     *
+	     * @protect nodeName
+	     * @protect textContent
+	     * @protect removeChild
+	     *
+	     * @param   {Node} currentNode to check for permission to exist
+	     * @return  {Boolean} true if node was killed, false if left alive
+	     */
+	    const _sanitizeElements = function _sanitizeElements(currentNode) {
+	      let content = null;
+
+	      /* Execute a hook if present */
+	      _executeHook('beforeSanitizeElements', currentNode, null);
+
+	      /* Check if element is clobbered or can clobber */
+	      if (_isClobbered(currentNode)) {
+	        _forceRemove(currentNode);
+	        return true;
+	      }
+
+	      /* Now let's check the element's type and name */
+	      const tagName = transformCaseFunc(currentNode.nodeName);
+
+	      /* Execute a hook if present */
+	      _executeHook('uponSanitizeElement', currentNode, {
+	        tagName,
+	        allowedTags: ALLOWED_TAGS
+	      });
+
+	      /* Detect mXSS attempts abusing namespace confusion */
+	      if (currentNode.hasChildNodes() && !_isNode(currentNode.firstElementChild) && regExpTest(/<[/\w]/g, currentNode.innerHTML) && regExpTest(/<[/\w]/g, currentNode.textContent)) {
+	        _forceRemove(currentNode);
+	        return true;
+	      }
+
+	      /* Remove any ocurrence of processing instructions */
+	      if (currentNode.nodeType === NODE_TYPE.progressingInstruction) {
+	        _forceRemove(currentNode);
+	        return true;
+	      }
+
+	      /* Remove any kind of possibly harmful comments */
+	      if (SAFE_FOR_XML && currentNode.nodeType === NODE_TYPE.comment && regExpTest(/<[/\w]/g, currentNode.data)) {
+	        _forceRemove(currentNode);
+	        return true;
+	      }
+
+	      /* Remove element if anything forbids its presence */
+	      if (!ALLOWED_TAGS[tagName] || FORBID_TAGS[tagName]) {
+	        /* Check if we have a custom element to handle */
+	        if (!FORBID_TAGS[tagName] && _isBasicCustomElement(tagName)) {
+	          if (CUSTOM_ELEMENT_HANDLING.tagNameCheck instanceof RegExp && regExpTest(CUSTOM_ELEMENT_HANDLING.tagNameCheck, tagName)) {
+	            return false;
+	          }
+	          if (CUSTOM_ELEMENT_HANDLING.tagNameCheck instanceof Function && CUSTOM_ELEMENT_HANDLING.tagNameCheck(tagName)) {
+	            return false;
+	          }
+	        }
+
+	        /* Keep content except for bad-listed elements */
+	        if (KEEP_CONTENT && !FORBID_CONTENTS[tagName]) {
+	          const parentNode = getParentNode(currentNode) || currentNode.parentNode;
+	          const childNodes = getChildNodes(currentNode) || currentNode.childNodes;
+	          if (childNodes && parentNode) {
+	            const childCount = childNodes.length;
+	            for (let i = childCount - 1; i >= 0; --i) {
+	              const childClone = cloneNode(childNodes[i], true);
+	              childClone.__removalCount = (currentNode.__removalCount || 0) + 1;
+	              parentNode.insertBefore(childClone, getNextSibling(currentNode));
+	            }
+	          }
+	        }
+	        _forceRemove(currentNode);
+	        return true;
+	      }
+
+	      /* Check whether element has a valid namespace */
+	      if (currentNode instanceof Element && !_checkValidNamespace(currentNode)) {
+	        _forceRemove(currentNode);
+	        return true;
+	      }
+
+	      /* Make sure that older browsers don't get fallback-tag mXSS */
+	      if ((tagName === 'noscript' || tagName === 'noembed' || tagName === 'noframes') && regExpTest(/<\/no(script|embed|frames)/i, currentNode.innerHTML)) {
+	        _forceRemove(currentNode);
+	        return true;
+	      }
+
+	      /* Sanitize element content to be template-safe */
+	      if (SAFE_FOR_TEMPLATES && currentNode.nodeType === NODE_TYPE.text) {
+	        /* Get the element's text content */
+	        content = currentNode.textContent;
+	        arrayForEach([MUSTACHE_EXPR, ERB_EXPR, TMPLIT_EXPR], expr => {
+	          content = stringReplace(content, expr, ' ');
+	        });
+	        if (currentNode.textContent !== content) {
+	          arrayPush(DOMPurify.removed, {
+	            element: currentNode.cloneNode()
+	          });
+	          currentNode.textContent = content;
+	        }
+	      }
+
+	      /* Execute a hook if present */
+	      _executeHook('afterSanitizeElements', currentNode, null);
+	      return false;
+	    };
+
+	    /**
+	     * _isValidAttribute
+	     *
+	     * @param  {string} lcTag Lowercase tag name of containing element.
+	     * @param  {string} lcName Lowercase attribute name.
+	     * @param  {string} value Attribute value.
+	     * @return {Boolean} Returns true if `value` is valid, otherwise false.
+	     */
+	    // eslint-disable-next-line complexity
+	    const _isValidAttribute = function _isValidAttribute(lcTag, lcName, value) {
+	      /* Make sure attribute cannot clobber */
+	      if (SANITIZE_DOM && (lcName === 'id' || lcName === 'name') && (value in document || value in formElement || value === '__depth' || value === '__removalCount')) {
+	        return false;
+	      }
+
+	      /* Allow valid data-* attributes: At least one character after "-"
+	          (https://html.spec.whatwg.org/multipage/dom.html#embedding-custom-non-visible-data-with-the-data-*-attributes)
+	          XML-compatible (https://html.spec.whatwg.org/multipage/infrastructure.html#xml-compatible and http://www.w3.org/TR/xml/#d0e804)
+	          We don't need to check the value; it's always URI safe. */
+	      if (ALLOW_DATA_ATTR && !FORBID_ATTR[lcName] && regExpTest(DATA_ATTR, lcName)) ; else if (ALLOW_ARIA_ATTR && regExpTest(ARIA_ATTR, lcName)) ; else if (!ALLOWED_ATTR[lcName] || FORBID_ATTR[lcName]) {
+	        if (
+	        // First condition does a very basic check if a) it's basically a valid custom element tagname AND
+	        // b) if the tagName passes whatever the user has configured for CUSTOM_ELEMENT_HANDLING.tagNameCheck
+	        // and c) if the attribute name passes whatever the user has configured for CUSTOM_ELEMENT_HANDLING.attributeNameCheck
+	        _isBasicCustomElement(lcTag) && (CUSTOM_ELEMENT_HANDLING.tagNameCheck instanceof RegExp && regExpTest(CUSTOM_ELEMENT_HANDLING.tagNameCheck, lcTag) || CUSTOM_ELEMENT_HANDLING.tagNameCheck instanceof Function && CUSTOM_ELEMENT_HANDLING.tagNameCheck(lcTag)) && (CUSTOM_ELEMENT_HANDLING.attributeNameCheck instanceof RegExp && regExpTest(CUSTOM_ELEMENT_HANDLING.attributeNameCheck, lcName) || CUSTOM_ELEMENT_HANDLING.attributeNameCheck instanceof Function && CUSTOM_ELEMENT_HANDLING.attributeNameCheck(lcName)) ||
+	        // Alternative, second condition checks if it's an `is`-attribute, AND
+	        // the value passes whatever the user has configured for CUSTOM_ELEMENT_HANDLING.tagNameCheck
+	        lcName === 'is' && CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements && (CUSTOM_ELEMENT_HANDLING.tagNameCheck instanceof RegExp && regExpTest(CUSTOM_ELEMENT_HANDLING.tagNameCheck, value) || CUSTOM_ELEMENT_HANDLING.tagNameCheck instanceof Function && CUSTOM_ELEMENT_HANDLING.tagNameCheck(value))) ; else {
+	          return false;
+	        }
+	        /* Check value is safe. First, is attr inert? If so, is safe */
+	      } else if (URI_SAFE_ATTRIBUTES[lcName]) ; else if (regExpTest(IS_ALLOWED_URI$1, stringReplace(value, ATTR_WHITESPACE, ''))) ; else if ((lcName === 'src' || lcName === 'xlink:href' || lcName === 'href') && lcTag !== 'script' && stringIndexOf(value, 'data:') === 0 && DATA_URI_TAGS[lcTag]) ; else if (ALLOW_UNKNOWN_PROTOCOLS && !regExpTest(IS_SCRIPT_OR_DATA, stringReplace(value, ATTR_WHITESPACE, ''))) ; else if (value) {
+	        return false;
+	      } else ;
+	      return true;
+	    };
+
+	    /**
+	     * _isBasicCustomElement
+	     * checks if at least one dash is included in tagName, and it's not the first char
+	     * for more sophisticated checking see https://github.com/sindresorhus/validate-element-name
+	     *
+	     * @param {string} tagName name of the tag of the node to sanitize
+	     * @returns {boolean} Returns true if the tag name meets the basic criteria for a custom element, otherwise false.
+	     */
+	    const _isBasicCustomElement = function _isBasicCustomElement(tagName) {
+	      return tagName !== 'annotation-xml' && stringMatch(tagName, CUSTOM_ELEMENT);
+	    };
+
+	    /**
+	     * _sanitizeAttributes
+	     *
+	     * @protect attributes
+	     * @protect nodeName
+	     * @protect removeAttribute
+	     * @protect setAttribute
+	     *
+	     * @param  {Node} currentNode to sanitize
+	     */
+	    const _sanitizeAttributes = function _sanitizeAttributes(currentNode) {
+	      /* Execute a hook if present */
+	      _executeHook('beforeSanitizeAttributes', currentNode, null);
+	      const {
+	        attributes
+	      } = currentNode;
+
+	      /* Check if we have attributes; if not we might have a text node */
+	      if (!attributes) {
+	        return;
+	      }
+	      const hookEvent = {
+	        attrName: '',
+	        attrValue: '',
+	        keepAttr: true,
+	        allowedAttributes: ALLOWED_ATTR
+	      };
+	      let l = attributes.length;
+
+	      /* Go backwards over all attributes; safely remove bad ones */
+	      while (l--) {
+	        const attr = attributes[l];
+	        const {
+	          name,
+	          namespaceURI,
+	          value: attrValue
+	        } = attr;
+	        const lcName = transformCaseFunc(name);
+	        let value = name === 'value' ? attrValue : stringTrim(attrValue);
+
+	        /* Execute a hook if present */
+	        hookEvent.attrName = lcName;
+	        hookEvent.attrValue = value;
+	        hookEvent.keepAttr = true;
+	        hookEvent.forceKeepAttr = undefined; // Allows developers to see this is a property they can set
+	        _executeHook('uponSanitizeAttribute', currentNode, hookEvent);
+	        value = hookEvent.attrValue;
+	        /* Did the hooks approve of the attribute? */
+	        if (hookEvent.forceKeepAttr) {
+	          continue;
+	        }
+
+	        /* Remove attribute */
+	        _removeAttribute(name, currentNode);
+
+	        /* Did the hooks approve of the attribute? */
+	        if (!hookEvent.keepAttr) {
+	          continue;
+	        }
+
+	        /* Work around a security issue in jQuery 3.0 */
+	        if (!ALLOW_SELF_CLOSE_IN_ATTR && regExpTest(/\/>/i, value)) {
+	          _removeAttribute(name, currentNode);
+	          continue;
+	        }
+
+	        /* Work around a security issue with comments inside attributes */
+	        if (SAFE_FOR_XML && regExpTest(/((--!?|])>)|<\/(style|title)/i, value)) {
+	          _removeAttribute(name, currentNode);
+	          continue;
+	        }
+
+	        /* Sanitize attribute content to be template-safe */
+	        if (SAFE_FOR_TEMPLATES) {
+	          arrayForEach([MUSTACHE_EXPR, ERB_EXPR, TMPLIT_EXPR], expr => {
+	            value = stringReplace(value, expr, ' ');
+	          });
+	        }
+
+	        /* Is `value` valid for this attribute? */
+	        const lcTag = transformCaseFunc(currentNode.nodeName);
+	        if (!_isValidAttribute(lcTag, lcName, value)) {
+	          continue;
+	        }
+
+	        /* Full DOM Clobbering protection via namespace isolation,
+	         * Prefix id and name attributes with `user-content-`
+	         */
+	        if (SANITIZE_NAMED_PROPS && (lcName === 'id' || lcName === 'name')) {
+	          // Remove the attribute with this value
+	          _removeAttribute(name, currentNode);
+
+	          // Prefix the value and later re-create the attribute with the sanitized value
+	          value = SANITIZE_NAMED_PROPS_PREFIX + value;
+	        }
+
+	        /* Handle attributes that require Trusted Types */
+	        if (trustedTypesPolicy && typeof trustedTypes === 'object' && typeof trustedTypes.getAttributeType === 'function') {
+	          if (namespaceURI) ; else {
+	            switch (trustedTypes.getAttributeType(lcTag, lcName)) {
+	              case 'TrustedHTML':
+	                {
+	                  value = trustedTypesPolicy.createHTML(value);
+	                  break;
+	                }
+	              case 'TrustedScriptURL':
+	                {
+	                  value = trustedTypesPolicy.createScriptURL(value);
+	                  break;
+	                }
+	            }
+	          }
+	        }
+
+	        /* Handle invalid data-* attribute set by try-catching it */
+	        try {
+	          if (namespaceURI) {
+	            currentNode.setAttributeNS(namespaceURI, name, value);
+	          } else {
+	            /* Fallback to setAttribute() for browser-unrecognized namespaces e.g. "x-schema". */
+	            currentNode.setAttribute(name, value);
+	          }
+	          if (_isClobbered(currentNode)) {
+	            _forceRemove(currentNode);
+	          } else {
+	            arrayPop(DOMPurify.removed);
+	          }
+	        } catch (_) {}
+	      }
+
+	      /* Execute a hook if present */
+	      _executeHook('afterSanitizeAttributes', currentNode, null);
+	    };
+
+	    /**
+	     * _sanitizeShadowDOM
+	     *
+	     * @param  {DocumentFragment} fragment to iterate over recursively
+	     */
+	    const _sanitizeShadowDOM = function _sanitizeShadowDOM(fragment) {
+	      let shadowNode = null;
+	      const shadowIterator = _createNodeIterator(fragment);
+
+	      /* Execute a hook if present */
+	      _executeHook('beforeSanitizeShadowDOM', fragment, null);
+	      while (shadowNode = shadowIterator.nextNode()) {
+	        /* Execute a hook if present */
+	        _executeHook('uponSanitizeShadowNode', shadowNode, null);
+
+	        /* Sanitize tags and elements */
+	        if (_sanitizeElements(shadowNode)) {
+	          continue;
+	        }
+	        const parentNode = getParentNode(shadowNode);
+
+	        /* Set the nesting depth of an element */
+	        if (shadowNode.nodeType === NODE_TYPE.element) {
+	          if (parentNode && parentNode.__depth) {
+	            /*
+	              We want the depth of the node in the original tree, which can
+	              change when it's removed from its parent.
+	            */
+	            shadowNode.__depth = (shadowNode.__removalCount || 0) + parentNode.__depth + 1;
+	          } else {
+	            shadowNode.__depth = 1;
+	          }
+	        }
+
+	        /*
+	         * Remove an element if nested too deeply to avoid mXSS
+	         * or if the __depth might have been tampered with
+	         */
+	        if (shadowNode.__depth >= MAX_NESTING_DEPTH || shadowNode.__depth < 0 || numberIsNaN(shadowNode.__depth)) {
+	          _forceRemove(shadowNode);
+	        }
+
+	        /* Deep shadow DOM detected */
+	        if (shadowNode.content instanceof DocumentFragment) {
+	          shadowNode.content.__depth = shadowNode.__depth;
+	          _sanitizeShadowDOM(shadowNode.content);
+	        }
+
+	        /* Check attributes, sanitize if necessary */
+	        _sanitizeAttributes(shadowNode);
+	      }
+
+	      /* Execute a hook if present */
+	      _executeHook('afterSanitizeShadowDOM', fragment, null);
+	    };
+
+	    /**
+	     * Sanitize
+	     * Public method providing core sanitation functionality
+	     *
+	     * @param {String|Node} dirty string or DOM node
+	     * @param {Object} cfg object
+	     */
+	    // eslint-disable-next-line complexity
+	    DOMPurify.sanitize = function (dirty) {
+	      let cfg = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+	      let body = null;
+	      let importedNode = null;
+	      let currentNode = null;
+	      let returnNode = null;
+	      /* Make sure we have a string to sanitize.
+	        DO NOT return early, as this will return the wrong type if
+	        the user has requested a DOM object rather than a string */
+	      IS_EMPTY_INPUT = !dirty;
+	      if (IS_EMPTY_INPUT) {
+	        dirty = '<!-->';
+	      }
+
+	      /* Stringify, in case dirty is an object */
+	      if (typeof dirty !== 'string' && !_isNode(dirty)) {
+	        if (typeof dirty.toString === 'function') {
+	          dirty = dirty.toString();
+	          if (typeof dirty !== 'string') {
+	            throw typeErrorCreate('dirty is not a string, aborting');
+	          }
+	        } else {
+	          throw typeErrorCreate('toString is not a function');
+	        }
+	      }
+
+	      /* Return dirty HTML if DOMPurify cannot run */
+	      if (!DOMPurify.isSupported) {
+	        return dirty;
+	      }
+
+	      /* Assign config vars */
+	      if (!SET_CONFIG) {
+	        _parseConfig(cfg);
+	      }
+
+	      /* Clean up removed elements */
+	      DOMPurify.removed = [];
+
+	      /* Check if dirty is correctly typed for IN_PLACE */
+	      if (typeof dirty === 'string') {
+	        IN_PLACE = false;
+	      }
+	      if (IN_PLACE) {
+	        /* Do some early pre-sanitization to avoid unsafe root nodes */
+	        if (dirty.nodeName) {
+	          const tagName = transformCaseFunc(dirty.nodeName);
+	          if (!ALLOWED_TAGS[tagName] || FORBID_TAGS[tagName]) {
+	            throw typeErrorCreate('root node is forbidden and cannot be sanitized in-place');
+	          }
+	        }
+	      } else if (dirty instanceof Node) {
+	        /* If dirty is a DOM element, append to an empty document to avoid
+	           elements being stripped by the parser */
+	        body = _initDocument('<!---->');
+	        importedNode = body.ownerDocument.importNode(dirty, true);
+	        if (importedNode.nodeType === NODE_TYPE.element && importedNode.nodeName === 'BODY') {
+	          /* Node is already a body, use as is */
+	          body = importedNode;
+	        } else if (importedNode.nodeName === 'HTML') {
+	          body = importedNode;
+	        } else {
+	          // eslint-disable-next-line unicorn/prefer-dom-node-append
+	          body.appendChild(importedNode);
+	        }
+	      } else {
+	        /* Exit directly if we have nothing to do */
+	        if (!RETURN_DOM && !SAFE_FOR_TEMPLATES && !WHOLE_DOCUMENT &&
+	        // eslint-disable-next-line unicorn/prefer-includes
+	        dirty.indexOf('<') === -1) {
+	          return trustedTypesPolicy && RETURN_TRUSTED_TYPE ? trustedTypesPolicy.createHTML(dirty) : dirty;
+	        }
+
+	        /* Initialize the document to work on */
+	        body = _initDocument(dirty);
+
+	        /* Check we have a DOM node from the data */
+	        if (!body) {
+	          return RETURN_DOM ? null : RETURN_TRUSTED_TYPE ? emptyHTML : '';
+	        }
+	      }
+
+	      /* Remove first element node (ours) if FORCE_BODY is set */
+	      if (body && FORCE_BODY) {
+	        _forceRemove(body.firstChild);
+	      }
+
+	      /* Get node iterator */
+	      const nodeIterator = _createNodeIterator(IN_PLACE ? dirty : body);
+
+	      /* Now start iterating over the created document */
+	      while (currentNode = nodeIterator.nextNode()) {
+	        /* Sanitize tags and elements */
+	        if (_sanitizeElements(currentNode)) {
+	          continue;
+	        }
+	        const parentNode = getParentNode(currentNode);
+
+	        /* Set the nesting depth of an element */
+	        if (currentNode.nodeType === NODE_TYPE.element) {
+	          if (parentNode && parentNode.__depth) {
+	            /*
+	              We want the depth of the node in the original tree, which can
+	              change when it's removed from its parent.
+	            */
+	            currentNode.__depth = (currentNode.__removalCount || 0) + parentNode.__depth + 1;
+	          } else {
+	            currentNode.__depth = 1;
+	          }
+	        }
+
+	        /*
+	         * Remove an element if nested too deeply to avoid mXSS
+	         * or if the __depth might have been tampered with
+	         */
+	        if (currentNode.__depth >= MAX_NESTING_DEPTH || currentNode.__depth < 0 || numberIsNaN(currentNode.__depth)) {
+	          _forceRemove(currentNode);
+	        }
+
+	        /* Shadow DOM detected, sanitize it */
+	        if (currentNode.content instanceof DocumentFragment) {
+	          currentNode.content.__depth = currentNode.__depth;
+	          _sanitizeShadowDOM(currentNode.content);
+	        }
+
+	        /* Check attributes, sanitize if necessary */
+	        _sanitizeAttributes(currentNode);
+	      }
+
+	      /* If we sanitized `dirty` in-place, return it. */
+	      if (IN_PLACE) {
+	        return dirty;
+	      }
+
+	      /* Return sanitized string or DOM */
+	      if (RETURN_DOM) {
+	        if (RETURN_DOM_FRAGMENT) {
+	          returnNode = createDocumentFragment.call(body.ownerDocument);
+	          while (body.firstChild) {
+	            // eslint-disable-next-line unicorn/prefer-dom-node-append
+	            returnNode.appendChild(body.firstChild);
+	          }
+	        } else {
+	          returnNode = body;
+	        }
+	        if (ALLOWED_ATTR.shadowroot || ALLOWED_ATTR.shadowrootmode) {
+	          /*
+	            AdoptNode() is not used because internal state is not reset
+	            (e.g. the past names map of a HTMLFormElement), this is safe
+	            in theory but we would rather not risk another attack vector.
+	            The state that is cloned by importNode() is explicitly defined
+	            by the specs.
+	          */
+	          returnNode = importNode.call(originalDocument, returnNode, true);
+	        }
+	        return returnNode;
+	      }
+	      let serializedHTML = WHOLE_DOCUMENT ? body.outerHTML : body.innerHTML;
+
+	      /* Serialize doctype if allowed */
+	      if (WHOLE_DOCUMENT && ALLOWED_TAGS['!doctype'] && body.ownerDocument && body.ownerDocument.doctype && body.ownerDocument.doctype.name && regExpTest(DOCTYPE_NAME, body.ownerDocument.doctype.name)) {
+	        serializedHTML = '<!DOCTYPE ' + body.ownerDocument.doctype.name + '>\n' + serializedHTML;
+	      }
+
+	      /* Sanitize final string template-safe */
+	      if (SAFE_FOR_TEMPLATES) {
+	        arrayForEach([MUSTACHE_EXPR, ERB_EXPR, TMPLIT_EXPR], expr => {
+	          serializedHTML = stringReplace(serializedHTML, expr, ' ');
+	        });
+	      }
+	      return trustedTypesPolicy && RETURN_TRUSTED_TYPE ? trustedTypesPolicy.createHTML(serializedHTML) : serializedHTML;
+	    };
+
+	    /**
+	     * Public method to set the configuration once
+	     * setConfig
+	     *
+	     * @param {Object} cfg configuration object
+	     */
+	    DOMPurify.setConfig = function () {
+	      let cfg = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+	      _parseConfig(cfg);
+	      SET_CONFIG = true;
+	    };
+
+	    /**
+	     * Public method to remove the configuration
+	     * clearConfig
+	     *
+	     */
+	    DOMPurify.clearConfig = function () {
+	      CONFIG = null;
+	      SET_CONFIG = false;
+	    };
+
+	    /**
+	     * Public method to check if an attribute value is valid.
+	     * Uses last set config, if any. Otherwise, uses config defaults.
+	     * isValidAttribute
+	     *
+	     * @param  {String} tag Tag name of containing element.
+	     * @param  {String} attr Attribute name.
+	     * @param  {String} value Attribute value.
+	     * @return {Boolean} Returns true if `value` is valid. Otherwise, returns false.
+	     */
+	    DOMPurify.isValidAttribute = function (tag, attr, value) {
+	      /* Initialize shared config vars if necessary. */
+	      if (!CONFIG) {
+	        _parseConfig({});
+	      }
+	      const lcTag = transformCaseFunc(tag);
+	      const lcName = transformCaseFunc(attr);
+	      return _isValidAttribute(lcTag, lcName, value);
+	    };
+
+	    /**
+	     * AddHook
+	     * Public method to add DOMPurify hooks
+	     *
+	     * @param {String} entryPoint entry point for the hook to add
+	     * @param {Function} hookFunction function to execute
+	     */
+	    DOMPurify.addHook = function (entryPoint, hookFunction) {
+	      if (typeof hookFunction !== 'function') {
+	        return;
+	      }
+	      hooks[entryPoint] = hooks[entryPoint] || [];
+	      arrayPush(hooks[entryPoint], hookFunction);
+	    };
+
+	    /**
+	     * RemoveHook
+	     * Public method to remove a DOMPurify hook at a given entryPoint
+	     * (pops it from the stack of hooks if more are present)
+	     *
+	     * @param {String} entryPoint entry point for the hook to remove
+	     * @return {Function} removed(popped) hook
+	     */
+	    DOMPurify.removeHook = function (entryPoint) {
+	      if (hooks[entryPoint]) {
+	        return arrayPop(hooks[entryPoint]);
+	      }
+	    };
+
+	    /**
+	     * RemoveHooks
+	     * Public method to remove all DOMPurify hooks at a given entryPoint
+	     *
+	     * @param  {String} entryPoint entry point for the hooks to remove
+	     */
+	    DOMPurify.removeHooks = function (entryPoint) {
+	      if (hooks[entryPoint]) {
+	        hooks[entryPoint] = [];
+	      }
+	    };
+
+	    /**
+	     * RemoveAllHooks
+	     * Public method to remove all DOMPurify hooks
+	     */
+	    DOMPurify.removeAllHooks = function () {
+	      hooks = {};
+	    };
+	    return DOMPurify;
+	  }
+	  var purify = createDOMPurify();
+
+	  return purify;
+
+	}));
+	
+} (purify));
+
+var purifyExports = purify.exports;
+var dompurify = /*@__PURE__*/getDefaultExportFromCjs(purifyExports);
+
+var rawMarkup = function rawMarkup(data) {
+  var sanitizer = dompurify.sanitize;
+  return {
+    __html: t(sanitizer(data))
+  };
+};
+var checkAnswer = function checkAnswer(index, correctAnswer, answerSelectionType, answers, _ref) {
+  var userInput = _ref.userInput,
+    userAttempt = _ref.userAttempt,
+    currentQuestionIndex = _ref.currentQuestionIndex,
+    continueTillCorrect = _ref.continueTillCorrect,
+    showNextQuestionButton = _ref.showNextQuestionButton,
+    incorrect = _ref.incorrect,
+    correct = _ref.correct,
+    setButtons = _ref.setButtons,
+    setIsCorrect = _ref.setIsCorrect,
+    setIncorrectAnswer = _ref.setIncorrectAnswer,
+    setCorrect = _ref.setCorrect,
+    setIncorrect = _ref.setIncorrect,
+    setShowNextQuestionButton = _ref.setShowNextQuestionButton,
+    setUserInput = _ref.setUserInput,
+    setUserAttempt = _ref.setUserAttempt;
+  var indexStr = "".concat(index);
+  var disabledAll = Object.keys(answers).map(function () {
+    return {
+      disabled: true
+    };
+  });
+  var userInputCopy = _toConsumableArray(userInput);
+  if (answerSelectionType === 'single') {
+    if (userInputCopy[currentQuestionIndex] === undefined) {
+      userInputCopy[currentQuestionIndex] = index;
+    }
+    if (indexStr === correctAnswer) {
+      if (incorrect.indexOf(currentQuestionIndex) < 0 && correct.indexOf(currentQuestionIndex) < 0) {
+        correct.push(currentQuestionIndex);
+      }
+      setButtons(function (prevState) {
+        return _objectSpread2(_objectSpread2(_objectSpread2({}, prevState), disabledAll), {}, _defineProperty({}, index - 1, {
+          className: indexStr === correctAnswer ? 'correct' : 'incorrect'
+        }));
+      });
+      setIsCorrect(true);
+      setIncorrectAnswer(false);
+      setCorrect(correct);
+      setShowNextQuestionButton(true);
+    } else {
+      if (correct.indexOf(currentQuestionIndex) < 0 && incorrect.indexOf(currentQuestionIndex) < 0) {
+        incorrect.push(currentQuestionIndex);
+      }
+      if (continueTillCorrect) {
+        setButtons(function (prevState) {
+          return _objectSpread2(_objectSpread2({}, prevState), {}, _defineProperty({}, index - 1, {
+            disabled: !prevState[index - 1]
+          }));
+        });
+      } else {
+        setButtons(function (prevState) {
+          return _objectSpread2(_objectSpread2(_objectSpread2({}, prevState), disabledAll), {}, _defineProperty({}, index - 1, {
+            className: indexStr === correctAnswer ? 'correct' : 'incorrect'
+          }));
+        });
+        setShowNextQuestionButton(true);
+      }
+      setIncorrectAnswer(true);
+      setIsCorrect(false);
+      setIncorrect(incorrect);
+    }
+  } else if (answerSelectionType === 'personality') {
+    // For personality quizzes, always set correct and do not check against a correctAnswer
+    setIsCorrect(true);
+    setIncorrectAnswer(false);
+    setShowNextQuestionButton(true);
+  } else {
+    var maxNumberOfMultipleSelection = correctAnswer.length;
+    if (userInputCopy[currentQuestionIndex] === undefined) {
+      userInputCopy[currentQuestionIndex] = [];
+    }
+    if (userInputCopy[currentQuestionIndex].length < maxNumberOfMultipleSelection) {
+      userInputCopy[currentQuestionIndex].push(index);
+      if (correctAnswer.includes(index)) {
+        if (userInputCopy[currentQuestionIndex].length <= maxNumberOfMultipleSelection) {
+          setButtons(function (prevState) {
+            return _objectSpread2(_objectSpread2({}, prevState), {}, _defineProperty({}, index - 1, {
+              disabled: !prevState[index - 1],
+              className: correctAnswer.includes(index) ? 'correct' : 'incorrect'
+            }));
+          });
+        }
+      } else if (userInputCopy[currentQuestionIndex].length <= maxNumberOfMultipleSelection) {
+        setButtons(function (prevState) {
+          return _objectSpread2(_objectSpread2({}, prevState), {}, _defineProperty({}, index - 1, {
+            className: correctAnswer.includes(index) ? 'correct' : 'incorrect'
+          }));
+        });
+      }
+    }
+    if (maxNumberOfMultipleSelection === userAttempt) {
+      var cnt = 0;
+      for (var i = 0; i < correctAnswer.length; i += 1) {
+        if (userInputCopy[currentQuestionIndex].includes(correctAnswer[i])) {
+          cnt += 1;
+        }
+      }
+      var _loop = function _loop(_i) {
+        if (correctAnswer.includes(_i + 1)) {
+          setButtons(function (prevState) {
+            return _objectSpread2(_objectSpread2({}, prevState), {}, _defineProperty({}, _i, {}));
+          });
+        }
+      };
+      for (var _i = 0; _i < answers.length; _i += 1) {
+        _loop(_i);
+      }
+      if (cnt === maxNumberOfMultipleSelection) {
+        correct.push(currentQuestionIndex);
+        setIsCorrect(true);
+        setIncorrectAnswer(false);
+        setCorrect(correct);
+        setShowNextQuestionButton(true);
+        setUserAttempt(1);
+      } else {
+        incorrect.push(currentQuestionIndex);
+        setIncorrectAnswer(true);
+        setIsCorrect(false);
+        setIncorrect(incorrect);
+        setShowNextQuestionButton(true);
+        setUserAttempt(1);
+      }
+    } else if (!showNextQuestionButton) {
+      setUserAttempt(userAttempt + 1);
+    }
+  }
+  setUserInput(userInputCopy);
+};
+
+var selectAnswer = function selectAnswer(index, correctAnswer, answerSelectionType, answers, _ref2) {
+  var userInput = _ref2.userInput,
+    currentQuestionIndex = _ref2.currentQuestionIndex,
+    setButtons = _ref2.setButtons,
+    setShowNextQuestionButton = _ref2.setShowNextQuestionButton,
+    incorrect = _ref2.incorrect,
+    correct = _ref2.correct,
+    setCorrect = _ref2.setCorrect,
+    setIncorrect = _ref2.setIncorrect,
+    setUserInput = _ref2.setUserInput;
+  var selectedButtons = Object.keys(answers).map(function () {
+    return {
+      selected: false
+    };
+  });
+  var userInputCopy = _toConsumableArray(userInput);
+
+  // Check if it's a personality quiz type
+  if (answerSelectionType === 'personality') {
+    userInputCopy[currentQuestionIndex] = index; // Simply record the user's choice
+
+    setButtons(function (prevState) {
+      return _objectSpread2(_objectSpread2(_objectSpread2({}, prevState), selectedButtons), {}, _defineProperty({}, index - 1, {
+        className: 'selected'
+      }));
+    });
+    setShowNextQuestionButton(true);
+  } else if (answerSelectionType === 'single') {
+    correctAnswer = Number(correctAnswer);
+    userInputCopy[currentQuestionIndex] = index;
+    if (index === correctAnswer) {
+      if (correct.indexOf(currentQuestionIndex) < 0) {
+        correct.push(currentQuestionIndex);
+      }
+      if (incorrect.indexOf(currentQuestionIndex) >= 0) {
+        incorrect.splice(incorrect.indexOf(currentQuestionIndex), 1);
+      }
+    } else {
+      if (incorrect.indexOf(currentQuestionIndex) < 0) {
+        incorrect.push(currentQuestionIndex);
+      }
+      if (correct.indexOf(currentQuestionIndex) >= 0) {
+        correct.splice(correct.indexOf(currentQuestionIndex), 1);
+      }
+    }
+    setCorrect(correct);
+    setIncorrect(incorrect);
+    setButtons(function (prevState) {
+      return _objectSpread2(_objectSpread2(_objectSpread2({}, prevState), selectedButtons), {}, _defineProperty({}, index - 1, {
+        className: 'selected'
+      }));
+    });
+    setShowNextQuestionButton(true);
+  } else {
+    // Handle multiple selection type
+    if (userInputCopy[currentQuestionIndex] === undefined) {
+      userInputCopy[currentQuestionIndex] = [];
+    }
+    if (userInputCopy[currentQuestionIndex].includes(index)) {
+      userInputCopy[currentQuestionIndex].splice(userInputCopy[currentQuestionIndex].indexOf(index), 1);
+    } else {
+      userInputCopy[currentQuestionIndex].push(index);
+    }
+    if (userInputCopy[currentQuestionIndex].length === correctAnswer.length) {
+      var exactMatch = true;
+      var _iterator = _createForOfIteratorHelper(userInput[currentQuestionIndex]),
+        _step;
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var input = _step.value;
+          if (!correctAnswer.includes(input)) {
+            exactMatch = false;
+            if (incorrect.indexOf(currentQuestionIndex) < 0) {
+              incorrect.push(currentQuestionIndex);
+            }
+            if (correct.indexOf(currentQuestionIndex) >= 0) {
+              correct.splice(correct.indexOf(currentQuestionIndex), 1);
+            }
+            break;
+          }
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+      if (exactMatch) {
+        if (correct.indexOf(currentQuestionIndex) < 0) {
+          correct.push(currentQuestionIndex);
+        }
+        if (incorrect.indexOf(currentQuestionIndex) >= 0) {
+          incorrect.splice(incorrect.indexOf(currentQuestionIndex), 1);
+        }
+      }
+    } else {
+      if (incorrect.indexOf(currentQuestionIndex) < 0) {
+        incorrect.push(currentQuestionIndex);
+      }
+      if (correct.indexOf(currentQuestionIndex) >= 0) {
+        correct.splice(correct.indexOf(currentQuestionIndex), 1);
+      }
+    }
+    setCorrect(correct);
+    setIncorrect(incorrect);
+    setButtons(function (prevState) {
+      return _objectSpread2(_objectSpread2({}, prevState), {}, _defineProperty({}, index - 1, {
+        className: userInputCopy[currentQuestionIndex].includes(index) ? 'selected' : undefined
+      }));
+    });
+    if (userInputCopy[currentQuestionIndex].length > 0) {
+      setShowNextQuestionButton(true);
+    }
+  }
+  setUserInput(userInputCopy);
+};
+
+function Explanation(_ref) {
+  var question = _ref.question,
+    isResultPage = _ref.isResultPage;
+  var explanation = question.explanation;
+  if (!explanation) {
+    return null;
+  }
+  if (isResultPage) {
+    return /*#__PURE__*/jsxRuntimeExports.jsx("div", {
+      className: "explanation",
+      children: explanation
+    });
+  }
+  return /*#__PURE__*/jsxRuntimeExports.jsxs("div", {
+    children: [/*#__PURE__*/jsxRuntimeExports.jsx("br", {}), explanation]
+  });
+}
+
+var renderMessageForCorrectAnswer = function renderMessageForCorrectAnswer(question) {
+  var defaultMessage = 'You are correct. Please click Next to continue.';
+  return question.messageForCorrectAnswer || defaultMessage;
+};
+var renderMessageForIncorrectAnswer = function renderMessageForIncorrectAnswer(question) {
+  var defaultMessage = 'Incorrect answer. Please try again.';
+  return question.messageForIncorrectAnswer || defaultMessage;
+};
+function InstantFeedback(_ref) {
+  var showInstantFeedback = _ref.showInstantFeedback,
+    incorrectAnswer = _ref.incorrectAnswer,
+    correctAnswer = _ref.correctAnswer,
+    question = _ref.question,
+    onQuestionSubmit = _ref.onQuestionSubmit,
+    userAnswer = _ref.userAnswer;
+  useEffect(function () {
+    if (onQuestionSubmit && (correctAnswer || incorrectAnswer)) {
+      onQuestionSubmit({
+        question: question,
+        userAnswer: userAnswer,
+        isCorrect: correctAnswer
+      });
+    }
+  }, [correctAnswer, incorrectAnswer]);
+  return /*#__PURE__*/jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, {
+    children: [incorrectAnswer && showInstantFeedback && /*#__PURE__*/jsxRuntimeExports.jsx("div", {
+      className: "alert incorrect",
+      children: renderMessageForIncorrectAnswer(question)
+    }), correctAnswer && showInstantFeedback && /*#__PURE__*/jsxRuntimeExports.jsxs("div", {
+      className: "alert correct",
+      children: [renderMessageForCorrectAnswer(question), /*#__PURE__*/jsxRuntimeExports.jsx(Explanation, {
+        question: question,
+        isResultPage: false
+      })]
+    })]
+  });
+}
+
+function Core(_ref) {
+  var questions = _ref.questions,
+    appLocale = _ref.appLocale,
+    showDefaultResult = _ref.showDefaultResult,
+    onComplete = _ref.onComplete,
+    customResultPage = _ref.customResultPage,
+    showInstantFeedback = _ref.showInstantFeedback,
+    continueTillCorrect = _ref.continueTillCorrect,
+    revealAnswerOnSubmit = _ref.revealAnswerOnSubmit,
+    allowNavigation = _ref.allowNavigation,
+    onQuestionSubmit = _ref.onQuestionSubmit,
+    timer = _ref.timer,
+    allowPauseTimer = _ref.allowPauseTimer;
+  var _useState = useState(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    incorrectAnswer = _useState2[0],
+    setIncorrectAnswer = _useState2[1];
+  var _useState3 = useState(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    isCorrect = _useState4[0],
+    setIsCorrect = _useState4[1];
+  var _useState5 = useState(false),
+    _useState6 = _slicedToArray(_useState5, 2),
+    showNextQuestionButton = _useState6[0],
+    setShowNextQuestionButton = _useState6[1];
+  var _useState7 = useState(false),
+    _useState8 = _slicedToArray(_useState7, 2),
+    endQuiz = _useState8[0],
+    setEndQuiz = _useState8[1];
+  var _useState9 = useState(0),
+    _useState10 = _slicedToArray(_useState9, 2),
+    currentQuestionIndex = _useState10[0],
+    setCurrentQuestionIndex = _useState10[1];
+  var _useState11 = useState({}),
+    _useState12 = _slicedToArray(_useState11, 2),
+    buttons = _useState12[0],
+    setButtons = _useState12[1];
+  var _useState13 = useState([]),
+    _useState14 = _slicedToArray(_useState13, 2),
+    correct = _useState14[0],
+    setCorrect = _useState14[1];
+  var _useState15 = useState([]),
+    _useState16 = _slicedToArray(_useState15, 2),
+    incorrect = _useState16[0],
+    setIncorrect = _useState16[1];
+  var _useState17 = useState([]),
+    _useState18 = _slicedToArray(_useState17, 2),
+    unanswered = _useState18[0],
+    setUnanswered = _useState18[1];
+  var _useState19 = useState([]),
+    _useState20 = _slicedToArray(_useState19, 2),
+    userInput = _useState20[0],
+    setUserInput = _useState20[1];
+  var _useState21 = useState('all'),
+    _useState22 = _slicedToArray(_useState21, 2),
+    filteredValue = _useState22[0],
+    setFilteredValue = _useState22[1];
+  var _useState23 = useState(1),
+    _useState24 = _slicedToArray(_useState23, 2),
+    userAttempt = _useState24[0],
+    setUserAttempt = _useState24[1];
+  var _useState25 = useState(true),
+    _useState26 = _slicedToArray(_useState25, 2),
+    showDefaultResultState = _useState26[0],
+    setShowDefaultResult = _useState26[1];
+  var _useState27 = useState(undefined),
+    _useState28 = _slicedToArray(_useState27, 2),
+    answerSelectionTypeState = _useState28[0],
+    setAnswerSelectionType = _useState28[1];
+  var _useState29 = useState(0),
+    _useState30 = _slicedToArray(_useState29, 2),
+    totalPoints = _useState30[0],
+    setTotalPoints = _useState30[1];
+  var _useState31 = useState(0),
+    _useState32 = _slicedToArray(_useState31, 2),
+    correctPoints = _useState32[0],
+    setCorrectPoints = _useState32[1];
+  var _useState33 = useState(questions[currentQuestionIndex]),
+    _useState34 = _slicedToArray(_useState33, 2),
+    activeQuestion = _useState34[0],
+    setActiveQuestion = _useState34[1];
+  var _useState35 = useState(undefined),
+    _useState36 = _slicedToArray(_useState35, 2),
+    questionSummary = _useState36[0],
+    setQuestionSummary = _useState36[1];
+  var _useState37 = useState(timer),
+    _useState38 = _slicedToArray(_useState37, 2),
+    timeRemaining = _useState38[0],
+    setTimeRemaining = _useState38[1];
+  var _useState39 = useState(true),
+    _useState40 = _slicedToArray(_useState39, 2),
+    isRunning = _useState40[0],
+    setIsRunning = _useState40[1];
+  useEffect(function () {
+    setShowDefaultResult(showDefaultResult !== undefined ? showDefaultResult : true);
+  }, [showDefaultResult]);
+  useEffect(function () {
+    setActiveQuestion(questions[currentQuestionIndex]);
+  }, [currentQuestionIndex, questions]);
+  useEffect(function () {
+    var answerSelectionType = activeQuestion.answerSelectionType;
+    // Default single to avoid code breaking due to automatic version upgrade
+    setAnswerSelectionType(answerSelectionType || 'single');
+  }, [activeQuestion, currentQuestionIndex]);
+  useEffect(function () {
+    if (endQuiz) {
+      setIsRunning(false);
+      var totalPointsTemp = 0;
+      var correctPointsTemp = 0;
+      for (var i = 0; i < questions.length; i += 1) {
+        var point = questions[i].point || 0;
+        if (typeof point === 'string' || point instanceof String) {
+          point = parseInt(point, 10);
+        }
+        totalPointsTemp += point;
+        if (correct.includes(i)) {
+          correctPointsTemp += point;
+        }
+      }
+      setTotalPoints(totalPointsTemp);
+      setCorrectPoints(correctPointsTemp);
+    }
+  }, [endQuiz]);
+  useEffect(function () {
+    setQuestionSummary({
+      numberOfQuestions: questions.length,
+      numberOfCorrectAnswers: correct.length,
+      numberOfIncorrectAnswers: incorrect.length,
+      questions: questions,
+      userInput: userInput,
+      totalPoints: totalPoints,
+      correctPoints: correctPoints
+    });
+  }, [totalPoints, correctPoints]);
+  useEffect(function () {
+    if (endQuiz && onComplete !== undefined && questionSummary !== undefined) {
+      onComplete(questionSummary);
+    }
+  }, [questionSummary]);
+  var nextQuestion = function nextQuestion(currentQuestionIdx) {
+    setIncorrectAnswer(false);
+    setIsCorrect(false);
+    setShowNextQuestionButton(false);
+    setButtons({});
+    if (currentQuestionIdx + 1 === questions.length) {
+      if (userInput.length !== questions.length) {
+        alert('Quiz is incomplete');
+      } else if (allowNavigation) {
+        var submitQuiz = confirm('You have finished all the questions. Submit Quiz now?');
+        if (submitQuiz) {
+          setEndQuiz(true);
+        }
+      } else {
+        setEndQuiz(true);
+      }
+    } else {
+      setCurrentQuestionIndex(currentQuestionIdx + 1);
+    }
+  };
+  var handleChange = function handleChange(event) {
+    setFilteredValue(event.target.value);
+  };
+  var renderAnswerInResult = function renderAnswerInResult(question, userInputIndex) {
+    var answers = question.answers,
+      correctAnswer = question.correctAnswer,
+      questionType = question.questionType;
+    var answerSelectionType = question.answerSelectionType;
+    var answerBtnCorrectClassName;
+    var answerBtnIncorrectClassName;
+
+    // Default single to avoid code breaking due to automatic version upgrade
+    answerSelectionType = answerSelectionType || 'single';
+    return answers.map(function (answer, index) {
+      if (answerSelectionType === 'single') {
+        // correctAnswer - is string
+        answerBtnCorrectClassName = "".concat(index + 1) === correctAnswer ? 'correct' : '';
+        answerBtnIncorrectClassName = "".concat(userInputIndex) !== correctAnswer && "".concat(index + 1) === "".concat(userInputIndex) ? 'incorrect' : '';
+        if (userInputIndex === undefined && "".concat(index + 1) !== correctAnswer) {
+          answerBtnIncorrectClassName = 'unanswered';
+        }
+      } else {
+        // correctAnswer - is array of numbers
+        answerBtnCorrectClassName = correctAnswer.includes(index + 1) ? 'correct' : '';
+        answerBtnIncorrectClassName = !correctAnswer.includes(index + 1) && userInputIndex !== null && userInputIndex !== void 0 && userInputIndex.includes(index + 1) ? 'incorrect' : '';
+        if (userInputIndex === undefined && !correctAnswer.includes(index + 1)) {
+          answerBtnIncorrectClassName = 'unanswered';
+        }
+      }
+      return /*#__PURE__*/jsxRuntimeExports.jsx("div", {
+        children: /*#__PURE__*/jsxRuntimeExports.jsxs("button", {
+          type: "button",
+          disabled: true,
+          className: "answerBtn btn ".concat(answerBtnCorrectClassName).concat(answerBtnIncorrectClassName),
+          children: [questionType === 'text' && /*#__PURE__*/jsxRuntimeExports.jsx("span", {
+            children: answer
+          }), questionType === 'photo' && /*#__PURE__*/jsxRuntimeExports.jsx("img", {
+            src: answer,
+            alt: "answer"
+          })]
+        })
+      }, nanoid());
+    });
+  };
+  var renderTags = function renderTags(answerSelectionType, numberOfSelection, segment) {
+    var singleSelectionTagText = appLocale.singleSelectionTagText,
+      multipleSelectionTagText = appLocale.multipleSelectionTagText,
+      pickNumberOfSelection = appLocale.pickNumberOfSelection;
+    return /*#__PURE__*/jsxRuntimeExports.jsxs("div", {
+      className: "tag-container",
+      children: [answerSelectionType === 'single' && /*#__PURE__*/jsxRuntimeExports.jsx("span", {
+        className: "single selection-tag",
+        children: singleSelectionTagText
+      }), answerSelectionType === 'multiple' && /*#__PURE__*/jsxRuntimeExports.jsx("span", {
+        className: "multiple selection-tag",
+        children: multipleSelectionTagText
+      }), /*#__PURE__*/jsxRuntimeExports.jsx("span", {
+        className: "number-of-selection",
+        children: pickNumberOfSelection.replace('<numberOfSelection>', numberOfSelection)
+      }), segment && /*#__PURE__*/jsxRuntimeExports.jsx("span", {
+        className: "selection-tag segment",
+        children: segment
+      })]
+    });
+  };
+  var isCorrectCheck = function isCorrectCheck(index, correctAnswerIndex) {
+    if (typeof correctAnswerIndex === 'string') {
+      return index === Number(correctAnswerIndex);
+    }
+    if (_typeof(correctAnswerIndex) === 'object') {
+      return correctAnswerIndex.find(function (element) {
+        return element === index;
+      }) !== undefined;
+    }
+    return false;
+  };
+  var renderQuizResultQuestions = useCallback(function () {
+    var filteredQuestions;
+    var filteredUserInput;
+    if (filteredValue !== 'all') {
+      var targetQuestions = unanswered;
+      if (filteredValue === 'correct') {
+        targetQuestions = correct;
+      } else if (filteredValue === 'incorrect') {
+        targetQuestions = incorrect;
+      }
+      filteredQuestions = questions.filter(function (_, index) {
+        return targetQuestions.indexOf(index) !== -1;
+      });
+      filteredUserInput = userInput.filter(function (_, index) {
+        return targetQuestions.indexOf(index) !== -1;
+      });
+    }
+    return (filteredQuestions || questions).map(function (question, index) {
+      var userInputIndex = filteredUserInput ? filteredUserInput[index] : userInput[index];
+
+      // Default single to avoid code breaking due to automatic version upgrade
+      var answerSelectionType = question.answerSelectionType || 'single';
+      return /*#__PURE__*/jsxRuntimeExports.jsxs("div", {
+        className: "result-answer-wrapper",
+        children: [/*#__PURE__*/jsxRuntimeExports.jsx("h3", {
+          dangerouslySetInnerHTML: rawMarkup("Q".concat(question.questionIndex, ": ").concat(question.question, " ").concat(appLocale.marksOfQuestion.replace('<marks>', question.point)))
+        }), question.questionPic && /*#__PURE__*/jsxRuntimeExports.jsx("img", {
+          src: question.questionPic,
+          alt: "question"
+        }), renderTags(answerSelectionType, answerSelectionType !== 'personality' && question.correctAnswer && Array.isArray(question.correctAnswer) ? question.correctAnswer.length : 1, question.segment || 'defaultSegment'), /*#__PURE__*/jsxRuntimeExports.jsx("div", {
+          className: "result-answer",
+          children: renderAnswerInResult(question, userInputIndex)
+        }), /*#__PURE__*/jsxRuntimeExports.jsx(Explanation, {
+          question: question,
+          isResultPage: true
+        })]
+      }, nanoid());
+    });
+  }, [endQuiz, filteredValue]);
+  var renderAnswers = function renderAnswers(question, answerButtons) {
+    var answers = question.answers,
+      correctAnswer = question.correctAnswer,
+      questionType = question.questionType,
+      questionIndex = question.questionIndex;
+    var answerSelectionType = question.answerSelectionType;
+    var onClickAnswer = function onClickAnswer(index) {
+      return checkAnswer(index + 1, correctAnswer, answerSelectionType, answers, {
+        userInput: userInput,
+        userAttempt: userAttempt,
+        currentQuestionIndex: currentQuestionIndex,
+        continueTillCorrect: continueTillCorrect,
+        showNextQuestionButton: showNextQuestionButton,
+        incorrect: incorrect,
+        correct: correct,
+        setButtons: setButtons,
+        setIsCorrect: setIsCorrect,
+        setIncorrectAnswer: setIncorrectAnswer,
+        setCorrect: setCorrect,
+        setIncorrect: setIncorrect,
+        setShowNextQuestionButton: setShowNextQuestionButton,
+        setUserInput: setUserInput,
+        setUserAttempt: setUserAttempt
+      });
+    };
+    var onSelectAnswer = function onSelectAnswer(index) {
+      return selectAnswer(index + 1, correctAnswer, answerSelectionType, answers, {
+        userInput: userInput,
+        currentQuestionIndex: currentQuestionIndex,
+        setButtons: setButtons,
+        setShowNextQuestionButton: setShowNextQuestionButton,
+        incorrect: incorrect,
+        correct: correct,
+        setCorrect: setCorrect,
+        setIncorrect: setIncorrect,
+        setUserInput: setUserInput
+      });
+    };
+    var checkSelectedAnswer = function checkSelectedAnswer(index) {
+      if (userInput[questionIndex - 1] === undefined) {
+        return false;
+      }
+      if (answerSelectionType === 'single') {
+        return userInput[questionIndex - 1] === index;
+      }
+      return Array.isArray(userInput[questionIndex - 1]) && userInput[questionIndex - 1].includes(index);
+    };
+
+    // Default single to avoid code breaking due to automatic version upgrade
+    answerSelectionType = answerSelectionType || 'single';
+    return answers.map(function (answer, index) {
+      return /*#__PURE__*/jsxRuntimeExports.jsx(Fragment, {
+        children: answerButtons[index] !== undefined ? /*#__PURE__*/jsxRuntimeExports.jsxs("button", {
+          type: "button",
+          disabled: answerButtons[index].disabled || false,
+          className: "".concat(answerButtons[index].className, " answerBtn btn ").concat(isCorrectCheck(index + 1, correctAnswer) && showInstantFeedback ? 'correct' : ''),
+          onClick: function onClick() {
+            return revealAnswerOnSubmit ? onSelectAnswer(index) : onClickAnswer(index);
+          },
+          children: [questionType === 'text' && /*#__PURE__*/jsxRuntimeExports.jsx("span", {
+            children: answer
+          }), questionType === 'photo' && /*#__PURE__*/jsxRuntimeExports.jsx("img", {
+            src: answer,
+            alt: "answer"
+          })]
+        }) : /*#__PURE__*/jsxRuntimeExports.jsxs("button", {
+          type: "button",
+          onClick: function onClick() {
+            return revealAnswerOnSubmit ? onSelectAnswer(index) : onClickAnswer(index);
+          },
+          className: "answerBtn btn ".concat(allowNavigation && checkSelectedAnswer(index + 1) ? 'selected' : null),
+          children: [questionType === 'text' && answer, questionType === 'photo' && /*#__PURE__*/jsxRuntimeExports.jsx("img", {
+            src: answer,
+            alt: "answer"
+          })]
+        })
+      }, nanoid());
+    });
+  };
+  var getUnansweredQuestions = function getUnansweredQuestions() {
+    questions.forEach(function (question, index) {
+      if (userInput[index] === undefined) {
+        setUnanswered(function (oldArray) {
+          return [].concat(_toConsumableArray(oldArray), [index]);
+        });
+      }
+    });
+  };
+  var renderResult = function renderResult() {
+    return /*#__PURE__*/jsxRuntimeExports.jsxs("div", {
+      className: "card-body",
+      children: [/*#__PURE__*/jsxRuntimeExports.jsx("h2", {
+        children: appLocale.resultPageHeaderText.replace('<correctIndexLength>', correct.length).replace('<questionLength>', questions.length)
+      }), /*#__PURE__*/jsxRuntimeExports.jsx("h2", {
+        children: appLocale.resultPagePoint.replace('<correctPoints>', correctPoints).replace('<totalPoints>', totalPoints)
+      }), /*#__PURE__*/jsxRuntimeExports.jsx("br", {}), /*#__PURE__*/jsxRuntimeExports.jsx(QuizResultFilter, {
+        filteredValue: filteredValue,
+        handleChange: handleChange,
+        appLocale: appLocale
+      }), renderQuizResultQuestions()]
+    });
+  };
+  useEffect(function () {
+    var countdown;
+    if (timer && isRunning && timeRemaining > 0) {
+      countdown = setInterval(function () {
+        setTimeRemaining(function (prevTime) {
+          return prevTime - 1;
+        });
+      }, 1000);
+    }
+    return function () {
+      return timer && clearInterval(countdown);
+    };
+  }, [isRunning, timeRemaining, timer]);
+  var toggleTimer = function toggleTimer() {
+    setIsRunning(!isRunning);
+  };
+  var formatTime = function formatTime(time) {
+    return time < 10 ? '0' : '';
+  };
+  var displayTime = function displayTime(time) {
+    var hours = Math.floor(time / 3600);
+    var minutes = Math.floor(time % 3600 / 60);
+    var seconds = time % 60;
+    return "".concat(formatTime(hours)).concat(hours, ":").concat(formatTime(minutes)).concat(minutes, ":").concat(formatTime(seconds)).concat(seconds);
+  };
+  var handleTimeUp = function handleTimeUp() {
+    setIsRunning(false);
+    setEndQuiz(true);
+    getUnansweredQuestions();
+  };
+  return /*#__PURE__*/jsxRuntimeExports.jsxs("div", {
+    className: "questionWrapper",
+    children: [timer && !isRunning && /*#__PURE__*/jsxRuntimeExports.jsxs("div", {
+      children: [appLocale.timerTimeTaken, ":", ' ', /*#__PURE__*/jsxRuntimeExports.jsx("b", {
+        children: displayTime(timer - timeRemaining)
+      })]
+    }), timer && isRunning && /*#__PURE__*/jsxRuntimeExports.jsxs("div", {
+      children: [appLocale.timerTimeRemaining, ":", ' ', /*#__PURE__*/jsxRuntimeExports.jsx("b", {
+        children: displayTime(timeRemaining)
+      })]
+    }), timer && timeRemaining === 0 && isRunning && handleTimeUp(), !endQuiz && /*#__PURE__*/jsxRuntimeExports.jsxs("div", {
+      className: "questionWrapperBody",
+      children: [/*#__PURE__*/jsxRuntimeExports.jsxs("div", {
+        children: ["".concat(appLocale.question, " ").concat(currentQuestionIndex + 1, " / ").concat(questions.length, ":"), /*#__PURE__*/jsxRuntimeExports.jsx("br", {}), timer && allowPauseTimer && /*#__PURE__*/jsxRuntimeExports.jsx("button", {
+          type: "button",
+          className: "timerBtn",
+          onClick: toggleTimer,
+          children: isRunning ? appLocale.pauseScreenPause : appLocale.pauseScreenResume
+        })]
+      }), isRunning ? /*#__PURE__*/jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, {
+        children: [/*#__PURE__*/jsxRuntimeExports.jsx("h3", {
+          dangerouslySetInnerHTML: rawMarkup("".concat(activeQuestion && activeQuestion.question, " ").concat(appLocale.marksOfQuestion.replace('<marks>', activeQuestion.point)))
+        }), activeQuestion && activeQuestion.questionPic && /*#__PURE__*/jsxRuntimeExports.jsx("img", {
+          src: activeQuestion.questionPic,
+          alt: "question"
+        }), activeQuestion && renderTags(answerSelectionTypeState, answerSelectionTypeState === 'personality' ? 1 : activeQuestion.correctAnswer && Array.isArray(activeQuestion.correctAnswer) ? activeQuestion.correctAnswer.length : 0, activeQuestion.segment || 'defaultSegment'), /*#__PURE__*/jsxRuntimeExports.jsx("div", {
+          className: "questionModal",
+          children: /*#__PURE__*/jsxRuntimeExports.jsx(InstantFeedback, {
+            question: activeQuestion,
+            showInstantFeedback: showInstantFeedback,
+            correctAnswer: isCorrect,
+            incorrectAnswer: incorrectAnswer,
+            onQuestionSubmit: onQuestionSubmit,
+            userAnswer: _toConsumableArray(userInput).pop()
+          })
+        }), activeQuestion && renderAnswers(activeQuestion, buttons), (showNextQuestionButton || allowNavigation) && /*#__PURE__*/jsxRuntimeExports.jsxs("div", {
+          className: "questionBtnContainer",
+          children: [allowNavigation && currentQuestionIndex > 0 && /*#__PURE__*/jsxRuntimeExports.jsx("button", {
+            onClick: function onClick() {
+              return nextQuestion(currentQuestionIndex - 2);
+            },
+            className: "prevQuestionBtn btn",
+            type: "button",
+            children: appLocale.prevQuestionBtn
+          }), /*#__PURE__*/jsxRuntimeExports.jsx("button", {
+            onClick: function onClick() {
+              return nextQuestion(currentQuestionIndex);
+            },
+            className: "nextQuestionBtn btn",
+            type: "button",
+            children: appLocale.nextQuestionBtn
+          })]
+        })]
+      }) : /*#__PURE__*/jsxRuntimeExports.jsxs("span", {
+        className: "timerPauseScreen dark:text-white text-black",
+        children: [/*#__PURE__*/jsxRuntimeExports.jsx("br", {}), /*#__PURE__*/jsxRuntimeExports.jsx("br", {}), appLocale.pauseScreenDisplay]
+      })]
+    }), endQuiz && showDefaultResultState && customResultPage === undefined && renderResult(), endQuiz && !showDefaultResultState && customResultPage !== undefined && customResultPage(questionSummary)]
+  });
+}
+
+var defaultLocale = {
+  landingHeaderText: '<questionLength> Questions',
+  question: 'Question',
+  startQuizBtn: 'Start Quiz',
+  resultFilterAll: 'All',
+  resultFilterCorrect: 'Correct',
+  resultFilterIncorrect: 'Incorrect',
+  resultFilterUnanswered: 'Unanswered',
+  nextQuestionBtn: 'Next',
+  prevQuestionBtn: 'Prev',
+  resultPageHeaderText: 'You have completed the quiz. You got <correctIndexLength> out of <questionLength> questions.',
+  resultPagePoint: 'You scored <correctPoints> out of <totalPoints>.',
+  pauseScreenDisplay: 'Test is paused. Clicked the Resume button to continue',
+  timerTimeRemaining: 'Time Remaining',
+  timerTimeTaken: 'Time Taken',
+  pauseScreenPause: 'Pause',
+  pauseScreenResume: 'Resume',
+  singleSelectionTagText: 'Single Selection',
+  multipleSelectionTagText: 'Multiple Selection',
+  pickNumberOfSelection: 'Pick <numberOfSelection>',
+  marksOfQuestion: '(<marks> marks)'
+};
+
+function styleInject(css, ref) {
+  if ( ref === void 0 ) ref = {};
+  var insertAt = ref.insertAt;
+
+  if (typeof document === 'undefined') { return; }
+
+  var head = document.head || document.getElementsByTagName('head')[0];
+  var style = document.createElement('style');
+  style.type = 'text/css';
+
+  if (insertAt === 'top') {
+    if (head.firstChild) {
+      head.insertBefore(style, head.firstChild);
+    } else {
+      head.appendChild(style);
+    }
+  } else {
+    head.appendChild(style);
+  }
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+}
+
+var css_248z = ".react-quiz-container{margin:20px;max-width:500px}.react-quiz-container .startQuizWrapper{margin-top:10px}.react-quiz-container .btn{background-image:none;border:1px solid transparent;cursor:pointer;font-weight:600;margin-bottom:0;padding:11px 12px;text-align:center;touch-action:manipulation;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;white-space:nowrap}.react-quiz-container .questionWrapper .btn{border:1px solid #e8e8e8;border-radius:4px;display:block;font-size:15px;margin-bottom:10px;margin-top:10px;text-align:unset;white-space:normal}.react-quiz-container .questionWrapper .btn.correct,.timerBtn{background:green;color:#fff}.timerBtn{border:0!important;border-radius:10px;cursor:pointer;float:right;padding:5px;position:relative;top:-35px;width:80px}.timerPauseScreen{font-size:30px}.react-quiz-container .questionModal .alert{border:1px solid transparent;border-radius:2px;color:#fff;margin-bottom:21px;padding:20px}.react-quiz-container .correct{background:green}.react-quiz-container .incorrect{background:red;color:#fff}.react-quiz-container .unanswered{background:grey;color:#fff}.react-quiz-container .answerBtn,.react-quiz-container .questionWrapper img{width:100%}.react-quiz-container .selected{background:#007bff;color:#fff}.react-quiz-container .startQuizWrapper .startQuizBtn{background-color:#fff;border:1px solid #d9d9d9;border-radius:2px;color:rgba(0,0,0,.65);font-size:15px;line-height:1.35135}.react-quiz-container .result-answer-wrapper{border:1px solid #e8e8e8;border-bottom-left-radius:5px;border-bottom-right-radius:5px;margin-bottom:20px}.react-quiz-container .result-answer-wrapper h3{background-color:#fafafa;border-top-left-radius:5px;border-top-right-radius:5px;color:rgba(0,0,0,.9);margin:0;opacity:.8;padding:10px}.react-quiz-container .result-answer-wrapper .explanation{border:1px solid #e8e8e8;margin:0 20px 20px;padding:20px}.react-quiz-container .result-answer-wrapper .tag-container{margin:20px}.react-quiz-container .result-answer{padding:0 20px}.react-quiz-container .quiz-synopsis{margin:15px 0}.react-quiz-container .tag-container{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:20px;margin-top:20px}.react-quiz-container .number-of-selection,.react-quiz-container .selection-tag{border-radius:5px;color:#fff;padding:7px}.react-quiz-container .number-of-selection{background:#673ab7;margin-left:5px}.react-quiz-container .selection-tag.single{background:#3f51b5}.react-quiz-container .selection-tag.multiple{background:#ff9800}.react-quiz-container .selection-tag.segment{background:#3db4b9;margin-left:5px}.react-quiz-container .questionBtnContainer{display:flex;justify-content:space-between}.react-quiz-container .quiz-result-filter{bottom:15px;position:relative;width:120px;.filter-dropdown-select{background-color:#fcfcfc;border:2px solid #c2c5c7;border-radius:7px;bottom:10px;color:#333;cursor:pointer;font-size:16px;height:12px;margin-top:2px;padding:8px;position:relative;text-transform:capitalize}.filter-dropdown-select:after{color:#a5a5a5;content:\"▼\";font-size:11px;position:absolute;right:10px;top:57%;transform:translateY(-50%);transition:all .3s ease}.filter-dropdown-select:hover{border:2px solid #51aae6;box-shadow:0 0 6px rgba(109,179,250,.5)}.dropdown-options{background-color:#fcfcfc;border-radius:10px;box-shadow:0 0 10px hsla(210,2%,56%,.5);left:0;list-style:none;margin:0;padding:0;position:absolute;top:85%;width:100%;z-index:1}.filter-dropdown-select.open{border:2px solid #51aae6;box-shadow:0 0 6px rgba(109,179,250,.5)}.dropdown-options .dropdown-options-item{cursor:pointer;font-size:16px;padding:10px}.dropdown-options .dropdown-options-item:hover{background-color:hsla(0,0%,89%,.852);border-radius:5px}.dropdown-options .dropdown-options-item:focus{background-color:#d7f1f9;font-weight:700}.filter-dropdown-select .selected-option.selected-open{color:#c6c2c2;font-weight:lighter}.filter-dropdown-select .selected-option{bottom:2px;font-size:16px;position:relative}.filter-dropdown-select:focus+.dropdown-options{max-height:200px}.dropdown-options .dropdown-options-item.selected{background-color:#d7f1f9;color:#333;font-weight:700}.dropdown-options.open{max-height:200px}}";
+styleInject(css_248z);
+
+function Quiz(_ref) {
+  var quiz = _ref.quiz,
+    shuffle = _ref.shuffle,
+    shuffleAnswer = _ref.shuffleAnswer,
+    showDefaultResult = _ref.showDefaultResult,
+    onComplete = _ref.onComplete,
+    customResultPage = _ref.customResultPage,
+    showInstantFeedback = _ref.showInstantFeedback,
+    continueTillCorrect = _ref.continueTillCorrect,
+    revealAnswerOnSubmit = _ref.revealAnswerOnSubmit,
+    allowNavigation = _ref.allowNavigation,
+    onQuestionSubmit = _ref.onQuestionSubmit,
+    disableSynopsis = _ref.disableSynopsis,
+    timer = _ref.timer,
+    allowPauseTimer = _ref.allowPauseTimer;
+  var _useState = useState(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    start = _useState2[0],
+    setStart = _useState2[1];
+  var _useState3 = useState(quiz.questions),
+    _useState4 = _slicedToArray(_useState3, 2),
+    questions = _useState4[0],
+    setQuestions = _useState4[1];
+  var nrOfQuestions = quiz.nrOfQuestions && quiz.nrOfQuestions < quiz.questions.length ? quiz.nrOfQuestions : quiz.questions.length;
+
+  // Shuffle answers funtion here
+  var shuffleAnswerSequence = function shuffleAnswerSequence() {
+    var oldQuestions = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+    var newQuestions = oldQuestions.map(function (question) {
+      var _question$answers;
+      var answerWithIndex = (_question$answers = question.answers) === null || _question$answers === void 0 ? void 0 : _question$answers.map(function (ans, i) {
+        return [ans, i];
+      });
+      var shuffledAnswersWithIndex = answerWithIndex.sort(function () {
+        return Math.random() - 0.5;
+      });
+      var shuffledAnswers = shuffledAnswersWithIndex.map(function (ans) {
+        return ans[0];
+      });
+      if (question.answerSelectionType === 'single') {
+        var oldCorrectAnswer = question.correctAnswer;
+        var newCorrectAnswer = shuffledAnswersWithIndex.findIndex(function (ans) {
+          return "".concat(ans[1] + 1) === "".concat(oldCorrectAnswer);
+        }) + 1;
+        return _objectSpread2(_objectSpread2({}, question), {}, {
+          correctAnswer: "".concat(newCorrectAnswer),
+          answers: shuffledAnswers
+        });
+      }
+      if (question.answerSelectionType === 'multiple') {
+        var _oldCorrectAnswer = question.correctAnswer;
+        var _newCorrectAnswer = _oldCorrectAnswer.map(function (cans) {
+          return shuffledAnswersWithIndex.findIndex(function (ans) {
+            return "".concat(ans[1] + 1) === "".concat(cans);
+          }) + 1;
+        });
+        return _objectSpread2(_objectSpread2({}, question), {}, {
+          correctAnswer: _newCorrectAnswer,
+          answers: shuffledAnswers
+        });
+      }
+      return question;
+    });
+    return newQuestions;
+  };
+  var shuffleQuestions = useCallback(function (q) {
+    for (var i = q.length - 1; i > 0; i -= 1) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var _ref2 = [q[j], q[i]];
+      q[i] = _ref2[0];
+      q[j] = _ref2[1];
+    }
+    return q;
+  }, []);
+  useEffect(function () {
+    if (disableSynopsis) setStart(true);
+  }, []);
+  useEffect(function () {
+    var newQuestions = quiz.questions;
+    if (shuffle) {
+      newQuestions = shuffleQuestions(newQuestions);
+    }
+    if (shuffleAnswer) {
+      newQuestions = shuffleAnswerSequence(newQuestions);
+    }
+    newQuestions.length = nrOfQuestions;
+    newQuestions = newQuestions.map(function (question, index) {
+      return _objectSpread2(_objectSpread2({}, question), {}, {
+        questionIndex: index + 1
+      });
+    });
+    setQuestions(newQuestions);
+  }, [start]);
+  var validateQuiz = function validateQuiz(q) {
+    if (!q) {
+      console.error('Quiz object is required.');
+      return false;
+    }
+    if (timer && typeof timer !== 'number' || timer < 1) {
+      console.error(timer && typeof timer !== 'number' ? 'timer must be a number' : 'timer must be a number greater than 0');
+      return false;
+    }
+    if (allowPauseTimer && typeof allowPauseTimer !== 'boolean') {
+      console.error('allowPauseTimer must be a Boolean');
+      return false;
+    }
+    for (var i = 0; i < questions.length; i += 1) {
+      var _questions$i = questions[i],
+        question = _questions$i.question,
+        questionType = _questions$i.questionType,
+        answerSelectionType = _questions$i.answerSelectionType,
+        answers = _questions$i.answers,
+        correctAnswer = _questions$i.correctAnswer;
+      if (!question) {
+        console.error("Field 'question' is required.");
+        return false;
+      }
+      if (!questionType) {
+        console.error("Field 'questionType' is required.");
+        return false;
+      }
+      if (questionType !== 'text' && questionType !== 'photo') {
+        console.error("The value of 'questionType' is either 'text' or 'photo'.");
+        return false;
+      }
+      if (!answers) {
+        console.error("Field 'answers' is required.");
+        return false;
+      }
+      if (!Array.isArray(answers)) {
+        console.error("Field 'answers' has to be an Array");
+        return false;
+      }
+
+      // Skip correctAnswer check for personality type questions
+      if (answerSelectionType !== 'personality' && !correctAnswer) {
+        console.error("Field 'correctAnswer' is required for non-personality questions.");
+        return false;
+      }
+      var selectType = answerSelectionType;
+      if (!answerSelectionType) {
+        // Default single to avoid code breaking due to automatic version upgrade
+        console.warn('Field answerSelectionType should be defined since v0.3.0. Use single by default.');
+        selectType = answerSelectionType || 'single';
+      }
+      if (selectType === 'single' && !(typeof selectType === 'string' || selectType instanceof String)) {
+        console.error('answerSelectionType is single but expecting String in the field correctAnswer');
+        return false;
+      }
+      if (selectType === 'multiple' && !Array.isArray(correctAnswer)) {
+        console.error('answerSelectionType is multiple but expecting Array in the field correctAnswer');
+        return false;
+      }
+    }
+    return true;
+  };
+  if (!validateQuiz(quiz)) {
+    return null;
+  }
+  var appLocale = _objectSpread2(_objectSpread2({}, defaultLocale), quiz.appLocale);
+  return /*#__PURE__*/jsxRuntimeExports.jsxs("div", {
+    className: "react-quiz-container",
+    children: [!start && /*#__PURE__*/jsxRuntimeExports.jsxs("div", {
+      children: [/*#__PURE__*/jsxRuntimeExports.jsx("h2", {
+        children: quiz.quizTitle
+      }), /*#__PURE__*/jsxRuntimeExports.jsx("div", {
+        children: appLocale.landingHeaderText.replace('<questionLength>', nrOfQuestions)
+      }), quiz.quizSynopsis && /*#__PURE__*/jsxRuntimeExports.jsx("div", {
+        className: "quiz-synopsis",
+        children: quiz.quizSynopsis
+      }), /*#__PURE__*/jsxRuntimeExports.jsx("div", {
+        className: "startQuizWrapper",
+        children: /*#__PURE__*/jsxRuntimeExports.jsx("button", {
+          type: "button",
+          onClick: function onClick() {
+            return setStart(true);
+          },
+          className: "startQuizBtn btn",
+          children: appLocale.startQuizBtn
+        })
+      })]
+    }), start && /*#__PURE__*/jsxRuntimeExports.jsx(Core, {
+      questions: questions,
+      showDefaultResult: showDefaultResult,
+      onComplete: onComplete,
+      customResultPage: customResultPage,
+      showInstantFeedback: showInstantFeedback,
+      continueTillCorrect: continueTillCorrect,
+      revealAnswerOnSubmit: revealAnswerOnSubmit,
+      allowNavigation: allowNavigation,
+      appLocale: appLocale,
+      onQuestionSubmit: onQuestionSubmit,
+      timer: timer,
+      allowPauseTimer: allowPauseTimer
+    })]
+  });
+}
+
+export { Quiz as default };
+//# sourceMappingURL=index.es.js.map
