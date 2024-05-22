@@ -124,26 +124,19 @@ function Core({
     answerSelectionType = answerSelectionType || 'single';
 
     return answers.map((answer, index) => {
-      if (answerSelectionType === 'single') {
+      if (answerSelectionType === 'personality') {
+        // For personality type, you might want to apply a generic class or no class at all
+        answerBtnClassName = 'personality';
+      } else if (answerSelectionType === 'single') {
         // correctAnswer - is string
-        answerBtnCorrectClassName = `${index + 1}` === correctAnswer ? 'correct' : '';
-        answerBtnIncorrectClassName = `${userInputIndex}` !== correctAnswer
-          && `${index + 1}` === `${userInputIndex}` ? 'incorrect' : '';
-
-        if (userInputIndex === undefined && `${index + 1}` !== correctAnswer) {
-          answerBtnIncorrectClassName = 'unanswered';
-        }
+        const isCorrect = `${index + 1}` === correctAnswer;
+        const isUserAnswer = `${index + 1}` === `${userInputIndex}`;
+        answerBtnClassName = isCorrect ? 'correct' : (isUserAnswer ? 'incorrect' : '');
       } else {
         // correctAnswer - is array of numbers
-        answerBtnCorrectClassName = correctAnswer.includes(index + 1)
-          ? 'correct'
-          : '';
-        answerBtnIncorrectClassName = !correctAnswer.includes(index + 1)
-          && userInputIndex?.includes(index + 1) ? 'incorrect' : '';
-
-        if (userInputIndex === undefined && !correctAnswer.includes(index + 1)) {
-          answerBtnIncorrectClassName = 'unanswered';
-        }
+        const isCorrect = correctAnswer.includes(index + 1);
+        const isUserAnswer = userInputIndex?.includes(index + 1);
+        answerBtnClassName = isCorrect ? 'correct' : (isUserAnswer ? 'incorrect' : '');
       }
 
       return (
@@ -151,10 +144,10 @@ function Core({
           <button
             type="button"
             disabled
-            className={`answerBtn btn ${answerBtnCorrectClassName}${answerBtnIncorrectClassName}`}
+            className={`answerBtn btn ${answerBtnClassName}`}
           >
-            {questionType === 'text' && <span>{answer}</span>}
-            {questionType === 'photo' && <img src={answer} alt="answer" />}
+            {questionType === 'text' && <span>{answer.option}</span>}
+            {questionType === 'photo' && <img src={answer.option} alt="answer" />}
           </button>
         </div>
       );
@@ -307,8 +300,8 @@ function Core({
                 }`}
               onClick={() => (revealAnswerOnSubmit ? onSelectAnswer(index) : onClickAnswer(index))}
             >
-              {questionType === 'text' && <span>{answer}</span>}
-              {questionType === 'photo' && <img src={answer} alt="answer" />}
+              {questionType === 'text' && <span>{answer.option}</span>}
+              {questionType === 'photo' && <img src={answer.option} alt="answer" />}
             </button>
           )
           : (
