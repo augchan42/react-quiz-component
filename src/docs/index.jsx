@@ -13,18 +13,35 @@ function App() {
     <div style={{ margin: 'auto', width: '500px' }}>
       <Quiz
         quiz={quiz}
-        shuffle
-        shuffleAnswer
-        showInstantFeedback
+        // shuffle
+        // shuffleAnswer
+        // showInstantFeedback
       // continueTillCorrect
-        onComplete={setQuizResult}
-        onQuestionSubmit={(obj) => console.log('user question results:', obj)}
-        disableSynopsis
-        timer={60}
-        allowPauseTimer
+        // onComplete={setQuizResult}
+        // onQuestionSubmit={(obj) => console.log('user question results:', obj)}
+        // disableSynopsis
+        // timer={60}
+        // allowPauseTimer
       />
     </div>
   );
 }
 
 root.render(<App />);
+
+// return (
+//   <div style={{ margin: 'auto', width: '500px' }}>
+//     <Quiz
+//       quiz={quiz}
+//       shuffle
+//       shuffleAnswer
+//       showInstantFeedback
+//     // continueTillCorrect
+//       onComplete={setQuizResult}
+//       onQuestionSubmit={(obj) => console.log('user question results:', obj)}
+//       disableSynopsis
+//       timer={60}
+//       allowPauseTimer
+//     />
+//   </div>
+// );

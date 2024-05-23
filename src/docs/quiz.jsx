@@ -7,7 +7,7 @@ const segment = {
 const quiz = {
   quizTitle: 'I-Ching Personality Test',
   quizSynopsis: 'You will be asked questions that will try to find the hexagrams that best represent your personality.',
-  nrOfQuestions: '12',
+  nrOfQuestions: '2',
   questions: [
     {
       question: 'If you were offered the red pill or the blue pill, which would you choose?',
