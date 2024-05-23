@@ -94,6 +94,10 @@ function Core({
     setShowNextQuestionButton(false);
     setButtons({});
 
+    console.log("Current Question Index:", currentQuestionIdx);
+    console.log("User Input Length:", userInput.length);
+    console.log("Total Questions:", questions.length);
+    
     if (currentQuestionIdx + 1 === questions.length) {
       if (userInput.length !== questions.length) {
         alert('Quiz is incomplete');
