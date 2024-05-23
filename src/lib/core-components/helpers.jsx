@@ -87,6 +87,38 @@ export const checkAnswer = (index, correctAnswer, answerSelectionType, answers, 
     setIsCorrect(true);
     setIncorrectAnswer(false);
     setShowNextQuestionButton(true);
+    
+    const adjustedIndex = index - 1;
+    const selectedTrigram = answers[adjustedIndex].trigram;
+    
+    userInputCopy[currentQuestionIndex] = selectedTrigram; // Record the trigram of the user's choice
+    setUserInput(userInputCopy); // Update the userInput state
+    
+    // Disable all buttons after a choice is made to prevent changing answers
+    setButtons((prevState) => ({
+      ...prevState,
+      ...Object.keys(prevState).reduce((acc, key) => {
+        acc[key] = { ...prevState[key], disabled: true };
+        return acc;
+      }, {}),
+      [index - 1]: {
+        ...prevState[index - 1],
+        className: 'selected'  // Highlight the selected answer
+      }
+    }));
+
+    // Show the next question button if applicable
+    setShowNextQuestionButton(true);
+
+    // Optionally, if you track correct and incorrect indices, add to correct as there are no incorrect answers
+    if (correct.indexOf(currentQuestionIndex) < 0) {
+      correct.push(currentQuestionIndex);
+    }
+    setCorrect(correct);
+
+    // Log for debugging
+    console.log("Selected trigram: ", selectedTrigram);
+    console.log("Updated userInput: ", userInputCopy);
   } else {
     const maxNumberOfMultipleSelection = correctAnswer.length;
 
@@ -193,7 +225,11 @@ export const selectAnswer = (index, correctAnswer, answerSelectionType, answers,
 
   // Check if it's a personality quiz type
   if (answerSelectionType === 'personality') {
-    userInputCopy[currentQuestionIndex] = index; // Simply record the user's choice
+    // Adjust the index to match the array's zero-based indexing
+    const adjustedIndex = index - 1;
+    const selectedTrigram = answers[adjustedIndex].trigram;
+    console.log("selectedTrigram: ", selectedTrigram);
+    userInputCopy[currentQuestionIndex] = selectedTrigram; // Simply record the user's choice
 
     setButtons((prevState) => ({
       ...prevState,
@@ -204,6 +240,7 @@ export const selectAnswer = (index, correctAnswer, answerSelectionType, answers,
     }));
 
     setShowNextQuestionButton(true);
+    // setUserInput(userInputCopy); done below
   } else if (answerSelectionType === 'single') {
     correctAnswer = Number(correctAnswer);
     userInputCopy[currentQuestionIndex] = index;

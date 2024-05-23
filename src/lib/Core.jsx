@@ -117,17 +117,16 @@ function Core({
   const renderAnswerInResult = (question, userInputIndex) => {
     const { answers, correctAnswer, questionType } = question;
     let { answerSelectionType } = question;
-    let answerBtnCorrectClassName;
-    let answerBtnIncorrectClassName;
-    let answerBtnClassName;
 
     // Default single to avoid code breaking due to automatic version upgrade
     answerSelectionType = answerSelectionType || 'single';
 
     return answers.map((answer, index) => {
+      let answerBtnClassName = '';
+
       if (answerSelectionType === 'personality') {
-        // For personality type, you might want to apply a generic class or no class at all
-        answerBtnClassName = 'personality';
+        // Highlight the selected answer and grey out others
+        answerBtnClassName = answer.trigram === userInputIndex ? 'selected' : 'greyed-out';
       } else if (answerSelectionType === 'single') {
         // correctAnswer - is string
         const isCorrect = `${index + 1}` === correctAnswer;
@@ -149,6 +148,10 @@ function Core({
           >
             {questionType === 'text' && <span>{answer.option}</span>}
             {questionType === 'photo' && <img src={answer.option} alt="answer" />}
+            {/* Display trigram for personality type questions */}
+            {answerSelectionType === 'personality' && (
+              <span className="trigram"> ({answer.trigram})</span>
+            )}
           </button>
         </div>
       );
@@ -327,27 +330,45 @@ function Core({
     });
   };
 
-  const renderResult = () => (
-    <div className="card-body">
-      <h2>
-        {appLocale.resultPageHeaderText
-          .replace('<correctIndexLength>', correct.length)
-          .replace('<questionLength>', questions.length)}
-      </h2>
-      <h2>
-        {appLocale.resultPagePoint
-          .replace('<correctPoints>', correctPoints)
-          .replace('<totalPoints>', totalPoints)}
-      </h2>
-      <br />
-      <QuizResultFilter
-        filteredValue={filteredValue}
-        handleChange={handleChange}
-        appLocale={appLocale}
-      />
-      {renderQuizResultQuestions()}
-    </div>
-  );
+  const renderResult = () => {
+    // Compute the tally of trigrams
+    const trigramTally = userInput.reduce((acc, trigram) => {
+      if (trigram) { // Ensure the trigram is defined
+        acc[trigram] = (acc[trigram] || 0) + 1;
+      }
+      return acc;
+    }, {});
+
+    return (
+      <div className="card-body">
+        <h2>
+          {appLocale.resultPageHeaderText
+            .replace('<correctIndexLength>', correct.length)
+            .replace('<questionLength>', questions.length)}
+        </h2>
+        <h2>
+          {appLocale.resultPagePoint
+            .replace('<correctPoints>', correctPoints)
+            .replace('<totalPoints>', totalPoints)}
+        </h2>
+        <br />
+        <QuizResultFilter
+          filteredValue={filteredValue}
+          handleChange={handleChange}
+          appLocale={appLocale}
+        />
+        <div className="trigram-tally">
+          <h3>Trigram Tally:</h3>
+          <ul>
+            {Object.entries(trigramTally).map(([trigram, count]) => (
+              <li key={trigram}>{`${trigram}: ${count}`}</li>
+            ))}
+          </ul>
+        </div>
+        {renderQuizResultQuestions()}
+      </div>
+    );
+  };  
 
   useEffect(() => {
     let countdown;
