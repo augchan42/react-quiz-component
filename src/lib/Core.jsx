@@ -97,7 +97,7 @@ function Core({
     console.log("Current Question Index:", currentQuestionIdx);
     console.log("User Input Length:", userInput.length);
     console.log("Total Questions:", questions.length);
-    
+
     if (currentQuestionIdx + 1 === questions.length) {
       if (userInput.length !== questions.length) {
         alert('Quiz is incomplete');
@@ -178,7 +178,9 @@ function Core({
         <span className="number-of-selection">
           {pickNumberOfSelection.replace('<numberOfSelection>', numberOfSelection)}
         </span>
-        {segment && <span className="selection-tag segment">{segment}</span>}
+        {/* Do not render the segment for personality type questions */}
+        {segment && answerSelectionType !== 'personality' &&
+          <span className="selection-tag segment">{segment}</span>}
       </div>
     );
   };
@@ -372,7 +374,7 @@ function Core({
         {renderQuizResultQuestions()}
       </div>
     );
-  };  
+  };
 
   useEffect(() => {
     let countdown;
