@@ -33,6 +33,23 @@ function Core({
   const [questionSummary, setQuestionSummary] = useState(undefined);
   const [timeRemaining, setTimeRemaining] = useState(timer);
   const [isRunning, setIsRunning] = useState(true);
+  const [isPersonalityQuiz, setIsPersonalityQuiz] = useState(false);
+
+  const trigramTranslations = {
+    'Qian': 'Heaven - The Creative',
+    'Dui': 'Lake - The Joyous',
+    'Li': 'Fire - The Clinging',
+    'Zhen': 'Thunder - The Arousing',
+    'Xun': 'Wind - The Gentle',
+    'Kan': 'Water - The Abysmal',
+    'Gen': 'Mountain - Keeping Still',
+    'Kun': 'Earth The Receptive'
+  };
+
+  useEffect(() => {
+    // Example condition to determine if it's a personality quiz
+    setIsPersonalityQuiz(questions.some(question => question.answerSelectionType === 'personality'));
+  }, [questions]);
 
   useEffect(() => {
     setShowDefaultResult(showDefaultResult !== undefined ? showDefaultResult : true);
@@ -352,25 +369,36 @@ function Core({
             .replace('<correctIndexLength>', correct.length)
             .replace('<questionLength>', questions.length)}
         </h2>
-        <h2>
-          {appLocale.resultPagePoint
-            .replace('<correctPoints>', correctPoints)
-            .replace('<totalPoints>', totalPoints)}
-        </h2>
+        {!isPersonalityQuiz && (
+          <h2>
+            {appLocale.resultPagePoint
+              .replace('<correctPoints>', correctPoints)
+              .replace('<totalPoints>', totalPoints)}
+          </h2>
+        )
+        }
+
         <br />
-        <QuizResultFilter
-          filteredValue={filteredValue}
-          handleChange={handleChange}
-          appLocale={appLocale}
-        />
-        <div className="trigram-tally">
-          <h3>Trigram Tally:</h3>
-          <ul>
-            {Object.entries(trigramTally).map(([trigram, count]) => (
-              <li key={trigram}>{`${trigram}: ${count}`}</li>
-            ))}
-          </ul>
-        </div>
+        {!isPersonalityQuiz && (
+          <QuizResultFilter
+            filteredValue={filteredValue}
+            handleChange={handleChange}
+            appLocale={appLocale}
+          />
+        )
+        }
+        {isPersonalityQuiz && (
+          <div className="trigram-tally">
+            <h3>Trigram Tally:</h3>
+            <ul>
+              {Object.entries(trigramTally).map(([trigram, count]) => (
+                <li key={trigram}>
+                  {`${trigram}: ${count} (${trigramTranslations[trigram] || 'No translation available'})`}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
         {renderQuizResultQuestions()}
       </div>
     );

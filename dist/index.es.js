@@ -2387,6 +2387,26 @@ function Core(_ref) {
     _useState40 = _slicedToArray(_useState39, 2),
     isRunning = _useState40[0],
     setIsRunning = _useState40[1];
+  var _useState41 = useState(false),
+    _useState42 = _slicedToArray(_useState41, 2),
+    isPersonalityQuiz = _useState42[0],
+    setIsPersonalityQuiz = _useState42[1];
+  var trigramTranslations = {
+    'Qian': 'Heaven - The Creative',
+    'Dui': 'Lake - The Joyous',
+    'Li': 'Fire - The Clinging',
+    'Zhen': 'Thunder - The Arousing',
+    'Xun': 'Wind - The Gentle',
+    'Kan': 'Water - The Abysmal',
+    'Gen': 'Mountain - Keeping Still',
+    'Kun': 'Earth The Receptive'
+  };
+  useEffect(function () {
+    // Example condition to determine if it's a personality quiz
+    setIsPersonalityQuiz(questions.some(function (question) {
+      return question.answerSelectionType === 'personality';
+    }));
+  }, [questions]);
   useEffect(function () {
     setShowDefaultResult(showDefaultResult !== undefined ? showDefaultResult : true);
   }, [showDefaultResult]);
@@ -2675,13 +2695,13 @@ function Core(_ref) {
       className: "card-body",
       children: [/*#__PURE__*/jsxRuntimeExports.jsx("h2", {
         children: appLocale.resultPageHeaderText.replace('<correctIndexLength>', correct.length).replace('<questionLength>', questions.length)
-      }), /*#__PURE__*/jsxRuntimeExports.jsx("h2", {
+      }), !isPersonalityQuiz && /*#__PURE__*/jsxRuntimeExports.jsx("h2", {
         children: appLocale.resultPagePoint.replace('<correctPoints>', correctPoints).replace('<totalPoints>', totalPoints)
-      }), /*#__PURE__*/jsxRuntimeExports.jsx("br", {}), /*#__PURE__*/jsxRuntimeExports.jsx(QuizResultFilter, {
+      }), /*#__PURE__*/jsxRuntimeExports.jsx("br", {}), !isPersonalityQuiz && /*#__PURE__*/jsxRuntimeExports.jsx(QuizResultFilter, {
         filteredValue: filteredValue,
         handleChange: handleChange,
         appLocale: appLocale
-      }), /*#__PURE__*/jsxRuntimeExports.jsxs("div", {
+      }), isPersonalityQuiz && /*#__PURE__*/jsxRuntimeExports.jsxs("div", {
         className: "trigram-tally",
         children: [/*#__PURE__*/jsxRuntimeExports.jsx("h3", {
           children: "Trigram Tally:"
@@ -2691,7 +2711,7 @@ function Core(_ref) {
               trigram = _ref3[0],
               count = _ref3[1];
             return /*#__PURE__*/jsxRuntimeExports.jsx("li", {
-              children: "".concat(trigram, ": ").concat(count)
+              children: "".concat(trigram, ": ").concat(count, " (").concat(trigramTranslations[trigram] || 'No translation available', ")")
             }, trigram);
           })
         })]
@@ -2799,7 +2819,8 @@ var defaultLocale = {
   resultFilterUnanswered: 'Unanswered',
   nextQuestionBtn: 'Next',
   prevQuestionBtn: 'Prev',
-  resultPageHeaderText: 'You have completed the quiz. You got <correctIndexLength> out of <questionLength> questions.',
+  // resultPageHeaderText: 'You have completed the quiz. You got <correctIndexLength> out of <questionLength> questions.',
+  resultPageHeaderText: 'Thank you for answering all <questionLength> questions.',
   resultPagePoint: 'You scored <correctPoints> out of <totalPoints>.',
   pauseScreenDisplay: 'Test is paused. Clicked the Resume button to continue',
   timerTimeRemaining: 'Time Remaining',
