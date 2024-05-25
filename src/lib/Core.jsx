@@ -68,15 +68,19 @@ function Core({
   // Compute the tally of trigrams
   const trigramTally = userInput.reduce((acc, trigram) => {
     if (trigram) { // Ensure the trigram is defined
-      acc[trigram] = (acc[trigram] || 0) + 1;
+      if (!acc[trigram]) {
+        acc[trigram] = { count: 0, translation: trigramTranslations[trigram] || 'No translation available' };
+      }
+      acc[trigram].count += 1;
     }
     return acc;
   }, {});
-  
+
   useEffect(() => {
     if (endQuiz) {
-      setIsRunning(false);
-      if (isPersonalityQuiz) {       
+      setIsRunning(false);     
+
+      if (isPersonalityQuiz) {
         // For personality quizzes, we might just need user inputs or other relevant data
         const personalitySummary = {
           totalResponses: userInput.length,
@@ -376,7 +380,7 @@ function Core({
     });
   };
 
-  const renderResult = () => {    
+  const renderResult = () => {
 
     return (
       <div className="card-body">
@@ -407,9 +411,9 @@ function Core({
           <div className="trigram-tally">
             <h3>Trigram Tally:</h3>
             <ul>
-              {Object.entries(trigramTally).map(([trigram, count]) => (
+              {Object.entries(trigramTally).map(([trigram, details]) => (
                 <li key={trigram}>
-                  {`${trigram}: ${count} (${trigramTranslations[trigram] || 'No translation available'})`}
+                  {`${trigram}: ${details.count} (${details.translation})`}
                 </li>
               ))}
             </ul>

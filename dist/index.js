@@ -2425,7 +2425,13 @@ function Core(_ref) {
   var trigramTally = userInput.reduce(function (acc, trigram) {
     if (trigram) {
       // Ensure the trigram is defined
-      acc[trigram] = (acc[trigram] || 0) + 1;
+      if (!acc[trigram]) {
+        acc[trigram] = {
+          count: 0,
+          translation: trigramTranslations[trigram] || 'No translation available'
+        };
+      }
+      acc[trigram].count += 1;
     }
     return acc;
   }, {});
@@ -2727,9 +2733,9 @@ function Core(_ref) {
           children: Object.entries(trigramTally).map(function (_ref2) {
             var _ref3 = _slicedToArray(_ref2, 2),
               trigram = _ref3[0],
-              count = _ref3[1];
+              details = _ref3[1];
             return /*#__PURE__*/jsxRuntimeExports.jsx("li", {
-              children: "".concat(trigram, ": ").concat(count, " (").concat(trigramTranslations[trigram] || 'No translation available', ")")
+              children: "".concat(trigram, ": ").concat(details.count, " (").concat(details.translation, ")")
             }, trigram);
           })
         })]
