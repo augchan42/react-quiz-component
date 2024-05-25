@@ -204,11 +204,6 @@ const tallyResults = (userInput, questions) => {
   return results;
 };
 
-const onComplete = () => {
-  const finalResults = tallyResults(userInput);
-  console.log(finalResults); // Handle the results as needed
-};
-
 export const selectAnswer = (index, correctAnswer, answerSelectionType, answers, {
   userInput,
   currentQuestionIndex,

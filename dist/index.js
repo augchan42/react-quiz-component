@@ -2420,25 +2420,49 @@ function Core(_ref) {
     // Default single to avoid code breaking due to automatic version upgrade
     setAnswerSelectionType(answerSelectionType || 'single');
   }, [activeQuestion, currentQuestionIndex]);
+
+  // Compute the tally of trigrams
+  var trigramTally = userInput.reduce(function (acc, trigram) {
+    if (trigram) {
+      // Ensure the trigram is defined
+      acc[trigram] = (acc[trigram] || 0) + 1;
+    }
+    return acc;
+  }, {});
   require$$0.useEffect(function () {
     if (endQuiz) {
       setIsRunning(false);
-      var totalPointsTemp = 0;
-      var correctPointsTemp = 0;
-      for (var i = 0; i < questions.length; i += 1) {
-        var point = questions[i].point || 0;
-        if (typeof point === 'string' || point instanceof String) {
-          point = parseInt(point, 10);
+      if (isPersonalityQuiz) {
+        // For personality quizzes, we might just need user inputs or other relevant data
+        var personalitySummary = {
+          totalResponses: userInput.length,
+          responses: userInput,
+          questions: questions,
+          trigramTally: trigramTally
+        };
+        if (onComplete) {
+          console.log("Completing personality quiz with summary:", personalitySummary);
+          onComplete(personalitySummary);
         }
-        totalPointsTemp += point;
-        if (correct.includes(i)) {
-          correctPointsTemp += point;
+      } else {
+        // Standard quiz logic
+        var totalPointsTemp = 0;
+        var correctPointsTemp = 0;
+        for (var i = 0; i < questions.length; i += 1) {
+          var point = questions[i].point || 0;
+          if (typeof point === 'string' || point instanceof String) {
+            point = parseInt(point, 10);
+          }
+          totalPointsTemp += point;
+          if (correct.includes(i)) {
+            correctPointsTemp += point;
+          }
         }
+        setTotalPoints(totalPointsTemp);
+        setCorrectPoints(correctPointsTemp);
       }
-      setTotalPoints(totalPointsTemp);
-      setCorrectPoints(correctPointsTemp);
     }
-  }, [endQuiz]);
+  }, [endQuiz, isPersonalityQuiz, userInput, questions, onComplete]);
   require$$0.useEffect(function () {
     setQuestionSummary({
       numberOfQuestions: questions.length,
@@ -2685,14 +2709,6 @@ function Core(_ref) {
     });
   };
   var renderResult = function renderResult() {
-    // Compute the tally of trigrams
-    var trigramTally = userInput.reduce(function (acc, trigram) {
-      if (trigram) {
-        // Ensure the trigram is defined
-        acc[trigram] = (acc[trigram] || 0) + 1;
-      }
-      return acc;
-    }, {});
     return /*#__PURE__*/jsxRuntimeExports.jsxs("div", {
       className: "card-body",
       children: [/*#__PURE__*/jsxRuntimeExports.jsx("h2", {

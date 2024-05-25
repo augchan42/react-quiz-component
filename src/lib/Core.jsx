@@ -65,27 +65,50 @@ function Core({
     setAnswerSelectionType(answerSelectionType || 'single');
   }, [activeQuestion, currentQuestionIndex]);
 
+  // Compute the tally of trigrams
+  const trigramTally = userInput.reduce((acc, trigram) => {
+    if (trigram) { // Ensure the trigram is defined
+      acc[trigram] = (acc[trigram] || 0) + 1;
+    }
+    return acc;
+  }, {});
+  
   useEffect(() => {
     if (endQuiz) {
       setIsRunning(false);
-      let totalPointsTemp = 0;
-      let correctPointsTemp = 0;
-      for (let i = 0; i < questions.length; i += 1) {
-        let point = questions[i].point || 0;
-        if (typeof point === 'string' || point instanceof String) {
-          point = parseInt(point, 10);
+      if (isPersonalityQuiz) {       
+        // For personality quizzes, we might just need user inputs or other relevant data
+        const personalitySummary = {
+          totalResponses: userInput.length,
+          responses: userInput,
+          questions,
+          trigramTally
+        };
+        if (onComplete) {
+          console.log("Completing personality quiz with summary:", personalitySummary);
+          onComplete(personalitySummary);
         }
+      } else {
+        // Standard quiz logic
+        let totalPointsTemp = 0;
+        let correctPointsTemp = 0;
+        for (let i = 0; i < questions.length; i += 1) {
+          let point = questions[i].point || 0;
+          if (typeof point === 'string' || point instanceof String) {
+            point = parseInt(point, 10);
+          }
 
-        totalPointsTemp += point;
+          totalPointsTemp += point;
 
-        if (correct.includes(i)) {
-          correctPointsTemp += point;
+          if (correct.includes(i)) {
+            correctPointsTemp += point;
+          }
         }
+        setTotalPoints(totalPointsTemp);
+        setCorrectPoints(correctPointsTemp);
       }
-      setTotalPoints(totalPointsTemp);
-      setCorrectPoints(correctPointsTemp);
     }
-  }, [endQuiz]);
+  }, [endQuiz, isPersonalityQuiz, userInput, questions, onComplete]);
 
   useEffect(() => {
     setQuestionSummary({
@@ -353,14 +376,7 @@ function Core({
     });
   };
 
-  const renderResult = () => {
-    // Compute the tally of trigrams
-    const trigramTally = userInput.reduce((acc, trigram) => {
-      if (trigram) { // Ensure the trigram is defined
-        acc[trigram] = (acc[trigram] || 0) + 1;
-      }
-      return acc;
-    }, {});
+  const renderResult = () => {    
 
     return (
       <div className="card-body">

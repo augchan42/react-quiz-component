@@ -7,17 +7,21 @@ const container = document.getElementById('app');
 const root = createRoot(container);
 
 function App() {
-  const [quizResult, setQuizResult] = useState();
+  
+  const setQuizResult = (obj) => {
+    console.log("setQuizResult: ", obj);
+    // YOUR LOGIC GOES HERE
+  }
 
   return (
     <div style={{ margin: 'auto', width: '500px' }}>
       <Quiz
         quiz={quiz}
-        // shuffle
-        // shuffleAnswer
+        shuffle
+        shuffleAnswer
         // showInstantFeedback
       // continueTillCorrect
-        // onComplete={setQuizResult}
+        onComplete={setQuizResult}
         // onQuestionSubmit={(obj) => console.log('user question results:', obj)}
         // disableSynopsis
         // timer={60}
