@@ -20,7 +20,9 @@ function Quiz({
   allowPauseTimer,
 }) {
   const [start, setStart] = useState(false);
-  const [questions, setQuestions] = useState(quiz.questions);
+  // const [questions, setQuestions] = useState(quiz.questions);
+  const [questions, setQuestions] = useState([]);
+
   const nrOfQuestions = quiz.nrOfQuestions && quiz.nrOfQuestions < quiz.questions.length
     ? quiz.nrOfQuestions
     : quiz.questions.length;
@@ -61,6 +63,7 @@ function Quiz({
     });
     return newQuestions;
   };
+
   const shuffleQuestions = useCallback((q) => {
     for (let i = q.length - 1; i > 0; i -= 1) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -74,13 +77,41 @@ function Quiz({
   }, []);
 
   useEffect(() => {
-    let newQuestions = quiz.questions;
+    let newQuestions;
+    const storedQuizQuestions = localStorage.getItem('quizQuestions');
+    let restored = false;
 
-    if (shuffle) {
+    if (storedQuizQuestions) {
+      console.log("storedQuizQuestions found.", storedQuizQuestions);
+      try {
+        const parsedQuestions = JSON.parse(storedQuizQuestions);
+        console.log("parsedQuestions: ", parsedQuestions);
+
+        if (validateQuiz(parsedQuestions)) {
+          console.log("parsedQuestions passed validation");
+          newQuestions = parsedQuestions.questions;
+          restored = true;
+        } else {
+          localStorage.removeItem('quizQuestions');
+          newQuestions = quiz.questions;
+        }
+      } catch (error) {
+        restored = false;
+        localStorage.removeItem('quizQuestions');
+        newQuestions = quiz.questions;
+      }
+    } else {
+      console.log("storedQuizQuestions not found.");
+      newQuestions = quiz.questions;
+    }
+
+    if (shuffle && !restored) {
+      // console.log("validate called from shuffling questions");
       newQuestions = shuffleQuestions(newQuestions);
     }
 
-    if (shuffleAnswer) {
+    if (shuffleAnswer && !restored) {
+      // console.log("validate called from shuffling answers");
       newQuestions = shuffleAnswerSequence(newQuestions);
     }
 
@@ -90,11 +121,29 @@ function Quiz({
       questionIndex: index + 1,
     }));
     setQuestions(newQuestions);
+    if (!storedQuizQuestions) {
+      console.log("storing quiz questions", newQuestions);
+      localStorage.setItem('quizQuestions', JSON.stringify({ questions: newQuestions }));
+    }
   }, [start]);
 
+  // useEffect(() => {
+  //   if (questions.length > 0 ) {
+  //     localStorage.setItem('quizState', JSON.stringify({ questions }));
+  //     console.log("questions changed, saving them.", questions)
+  //   }
+  // }, [questions]);
+
   const validateQuiz = (q) => {
+
     if (!q) {
       console.error('Quiz object is required.');
+      return false;
+    }
+
+    // Check if the questions array is empty
+    if (!q.questions || q.questions.length === 0) {
+      console.error('Quiz must have at least one question.');
       return false;
     }
 
@@ -108,14 +157,14 @@ function Quiz({
       return false;
     }
 
-    for (let i = 0; i < questions.length; i += 1) {
+    for (let i = 0; i < q.questions.length; i += 1) {
       const {
         question,
         questionType,
         answerSelectionType,
         answers,
         correctAnswer,
-      } = questions[i];
+      } = q.questions[i];
       if (!question) {
         console.error("Field 'question' is required.");
         return false;

@@ -77,8 +77,36 @@ function Core({
   }, {});
 
   useEffect(() => {
+    const storedQuizState = localStorage.getItem('quizState');
+    console.log("quizState restored: ", storedQuizState);
+    if (storedQuizState) {
+      try {
+        const parsedQuizState = JSON.parse(storedQuizState);
+        const { userInput, currentQuestionIndex } = parsedQuizState;
+        setUserInput(userInput || []);
+        setCurrentQuestionIndex(currentQuestionIndex || 0);
+      } catch (error) {
+        console.error('Error parsing quiz state from localStorage:', error);
+      }
+    }
+  }, []); // Empty dependency array to run the effect only on component mount
+
+  useEffect(() => {
+    const quizState = {
+      userInput,
+      currentQuestionIndex,
+    };
+    localStorage.setItem('quizState', JSON.stringify(quizState));
+    console.log("Selections changed, saving them.", quizState);
+  }, [userInput, currentQuestionIndex]);
+
+  useEffect(() => {
     if (endQuiz) {
       setIsRunning(false);
+
+      localStorage.removeItem('quizState');
+      localStorage.removeItem('quizQuestions');
+      console.log("Quiz completed, cleared localStorage.");
 
       if (isPersonalityQuiz) {
         // For personality quizzes, we might just need user inputs or other relevant data

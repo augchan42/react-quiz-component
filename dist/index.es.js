@@ -2425,8 +2425,35 @@ function Core(_ref) {
     return acc;
   }, {});
   useEffect(function () {
+    var storedQuizState = localStorage.getItem('quizState');
+    console.log("quizState restored: ", storedQuizState);
+    if (storedQuizState) {
+      try {
+        var parsedQuizState = JSON.parse(storedQuizState);
+        var _userInput = parsedQuizState.userInput,
+          _currentQuestionIndex = parsedQuizState.currentQuestionIndex;
+        setUserInput(_userInput || []);
+        setCurrentQuestionIndex(_currentQuestionIndex || 0);
+      } catch (error) {
+        console.error('Error parsing quiz state from localStorage:', error);
+      }
+    }
+  }, []); // Empty dependency array to run the effect only on component mount
+
+  useEffect(function () {
+    var quizState = {
+      userInput: userInput,
+      currentQuestionIndex: currentQuestionIndex
+    };
+    localStorage.setItem('quizState', JSON.stringify(quizState));
+    console.log("Selections changed, saving them.", quizState);
+  }, [userInput, currentQuestionIndex]);
+  useEffect(function () {
     if (endQuiz) {
       setIsRunning(false);
+      localStorage.removeItem('quizState');
+      localStorage.removeItem('quizQuestions');
+      console.log("Quiz completed, cleared localStorage.");
       if (isPersonalityQuiz) {
         // For personality quizzes, we might just need user inputs or other relevant data
         var personalitySummary = {
@@ -2881,7 +2908,8 @@ function Quiz(_ref) {
     _useState2 = _slicedToArray(_useState, 2),
     start = _useState2[0],
     setStart = _useState2[1];
-  var _useState3 = useState(quiz.questions),
+  // const [questions, setQuestions] = useState(quiz.questions);
+  var _useState3 = useState([]),
     _useState4 = _slicedToArray(_useState3, 2),
     questions = _useState4[0],
     setQuestions = _useState4[1];
@@ -2940,11 +2968,37 @@ function Quiz(_ref) {
     if (disableSynopsis) setStart(true);
   }, []);
   useEffect(function () {
-    var newQuestions = quiz.questions;
-    if (shuffle) {
+    var newQuestions;
+    var storedQuizQuestions = localStorage.getItem('quizQuestions');
+    var restored = false;
+    if (storedQuizQuestions) {
+      console.log("storedQuizQuestions found.", storedQuizQuestions);
+      try {
+        var parsedQuestions = JSON.parse(storedQuizQuestions);
+        console.log("parsedQuestions: ", parsedQuestions);
+        if (validateQuiz(parsedQuestions)) {
+          console.log("parsedQuestions passed validation");
+          newQuestions = parsedQuestions.questions;
+          restored = true;
+        } else {
+          localStorage.removeItem('quizQuestions');
+          newQuestions = quiz.questions;
+        }
+      } catch (error) {
+        restored = false;
+        localStorage.removeItem('quizQuestions');
+        newQuestions = quiz.questions;
+      }
+    } else {
+      console.log("storedQuizQuestions not found.");
+      newQuestions = quiz.questions;
+    }
+    if (shuffle && !restored) {
+      // console.log("validate called from shuffling questions");
       newQuestions = shuffleQuestions(newQuestions);
     }
-    if (shuffleAnswer) {
+    if (shuffleAnswer && !restored) {
+      // console.log("validate called from shuffling answers");
       newQuestions = shuffleAnswerSequence(newQuestions);
     }
     newQuestions.length = nrOfQuestions;
@@ -2954,10 +3008,30 @@ function Quiz(_ref) {
       });
     });
     setQuestions(newQuestions);
+    if (!storedQuizQuestions) {
+      console.log("storing quiz questions", newQuestions);
+      localStorage.setItem('quizQuestions', JSON.stringify({
+        questions: newQuestions
+      }));
+    }
   }, [start]);
+
+  // useEffect(() => {
+  //   if (questions.length > 0 ) {
+  //     localStorage.setItem('quizState', JSON.stringify({ questions }));
+  //     console.log("questions changed, saving them.", questions)
+  //   }
+  // }, [questions]);
+
   var validateQuiz = function validateQuiz(q) {
     if (!q) {
       console.error('Quiz object is required.');
+      return false;
+    }
+
+    // Check if the questions array is empty
+    if (!q.questions || q.questions.length === 0) {
+      console.error('Quiz must have at least one question.');
       return false;
     }
     if (timer && typeof timer !== 'number' || timer < 1) {
@@ -2968,13 +3042,13 @@ function Quiz(_ref) {
       console.error('allowPauseTimer must be a Boolean');
       return false;
     }
-    for (var i = 0; i < questions.length; i += 1) {
-      var _questions$i = questions[i],
-        question = _questions$i.question,
-        questionType = _questions$i.questionType,
-        answerSelectionType = _questions$i.answerSelectionType,
-        answers = _questions$i.answers,
-        correctAnswer = _questions$i.correctAnswer;
+    for (var i = 0; i < q.questions.length; i += 1) {
+      var _q$questions$i = q.questions[i],
+        question = _q$questions$i.question,
+        questionType = _q$questions$i.questionType,
+        answerSelectionType = _q$questions$i.answerSelectionType,
+        answers = _q$questions$i.answers,
+        correctAnswer = _q$questions$i.correctAnswer;
       if (!question) {
         console.error("Field 'question' is required.");
         return false;
