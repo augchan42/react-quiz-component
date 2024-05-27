@@ -2662,15 +2662,6 @@ function Core(_ref) {
         setUserInput: setUserInput
       });
     };
-    var checkSelectedAnswer = function checkSelectedAnswer(index) {
-      if (userInput[questionIndex - 1] === undefined) {
-        return false;
-      }
-      if (answerSelectionType === 'single') {
-        return userInput[questionIndex - 1] === index;
-      }
-      return Array.isArray(userInput[questionIndex - 1]) && userInput[questionIndex - 1].includes(index);
-    };
 
     // Default single to avoid code breaking due to automatic version upgrade
     answerSelectionType = answerSelectionType || 'single';
@@ -2692,9 +2683,30 @@ function Core(_ref) {
         }) : /*#__PURE__*/jsxRuntimeExports.jsxs("button", {
           type: "button",
           onClick: function onClick() {
-            return revealAnswerOnSubmit ? onSelectAnswer(index) : onClickAnswer(index);
+            if (answerSelectionType === 'personality') {
+              if (userInput[questionIndex - 1] === answer.trigram) {
+                // Unselect the answer if it's already selected
+                setUserInput(function (prevUserInput) {
+                  var newUserInput = _toConsumableArray(prevUserInput);
+                  newUserInput[questionIndex - 1] = null;
+                  return newUserInput;
+                });
+              } else {
+                // Select the answer
+                setUserInput(function (prevUserInput) {
+                  var newUserInput = _toConsumableArray(prevUserInput);
+                  newUserInput[questionIndex - 1] = answer.trigram;
+                  return newUserInput;
+                });
+              }
+            } else {
+              // Handle other answer selection types
+              revealAnswerOnSubmit ? onSelectAnswer(index) : onClickAnswer(index);
+            }
           },
-          className: "answerBtn btn ".concat(allowNavigation && checkSelectedAnswer(index + 1) ? 'selected' : null),
+          className: "answerBtn btn ".concat(allowNavigation && userInput[questionIndex - 1] === answer.trigram ? 'selected' : '')
+          // className={`answerBtn btn ${(allowNavigation && checkSelectedAnswer(index + 1)) ? 'selected' : ''}`}
+          ,
           children: [questionType === 'text' && /*#__PURE__*/jsxRuntimeExports.jsx("span", {
             children: answer.option
           }), questionType === 'photo' && /*#__PURE__*/jsxRuntimeExports.jsx("img", {

@@ -78,7 +78,7 @@ function Core({
 
   useEffect(() => {
     if (endQuiz) {
-      setIsRunning(false);     
+      setIsRunning(false);
 
       if (isPersonalityQuiz) {
         // For personality quizzes, we might just need user inputs or other relevant data
@@ -332,6 +332,10 @@ function Core({
       if (userInput[questionIndex - 1] === undefined) {
         return false;
       }
+      if (answerSelectionType === 'personality') {
+        console.log("checkSelectedAnswer for personality");
+        return userInput[questionIndex - 1] === index;
+      }
       if (answerSelectionType === 'single') {
         return userInput[questionIndex - 1] === index;
       }
@@ -361,8 +365,30 @@ function Core({
           : (
             <button
               type="button"
-              onClick={() => (revealAnswerOnSubmit ? onSelectAnswer(index) : onClickAnswer(index))}
-              className={`answerBtn btn ${(allowNavigation && checkSelectedAnswer(index + 1)) ? 'selected' : null}`}
+              onClick={() => {
+                if (answerSelectionType === 'personality') {
+                  if (userInput[questionIndex - 1] === answer.trigram) {
+                    // Unselect the answer if it's already selected
+                    setUserInput((prevUserInput) => {
+                      const newUserInput = [...prevUserInput];
+                      newUserInput[questionIndex - 1] = null;
+                      return newUserInput;
+                    });
+                  } else {
+                    // Select the answer
+                    setUserInput((prevUserInput) => {
+                      const newUserInput = [...prevUserInput];
+                      newUserInput[questionIndex - 1] = answer.trigram;
+                      return newUserInput;
+                    });
+                  }
+                } else {
+                  // Handle other answer selection types
+                  revealAnswerOnSubmit ? onSelectAnswer(index) : onClickAnswer(index);
+                }
+              }}
+              className={`answerBtn btn ${(allowNavigation && userInput[questionIndex - 1] === answer.trigram) ? 'selected' : ''}`}
+              // className={`answerBtn btn ${(allowNavigation && checkSelectedAnswer(index + 1)) ? 'selected' : ''}`}
             >
               {questionType === 'text' && <span>{answer.option}</span>}
               {questionType === 'photo' && <img src={answer.option} alt="answer" />}
