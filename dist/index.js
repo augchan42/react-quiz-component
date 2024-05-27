@@ -2384,6 +2384,10 @@ function Core(_ref) {
     _useState42 = _slicedToArray(_useState41, 2),
     isPersonalityQuiz = _useState42[0],
     setIsPersonalityQuiz = _useState42[1];
+  var _useState43 = require$$0.useState(false),
+    _useState44 = _slicedToArray(_useState43, 2),
+    quizStateRestored = _useState44[0],
+    setQuizStateRestored = _useState44[1];
   var trigramTranslations = {
     'Qian': 'Heaven - The Creative',
     'Dui': 'Lake - The Joyous',
@@ -2436,6 +2440,7 @@ function Core(_ref) {
           _currentQuestionIndex = parsedQuizState.currentQuestionIndex;
         setUserInput(_userInput || []);
         setCurrentQuestionIndex(_currentQuestionIndex || 0);
+        setQuizStateRestored(true); // Set quizStateRestored to true after restoring the state
       } catch (error) {
         console.error('Error parsing quiz state from localStorage:', error);
       }
@@ -2443,12 +2448,14 @@ function Core(_ref) {
   }, []); // Empty dependency array to run the effect only on component mount
 
   require$$0.useEffect(function () {
-    var quizState = {
-      userInput: userInput,
-      currentQuestionIndex: currentQuestionIndex
-    };
-    localStorage.setItem('quizState', JSON.stringify(quizState));
-    console.log("Selections changed, saving them.", quizState);
+    if (quizStateRestored) {
+      var quizState = {
+        userInput: userInput,
+        currentQuestionIndex: currentQuestionIndex
+      };
+      localStorage.setItem('quizState', JSON.stringify(quizState));
+      console.log("Selections changed, saving them.", quizState);
+    }
   }, [userInput, currentQuestionIndex]);
   require$$0.useEffect(function () {
     if (endQuiz) {

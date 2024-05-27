@@ -34,6 +34,7 @@ function Core({
   const [timeRemaining, setTimeRemaining] = useState(timer);
   const [isRunning, setIsRunning] = useState(true);
   const [isPersonalityQuiz, setIsPersonalityQuiz] = useState(false);
+  const [quizStateRestored, setQuizStateRestored] = useState(false);
 
   const trigramTranslations = {
     'Qian': 'Heaven - The Creative',
@@ -85,6 +86,7 @@ function Core({
         const { userInput, currentQuestionIndex } = parsedQuizState;
         setUserInput(userInput || []);
         setCurrentQuestionIndex(currentQuestionIndex || 0);
+        setQuizStateRestored(true); // Set quizStateRestored to true after restoring the state
       } catch (error) {
         console.error('Error parsing quiz state from localStorage:', error);
       }
@@ -92,12 +94,14 @@ function Core({
   }, []); // Empty dependency array to run the effect only on component mount
 
   useEffect(() => {
-    const quizState = {
-      userInput,
-      currentQuestionIndex,
-    };
-    localStorage.setItem('quizState', JSON.stringify(quizState));
-    console.log("Selections changed, saving them.", quizState);
+    if (quizStateRestored) {
+      const quizState = {
+        userInput,
+        currentQuestionIndex,
+      };
+      localStorage.setItem('quizState', JSON.stringify(quizState));
+      console.log("Selections changed, saving them.", quizState);
+    }
   }, [userInput, currentQuestionIndex]);
 
   useEffect(() => {
