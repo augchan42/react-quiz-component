@@ -59,15 +59,6 @@ function _toPropertyKey(t) {
   var i = _toPrimitive(t, "string");
   return "symbol" == typeof i ? i : i + "";
 }
-function _typeof(o) {
-  "@babel/helpers - typeof";
-
-  return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) {
-    return typeof o;
-  } : function (o) {
-    return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
-  }, _typeof(o);
-}
 function _defineProperty(obj, key, value) {
   key = _toPropertyKey(key);
   if (key in obj) {
@@ -2328,9 +2319,9 @@ function Core(_ref) {
     currentQuestionIndex = _useState10[0],
     setCurrentQuestionIndex = _useState10[1];
   var _useState11 = useState({}),
-    _useState12 = _slicedToArray(_useState11, 2),
-    buttons = _useState12[0],
-    setButtons = _useState12[1];
+    _useState12 = _slicedToArray(_useState11, 2);
+    _useState12[0];
+    var setButtons = _useState12[1];
   var _useState13 = useState([]),
     _useState14 = _slicedToArray(_useState13, 2),
     correct = _useState14[0],
@@ -2572,17 +2563,6 @@ function Core(_ref) {
       })]
     });
   };
-  var isCorrectCheck = function isCorrectCheck(index, correctAnswerIndex) {
-    if (typeof correctAnswerIndex === 'string') {
-      return index === Number(correctAnswerIndex);
-    }
-    if (_typeof(correctAnswerIndex) === 'object') {
-      return correctAnswerIndex.find(function (element) {
-        return element === index;
-      }) !== undefined;
-    }
-    return false;
-  };
   var renderQuizResultQuestions = useCallback(function () {
     var filteredQuestions;
     var filteredUserInput;
@@ -2665,20 +2645,7 @@ function Core(_ref) {
     answerSelectionType = answerSelectionType || 'single';
     return answers.map(function (answer, index) {
       return /*#__PURE__*/jsxRuntimeExports.jsx(Fragment, {
-        children: answerButtons[index] !== undefined ? /*#__PURE__*/jsxRuntimeExports.jsxs("button", {
-          type: "button",
-          disabled: answerButtons[index].disabled || false,
-          className: "".concat(answerButtons[index].className, " answerBtn btn ").concat(isCorrectCheck(index + 1, correctAnswer) && showInstantFeedback ? 'correct' : ''),
-          onClick: function onClick() {
-            return revealAnswerOnSubmit ? onSelectAnswer(index) : onClickAnswer(index);
-          },
-          children: [questionType === 'text' && /*#__PURE__*/jsxRuntimeExports.jsx("span", {
-            children: answer.option
-          }), questionType === 'photo' && /*#__PURE__*/jsxRuntimeExports.jsx("img", {
-            src: answer.option,
-            alt: "answer"
-          })]
-        }) : /*#__PURE__*/jsxRuntimeExports.jsxs("button", {
+        children: /*#__PURE__*/jsxRuntimeExports.jsxs("button", {
           type: "button",
           onClick: function onClick() {
             if (answerSelectionType === 'personality') {
@@ -2702,9 +2669,7 @@ function Core(_ref) {
               revealAnswerOnSubmit ? onSelectAnswer(index) : onClickAnswer(index);
             }
           },
-          className: "answerBtn btn ".concat(allowNavigation && userInput[questionIndex - 1] === answer.trigram ? 'selected' : '')
-          // className={`answerBtn btn ${(allowNavigation && checkSelectedAnswer(index + 1)) ? 'selected' : ''}`}
-          ,
+          className: "answerBtn btn ".concat(userInput[questionIndex - 1] === answer.trigram ? 'selected' : ''),
           children: [questionType === 'text' && /*#__PURE__*/jsxRuntimeExports.jsx("span", {
             children: answer.option
           }), questionType === 'photo' && /*#__PURE__*/jsxRuntimeExports.jsx("img", {
@@ -2817,9 +2782,9 @@ function Core(_ref) {
             onQuestionSubmit: onQuestionSubmit,
             userAnswer: _toConsumableArray(userInput).pop()
           })
-        }), activeQuestion && renderAnswers(activeQuestion, buttons), (showNextQuestionButton || allowNavigation) && /*#__PURE__*/jsxRuntimeExports.jsxs("div", {
+        }), activeQuestion && renderAnswers(activeQuestion), (showNextQuestionButton || isPersonalityQuiz || allowNavigation) && /*#__PURE__*/jsxRuntimeExports.jsxs("div", {
           className: "questionBtnContainer",
-          children: [allowNavigation && currentQuestionIndex > 0 && /*#__PURE__*/jsxRuntimeExports.jsx("button", {
+          children: [(isPersonalityQuiz || allowNavigation) && currentQuestionIndex > 0 && /*#__PURE__*/jsxRuntimeExports.jsx("button", {
             onClick: function onClick() {
               return nextQuestion(currentQuestionIndex - 2);
             },

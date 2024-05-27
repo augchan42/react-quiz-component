@@ -347,53 +347,35 @@ function Core({
 
     return answers.map((answer, index) => (
       <Fragment key={nanoid()}>
-        {(answerButtons[index] !== undefined)
-          ? (
-            <button
-              type="button"
-              disabled={answerButtons[index].disabled || false}
-              className={`${answerButtons[index].className} answerBtn btn ${isCorrectCheck(index + 1, correctAnswer) && showInstantFeedback
-                ? 'correct'
-                : ''
-                }`}
-              onClick={() => (revealAnswerOnSubmit ? onSelectAnswer(index) : onClickAnswer(index))}
-            >
-              {questionType === 'text' && <span>{answer.option}</span>}
-              {questionType === 'photo' && <img src={answer.option} alt="answer" />}
-            </button>
-          )
-          : (
-            <button
-              type="button"
-              onClick={() => {
-                if (answerSelectionType === 'personality') {
-                  if (userInput[questionIndex - 1] === answer.trigram) {
-                    // Unselect the answer if it's already selected
-                    setUserInput((prevUserInput) => {
-                      const newUserInput = [...prevUserInput];
-                      newUserInput[questionIndex - 1] = null;
-                      return newUserInput;
-                    });
-                  } else {
-                    // Select the answer
-                    setUserInput((prevUserInput) => {
-                      const newUserInput = [...prevUserInput];
-                      newUserInput[questionIndex - 1] = answer.trigram;
-                      return newUserInput;
-                    });
-                  }
-                } else {
-                  // Handle other answer selection types
-                  revealAnswerOnSubmit ? onSelectAnswer(index) : onClickAnswer(index);
-                }
-              }}
-              className={`answerBtn btn ${(allowNavigation && userInput[questionIndex - 1] === answer.trigram) ? 'selected' : ''}`}
-              // className={`answerBtn btn ${(allowNavigation && checkSelectedAnswer(index + 1)) ? 'selected' : ''}`}
-            >
-              {questionType === 'text' && <span>{answer.option}</span>}
-              {questionType === 'photo' && <img src={answer.option} alt="answer" />}
-            </button>
-          )}
+        <button
+          type="button"
+          onClick={() => {
+            if (answerSelectionType === 'personality') {
+              if (userInput[questionIndex - 1] === answer.trigram) {
+                // Unselect the answer if it's already selected
+                setUserInput((prevUserInput) => {
+                  const newUserInput = [...prevUserInput];
+                  newUserInput[questionIndex - 1] = null;
+                  return newUserInput;
+                });
+              } else {
+                // Select the answer
+                setUserInput((prevUserInput) => {
+                  const newUserInput = [...prevUserInput];
+                  newUserInput[questionIndex - 1] = answer.trigram;
+                  return newUserInput;
+                });
+              }
+            } else {
+              // Handle other answer selection types
+              revealAnswerOnSubmit ? onSelectAnswer(index) : onClickAnswer(index);
+            }
+          }}
+          className={`answerBtn btn ${userInput[questionIndex - 1] === answer.trigram ? 'selected' : ''}`}
+        >
+          {questionType === 'text' && <span>{answer.option}</span>}
+          {questionType === 'photo' && <img src={answer.option} alt="answer" />}
+        </button>
       </Fragment>
     ));
   };
@@ -546,9 +528,9 @@ function Core({
                 />
               </div>
               {activeQuestion && renderAnswers(activeQuestion, buttons)}
-              {(showNextQuestionButton || allowNavigation) && (
+              {(showNextQuestionButton || (isPersonalityQuiz || allowNavigation)) && (
                 <div className="questionBtnContainer">
-                  {allowNavigation && currentQuestionIndex > 0 && (
+                  {(isPersonalityQuiz || allowNavigation) && currentQuestionIndex > 0 && (
                     <button
                       onClick={() => nextQuestion(currentQuestionIndex - 2)}
                       className="prevQuestionBtn btn"
