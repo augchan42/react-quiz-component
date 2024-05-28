@@ -2448,6 +2448,10 @@ function Core(_ref) {
   }, []); // Empty dependency array to run the effect only on component mount
 
   require$$0.useEffect(function () {
+    console.log("useEffect [userInput, currentQuestionIndex] triggered");
+    console.log("quizStateRestored:", quizStateRestored);
+    console.log("userInput:", userInput);
+    console.log("currentQuestionIndex:", currentQuestionIndex);
     if (quizStateRestored) {
       var quizState = {
         userInput: userInput,
