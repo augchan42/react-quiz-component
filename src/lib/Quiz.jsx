@@ -73,7 +73,14 @@ function Quiz({
   }, []);
 
   useEffect(() => {
+    console.log("useEffect []");
     if (disableSynopsis) setStart(true);
+    const storedQuizState = localStorage.getItem('quizState');
+    console.log("useEffect [] storedQuizState: ", storedQuizState);
+    if (storedQuizState) {
+      console.log("quizState exists, starting quiz for user.", storedQuizState);
+      setStart(true); // Automatically start the quiz if a valid state is found
+    }
   }, []);
 
   useEffect(() => {
@@ -82,7 +89,7 @@ function Quiz({
     let restored = false;
 
     if (storedQuizQuestions) {
-      console.log("storedQuizQuestions found.", storedQuizQuestions);
+      console.log("storedQuizQuestions found.");
       try {
         const parsedQuestions = JSON.parse(storedQuizQuestions);
         console.log("parsedQuestions: ", parsedQuestions);
