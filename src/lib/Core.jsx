@@ -90,6 +90,8 @@ function Core({
       } catch (error) {
         console.error('Error parsing quiz state from localStorage:', error);
       }
+    } else {
+      setQuizStateRestored(true);
     }
   }, []); // Empty dependency array to run the effect only on component mount
 
@@ -99,7 +101,7 @@ function Core({
     console.log("userInput:", userInput);
     console.log("currentQuestionIndex:", currentQuestionIndex);
 
-    if (quizStateRestored) {
+    if (quizStateRestored && (userInput.length > 0 || currentQuestionIndex > 0)) {
       const quizState = {
         userInput,
         currentQuestionIndex,
