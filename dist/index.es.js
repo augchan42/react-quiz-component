@@ -2442,6 +2442,8 @@ function Core(_ref) {
       } catch (error) {
         console.error('Error parsing quiz state from localStorage:', error);
       }
+    } else {
+      setQuizStateRestored(true);
     }
   }, []); // Empty dependency array to run the effect only on component mount
 
@@ -2450,7 +2452,7 @@ function Core(_ref) {
     console.log("quizStateRestored:", quizStateRestored);
     console.log("userInput:", userInput);
     console.log("currentQuestionIndex:", currentQuestionIndex);
-    if (quizStateRestored) {
+    if (quizStateRestored && (userInput.length > 0 || currentQuestionIndex > 0)) {
       var quizState = {
         userInput: userInput,
         currentQuestionIndex: currentQuestionIndex
@@ -2458,7 +2460,7 @@ function Core(_ref) {
       localStorage.setItem('quizState', JSON.stringify(quizState));
       console.log("Selections changed, saving them.", quizState);
     }
-  }, [userInput, currentQuestionIndex]);
+  }, [userInput, currentQuestionIndex, quizStateRestored]);
   useEffect(function () {
     if (endQuiz) {
       setIsRunning(false);
