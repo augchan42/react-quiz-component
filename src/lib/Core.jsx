@@ -109,7 +109,7 @@ function Core({
       localStorage.setItem('quizState', JSON.stringify(quizState));
       console.log("Selections changed, saving them.", quizState);
     }
-  }, [userInput, currentQuestionIndex]);
+  }, [userInput, currentQuestionIndex, quizStateRestored]);
 
   useEffect(() => {
     if (endQuiz) {
