@@ -2297,7 +2297,8 @@ function Core(_ref) {
     allowNavigation = _ref.allowNavigation,
     onQuestionSubmit = _ref.onQuestionSubmit,
     timer = _ref.timer,
-    allowPauseTimer = _ref.allowPauseTimer;
+    allowPauseTimer = _ref.allowPauseTimer,
+    allowCancel = _ref.allowCancel;
   var _useState = useState(false),
     _useState2 = _slicedToArray(_useState, 2),
     incorrectAnswer = _useState2[0],
@@ -2394,7 +2395,7 @@ function Core(_ref) {
     'Xun': 'Wind - The Gentle',
     'Kan': 'Water - The Abysmal',
     'Gen': 'Mountain - Keeping Still',
-    'Kun': 'Earth The Receptive'
+    'Kun': 'Earth - The Receptive'
   };
   useEffect(function () {
     // Example condition to determine if it's a personality quiz
@@ -2434,11 +2435,13 @@ function Core(_ref) {
     if (storedQuizState) {
       try {
         var parsedQuizState = JSON.parse(storedQuizState);
-        var _userInput = parsedQuizState.userInput,
+        var _correct = parsedQuizState.correct,
+          _userInput = parsedQuizState.userInput,
           _currentQuestionIndex = parsedQuizState.currentQuestionIndex;
         setUserInput(_userInput || []);
         setCurrentQuestionIndex(_currentQuestionIndex || 0);
-        setQuizStateRestored(true); // Set quizStateRestored to true after restoring the state
+        setQuizStateRestored(true);
+        setCorrect(_correct); // Set array of 'correct' answers
       } catch (error) {
         console.error('Error parsing quiz state from localStorage:', error);
       }
@@ -2452,15 +2455,19 @@ function Core(_ref) {
     console.log("quizStateRestored:", quizStateRestored);
     console.log("userInput:", userInput);
     console.log("currentQuestionIndex:", currentQuestionIndex);
+    console.log("correct array:", correct);
+    console.log("isRunning:", isRunning);
+    console.log("activeQuestion:", activeQuestion);
     if (quizStateRestored && (userInput.length > 0 || currentQuestionIndex > 0)) {
       var quizState = {
         userInput: userInput,
-        currentQuestionIndex: currentQuestionIndex
+        currentQuestionIndex: currentQuestionIndex,
+        correct: correct
       };
       localStorage.setItem('quizState', JSON.stringify(quizState));
       console.log("Selections changed, saving them.", quizState);
     }
-  }, [userInput, currentQuestionIndex, quizStateRestored]);
+  }, [userInput, currentQuestionIndex, quizStateRestored, correct]);
   useEffect(function () {
     if (endQuiz) {
       setIsRunning(false);
@@ -2606,25 +2613,39 @@ function Core(_ref) {
   var renderQuizResultQuestions = useCallback(function () {
     var filteredQuestions;
     var filteredUserInput;
-    if (filteredValue !== 'all') {
-      var targetQuestions = unanswered;
-      if (filteredValue === 'correct') {
-        targetQuestions = correct;
-      } else if (filteredValue === 'incorrect') {
-        targetQuestions = incorrect;
+    if (isPersonalityQuiz) {
+      filteredQuestions = questions.filter(function (question, index) {
+        return userInput[index] !== undefined && userInput[index] !== null;
+      });
+      filteredUserInput = userInput.filter(function (input) {
+        return input !== undefined && input !== null;
+      });
+    } else {
+      if (filteredValue !== 'all') {
+        var targetQuestions = unanswered;
+        if (filteredValue === 'correct') {
+          targetQuestions = correct;
+        } else if (filteredValue === 'incorrect') {
+          targetQuestions = incorrect;
+        }
+        filteredQuestions = questions.filter(function (_, index) {
+          return targetQuestions.indexOf(index) !== -1;
+        });
+        filteredUserInput = userInput.filter(function (_, index) {
+          return targetQuestions.indexOf(index) !== -1;
+        });
       }
-      filteredQuestions = questions.filter(function (_, index) {
-        return targetQuestions.indexOf(index) !== -1;
-      });
-      filteredUserInput = userInput.filter(function (_, index) {
-        return targetQuestions.indexOf(index) !== -1;
-      });
     }
     return (filteredQuestions || questions).map(function (question, index) {
       var userInputIndex = filteredUserInput ? filteredUserInput[index] : userInput[index];
 
       // Default single to avoid code breaking due to automatic version upgrade
       var answerSelectionType = question.answerSelectionType || 'single';
+
+      // Check if the question is answered
+      if (userInputIndex === undefined || userInputIndex === null) {
+        return null;
+      }
       return /*#__PURE__*/jsxRuntimeExports.jsxs("div", {
         className: "result-answer-wrapper",
         children: [/*#__PURE__*/jsxRuntimeExports.jsx("h3", {
@@ -2643,6 +2664,7 @@ function Core(_ref) {
     });
   }, [endQuiz, filteredValue]);
   var renderAnswers = function renderAnswers(question, answerButtons) {
+    console.log("calling renderAnswers");
     var answers = question.answers,
       correctAnswer = question.correctAnswer,
       questionType = question.questionType,
@@ -2730,10 +2752,14 @@ function Core(_ref) {
     });
   };
   var renderResult = function renderResult() {
+    // Count non-null entries in userInput
+    var nonNullCount = userInput.filter(function (input) {
+      return input !== null;
+    }).length;
     return /*#__PURE__*/jsxRuntimeExports.jsxs("div", {
       className: "card-body",
       children: [/*#__PURE__*/jsxRuntimeExports.jsx("h2", {
-        children: appLocale.resultPageHeaderText.replace('<correctIndexLength>', correct.length).replace('<questionLength>', questions.length)
+        children: appLocale.resultPageHeaderText.replace('<numAnswered>', nonNullCount).replace('<questionLength>', questions.length)
       }), !isPersonalityQuiz && /*#__PURE__*/jsxRuntimeExports.jsx("h2", {
         children: appLocale.resultPagePoint.replace('<correctPoints>', correctPoints).replace('<totalPoints>', totalPoints)
       }), /*#__PURE__*/jsxRuntimeExports.jsx("br", {}), !isPersonalityQuiz && /*#__PURE__*/jsxRuntimeExports.jsx(QuizResultFilter, {
@@ -2787,6 +2813,11 @@ function Core(_ref) {
     setEndQuiz(true);
     getUnansweredQuestions();
   };
+  var handleCancelQuiz = function handleCancelQuiz() {
+    // Reset quiz state
+    // rest of cleanup is done in useEffect with endquiz
+    setEndQuiz(true);
+  };
   return /*#__PURE__*/jsxRuntimeExports.jsxs("div", {
     className: "questionWrapper",
     children: [timer && !isRunning && /*#__PURE__*/jsxRuntimeExports.jsxs("div", {
@@ -2805,6 +2836,11 @@ function Core(_ref) {
           className: "timerBtn",
           onClick: toggleTimer,
           children: isRunning ? appLocale.pauseScreenPause : appLocale.pauseScreenResume
+        }), allowCancel && /*#__PURE__*/jsxRuntimeExports.jsx("button", {
+          type: "button",
+          onClick: handleCancelQuiz,
+          className: "cancelQuizBtn btn",
+          children: "Cancel Quiz"
         })]
       }), isRunning ? /*#__PURE__*/jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, {
         children: [/*#__PURE__*/jsxRuntimeExports.jsx("h3", {
@@ -2858,8 +2894,10 @@ var defaultLocale = {
   resultFilterUnanswered: 'Unanswered',
   nextQuestionBtn: 'Next',
   prevQuestionBtn: 'Prev',
+  welcomeText: 'Welcome <userName>.',
   // resultPageHeaderText: 'You have completed the quiz. You got <correctIndexLength> out of <questionLength> questions.',
-  resultPageHeaderText: 'Thank you for answering all <questionLength> questions.',
+  // resultPageHeaderText: 'Thank you for answering all <questionLength> questions.',
+  resultPageHeaderText: 'You answered <numAnswered> out of <questionLength> questions.',
   resultPagePoint: 'You scored <correctPoints> out of <totalPoints>.',
   pauseScreenDisplay: 'Test is paused. Clicked the Resume button to continue',
   timerTimeRemaining: 'Time Remaining',
@@ -2899,11 +2937,12 @@ function styleInject(css, ref) {
   }
 }
 
-var css_248z = ".react-quiz-container{margin:20px;max-width:500px}.react-quiz-container .startQuizWrapper{margin-top:10px}.react-quiz-container .btn{background-image:none;border:1px solid transparent;cursor:pointer;font-weight:600;margin-bottom:0;padding:11px 12px;text-align:center;touch-action:manipulation;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;white-space:nowrap}.react-quiz-container .questionWrapper .btn{border:1px solid #e8e8e8;border-radius:4px;display:block;margin-bottom:10px;margin-top:10px;text-align:unset;white-space:normal}.react-quiz-container .questionWrapper .btn.correct,.timerBtn{background:green;color:#fff}.timerBtn{border:0!important;border-radius:10px;cursor:pointer;float:right;padding:5px;position:relative;top:-35px;width:80px}.timerPauseScreen{font-size:30px}.react-quiz-container .questionModal .alert{border:1px solid transparent;border-radius:2px;color:#fff;margin-bottom:21px;padding:20px}.react-quiz-container .correct{background:green}.react-quiz-container .incorrect{background:red;color:#fff}.react-quiz-container .unanswered{background:grey;color:#fff}.react-quiz-container .answerBtn,.react-quiz-container .questionWrapper img{width:100%}.react-quiz-container .selected{background:#007bff;color:#fff}.react-quiz-container .startQuizWrapper .startQuizBtn{background-color:#fff;border:1px solid #d9d9d9;border-radius:2px;color:rgba(0,0,0,.65);line-height:1.35135}.react-quiz-container .result-answer-wrapper{border:1px solid #e8e8e8;border-bottom-left-radius:5px;border-bottom-right-radius:5px;margin-bottom:20px}.react-quiz-container .result-answer-wrapper h3{background-color:#fafafa;border-top-left-radius:5px;border-top-right-radius:5px;color:rgba(0,0,0,.9);margin:0;opacity:.8;padding:10px}.react-quiz-container .result-answer-wrapper .explanation{border:1px solid #e8e8e8;margin:0 20px 20px;padding:20px}.react-quiz-container .result-answer-wrapper .tag-container{margin:20px}.react-quiz-container .result-answer{padding:0 20px}.react-quiz-container .quiz-synopsis{margin:15px 0}.react-quiz-container .tag-container{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:20px;margin-top:20px}.react-quiz-container .number-of-selection,.react-quiz-container .selection-tag{border-radius:5px;color:#fff;padding:7px}.react-quiz-container .number-of-selection{background:#673ab7;margin-left:5px}.react-quiz-container .selection-tag.single{background:#3f51b5}.react-quiz-container .selection-tag.multiple{background:#ff9800}.react-quiz-container .selection-tag.segment{background:#3db4b9;margin-left:5px}.react-quiz-container .questionBtnContainer{display:flex;justify-content:space-between}.react-quiz-container .quiz-result-filter{bottom:15px;position:relative;width:120px;.filter-dropdown-select{background-color:#fcfcfc;border:2px solid #c2c5c7;border-radius:7px;bottom:10px;color:#333;cursor:pointer;height:12px;margin-top:2px;padding:8px;position:relative;text-transform:capitalize}.filter-dropdown-select:after{color:#a5a5a5;content:\"▼\";position:absolute;right:10px;top:57%;transform:translateY(-50%);transition:all .3s ease}.filter-dropdown-select:hover{border:2px solid #51aae6;box-shadow:0 0 6px rgba(109,179,250,.5)}.dropdown-options{background-color:#fcfcfc;border-radius:10px;box-shadow:0 0 10px hsla(210,2%,56%,.5);left:0;list-style:none;margin:0;padding:0;position:absolute;top:85%;width:100%;z-index:1}.filter-dropdown-select.open{border:2px solid #51aae6;box-shadow:0 0 6px rgba(109,179,250,.5)}.dropdown-options .dropdown-options-item{cursor:pointer;padding:10px}.dropdown-options .dropdown-options-item:hover{background-color:hsla(0,0%,89%,.852);border-radius:5px}.dropdown-options .dropdown-options-item:focus{background-color:#d7f1f9;font-weight:700}.filter-dropdown-select .selected-option.selected-open{color:#c6c2c2;font-weight:lighter}.filter-dropdown-select .selected-option{bottom:2px;position:relative}.filter-dropdown-select:focus+.dropdown-options{max-height:200px}.dropdown-options .dropdown-options-item.selected{background-color:#d7f1f9;color:#333;font-weight:700}.dropdown-options.open{max-height:200px}}";
+var css_248z = ".react-quiz-container{margin:20px;max-width:500px}.react-quiz-container .startQuizWrapper{margin-top:10px}.react-quiz-container .btn{background-image:none;border:1px solid transparent;cursor:pointer;font-weight:600;margin-bottom:0;padding:11px 12px;text-align:center;touch-action:manipulation;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;white-space:nowrap}.react-quiz-container .questionWrapper .btn{border:1px solid #e8e8e8;border-radius:4px;display:block;margin-bottom:10px;margin-top:10px;text-align:unset;white-space:normal}.react-quiz-container .questionWrapper .btn.correct,.timerBtn{background:green;color:#fff}.timerBtn{border:0!important;border-radius:10px;cursor:pointer;float:right;padding:5px;position:relative;top:-35px;width:80px}.timerPauseScreen{font-size:30px}.react-quiz-container .questionModal .alert{border:1px solid transparent;border-radius:2px;color:#fff;margin-bottom:21px;padding:20px}.react-quiz-container .correct{background:green}.react-quiz-container .incorrect{background:red;color:#fff}.react-quiz-container .unanswered{background:grey;color:#fff}.react-quiz-container .answerBtn,.react-quiz-container .questionWrapper img{width:100%}.react-quiz-container .selected{background:#007bff;color:#fff}.react-quiz-container .startQuizWrapper .startQuizBtn{background-color:#fff;border:1px solid #d9d9d9;border-radius:2px;color:rgba(0,0,0,.65);line-height:1.35135}.react-quiz-container .result-answer-wrapper{border:1px solid #e8e8e8;border-bottom-left-radius:5px;border-bottom-right-radius:5px;margin-bottom:20px}.react-quiz-container .result-answer-wrapper h3{background-color:#fafafa;border-top-left-radius:5px;border-top-right-radius:5px;color:rgba(0,0,0,.9);margin:0;opacity:.8;padding:10px}.react-quiz-container .result-answer-wrapper .explanation{border:1px solid #e8e8e8;margin:0 20px 20px;padding:20px}.react-quiz-container .result-answer-wrapper .tag-container{margin:20px}.react-quiz-container .result-answer{padding:0 20px}.react-quiz-container .quiz-synopsis,.react-quiz-container .welcome-text{margin:15px 0}.react-quiz-container .tag-container{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:20px;margin-top:20px}.react-quiz-container .number-of-selection,.react-quiz-container .selection-tag{border-radius:5px;color:#fff;padding:7px}.react-quiz-container .number-of-selection{background:#673ab7;margin-left:5px}.react-quiz-container .selection-tag.single{background:#3f51b5}.react-quiz-container .selection-tag.multiple{background:#ff9800}.react-quiz-container .selection-tag.segment{background:#3db4b9;margin-left:5px}.react-quiz-container .questionBtnContainer{display:flex;justify-content:space-between}.react-quiz-container .quiz-result-filter{bottom:15px;position:relative;width:120px;.filter-dropdown-select{background-color:#fcfcfc;border:2px solid #c2c5c7;border-radius:7px;bottom:10px;color:#333;cursor:pointer;height:12px;margin-top:2px;padding:8px;position:relative;text-transform:capitalize}.filter-dropdown-select:after{color:#a5a5a5;content:\"▼\";position:absolute;right:10px;top:57%;transform:translateY(-50%);transition:all .3s ease}.filter-dropdown-select:hover{border:2px solid #51aae6;box-shadow:0 0 6px rgba(109,179,250,.5)}.dropdown-options{background-color:#fcfcfc;border-radius:10px;box-shadow:0 0 10px hsla(210,2%,56%,.5);left:0;list-style:none;margin:0;padding:0;position:absolute;top:85%;width:100%;z-index:1}.filter-dropdown-select.open{border:2px solid #51aae6;box-shadow:0 0 6px rgba(109,179,250,.5)}.dropdown-options .dropdown-options-item{cursor:pointer;padding:10px}.dropdown-options .dropdown-options-item:hover{background-color:hsla(0,0%,89%,.852);border-radius:5px}.dropdown-options .dropdown-options-item:focus{background-color:#d7f1f9;font-weight:700}.filter-dropdown-select .selected-option.selected-open{color:#c6c2c2;font-weight:lighter}.filter-dropdown-select .selected-option{bottom:2px;position:relative}.filter-dropdown-select:focus+.dropdown-options{max-height:200px}.dropdown-options .dropdown-options-item.selected{background-color:#d7f1f9;color:#333;font-weight:700}.dropdown-options.open{max-height:200px}}.cancelQuizBtn{background-color:#dc2626;border:none;border-radius:4px;color:#fff;cursor:pointer;font-weight:700;padding:8px 16px;transition:background-color .3s}.cancelQuizBtn:hover{background-color:#b91c1c}";
 styleInject(css_248z);
 
 function Quiz(_ref) {
   var quiz = _ref.quiz,
+    username = _ref.username,
     shuffle = _ref.shuffle,
     shuffleAnswer = _ref.shuffleAnswer,
     showDefaultResult = _ref.showDefaultResult,
@@ -2916,7 +2955,8 @@ function Quiz(_ref) {
     onQuestionSubmit = _ref.onQuestionSubmit,
     disableSynopsis = _ref.disableSynopsis,
     timer = _ref.timer,
-    allowPauseTimer = _ref.allowPauseTimer;
+    allowPauseTimer = _ref.allowPauseTimer,
+    allowCancel = _ref.allowCancel;
   var _useState = useState(false),
     _useState2 = _slicedToArray(_useState, 2),
     start = _useState2[0],
@@ -3035,14 +3075,6 @@ function Quiz(_ref) {
       }));
     }
   }, [start]);
-
-  // useEffect(() => {
-  //   if (questions.length > 0 ) {
-  //     localStorage.setItem('quizState', JSON.stringify({ questions }));
-  //     console.log("questions changed, saving them.", questions)
-  //   }
-  // }, [questions]);
-
   var validateQuiz = function validateQuiz(q) {
     if (!q) {
       console.error('Quiz object is required.');
@@ -3123,6 +3155,9 @@ function Quiz(_ref) {
         children: quiz.quizTitle
       }), /*#__PURE__*/jsxRuntimeExports.jsx("div", {
         children: appLocale.landingHeaderText.replace('<questionLength>', nrOfQuestions)
+      }), username && /*#__PURE__*/jsxRuntimeExports.jsx("div", {
+        className: "welcome-text",
+        children: appLocale.welcomeText.replace('<userName>', username)
       }), quiz.quizSynopsis && /*#__PURE__*/jsxRuntimeExports.jsx("div", {
         className: "quiz-synopsis",
         children: quiz.quizSynopsis
@@ -3137,19 +3172,22 @@ function Quiz(_ref) {
           children: appLocale.startQuizBtn
         })
       })]
-    }), start && /*#__PURE__*/jsxRuntimeExports.jsx(Core, {
-      questions: questions,
-      showDefaultResult: showDefaultResult,
-      onComplete: onComplete,
-      customResultPage: customResultPage,
-      showInstantFeedback: showInstantFeedback,
-      continueTillCorrect: continueTillCorrect,
-      revealAnswerOnSubmit: revealAnswerOnSubmit,
-      allowNavigation: allowNavigation,
-      appLocale: appLocale,
-      onQuestionSubmit: onQuestionSubmit,
-      timer: timer,
-      allowPauseTimer: allowPauseTimer
+    }), start && /*#__PURE__*/jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {
+      children: /*#__PURE__*/jsxRuntimeExports.jsx(Core, {
+        questions: questions,
+        showDefaultResult: showDefaultResult,
+        onComplete: onComplete,
+        customResultPage: customResultPage,
+        showInstantFeedback: showInstantFeedback,
+        continueTillCorrect: continueTillCorrect,
+        revealAnswerOnSubmit: revealAnswerOnSubmit,
+        allowNavigation: allowNavigation,
+        appLocale: appLocale,
+        onQuestionSubmit: onQuestionSubmit,
+        timer: timer,
+        allowPauseTimer: allowPauseTimer,
+        allowCancel: allowCancel
+      })
     })]
   });
 }

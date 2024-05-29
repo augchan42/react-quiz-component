@@ -138,6 +138,10 @@
   margin: 15px 0px;
 }
 
+.react-quiz-container .welcome-text {
+  margin: 15px 0px;
+}
+
 .react-quiz-container .tag-container {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -271,4 +275,19 @@
   .dropdown-options.open {
     max-height: 200px;  
   }
+}
+
+.cancelQuizBtn {
+  background-color: #dc2626; /* Red background */
+  color: white; /* White text */
+  padding: 8px 16px; /* Padding around the text */
+  font-weight: bold; /* Bold font */
+  border: none; /* No border */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+.cancelQuizBtn:hover {
+  background-color: #b91c1c; /* Darker red on hover */
 }

@@ -5,6 +5,7 @@ import './styles.css';
 
 function Quiz({
   quiz,
+  username,
   shuffle,
   shuffleAnswer,
   showDefaultResult,
@@ -18,6 +19,7 @@ function Quiz({
   disableSynopsis,
   timer,
   allowPauseTimer,
+  allowCancel
 }) {
   const [start, setStart] = useState(false);
   // const [questions, setQuestions] = useState(quiz.questions);
@@ -134,13 +136,6 @@ function Quiz({
     }
   }, [start]);
 
-  // useEffect(() => {
-  //   if (questions.length > 0 ) {
-  //     localStorage.setItem('quizState', JSON.stringify({ questions }));
-  //     console.log("questions changed, saving them.", questions)
-  //   }
-  // }, [questions]);
-
   const validateQuiz = (q) => {
 
     if (!q) {
@@ -254,6 +249,14 @@ function Quiz({
               nrOfQuestions,
             )}
           </div>
+          {username && (
+            <div className="welcome-text">
+              {appLocale.welcomeText.replace(
+                '<userName>',
+                username,
+              )}
+            </div>
+          )}
           {quiz.quizSynopsis && (
             <div className="quiz-synopsis">{quiz.quizSynopsis}</div>
           )}
@@ -266,20 +269,23 @@ function Quiz({
       )}
 
       {start && (
-        <Core
-          questions={questions}
-          showDefaultResult={showDefaultResult}
-          onComplete={onComplete}
-          customResultPage={customResultPage}
-          showInstantFeedback={showInstantFeedback}
-          continueTillCorrect={continueTillCorrect}
-          revealAnswerOnSubmit={revealAnswerOnSubmit}
-          allowNavigation={allowNavigation}
-          appLocale={appLocale}
-          onQuestionSubmit={onQuestionSubmit}
-          timer={timer}
-          allowPauseTimer={allowPauseTimer}
-        />
+        <>
+          <Core
+            questions={questions}
+            showDefaultResult={showDefaultResult}
+            onComplete={onComplete}
+            customResultPage={customResultPage}
+            showInstantFeedback={showInstantFeedback}
+            continueTillCorrect={continueTillCorrect}
+            revealAnswerOnSubmit={revealAnswerOnSubmit}
+            allowNavigation={allowNavigation}
+            appLocale={appLocale}
+            onQuestionSubmit={onQuestionSubmit}
+            timer={timer}
+            allowPauseTimer={allowPauseTimer}
+            allowCancel={allowCancel}
+          />         
+        </>
       )}
     </div>
   );

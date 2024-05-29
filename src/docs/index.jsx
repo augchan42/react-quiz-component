@@ -17,6 +17,7 @@ function App() {
     <div style={{ margin: 'auto', width: '500px' }}>
       <Quiz
         quiz={quiz_br}
+        username="Aug"
         shuffle
         shuffleAnswer
         // showInstantFeedback
@@ -27,6 +28,7 @@ function App() {
         // timer={60}
         // allowPauseTimer
         // allowNavigation
+        allowCancel={true} 
       />
     </div>
   );

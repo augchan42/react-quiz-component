@@ -10,7 +10,7 @@ import Explanation from './core-components/Explanation';
 function Core({
   questions, appLocale, showDefaultResult, onComplete, customResultPage,
   showInstantFeedback, continueTillCorrect, revealAnswerOnSubmit, allowNavigation,
-  onQuestionSubmit, timer, allowPauseTimer,
+  onQuestionSubmit, timer, allowPauseTimer, allowCancel
 }) {
   const [incorrectAnswer, setIncorrectAnswer] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
@@ -44,7 +44,7 @@ function Core({
     'Xun': 'Wind - The Gentle',
     'Kan': 'Water - The Abysmal',
     'Gen': 'Mountain - Keeping Still',
-    'Kun': 'Earth The Receptive'
+    'Kun': 'Earth - The Receptive'
   };
 
   useEffect(() => {
@@ -83,10 +83,11 @@ function Core({
     if (storedQuizState) {
       try {
         const parsedQuizState = JSON.parse(storedQuizState);
-        const { userInput, currentQuestionIndex } = parsedQuizState;
+        const { correct, userInput, currentQuestionIndex } = parsedQuizState;
         setUserInput(userInput || []);
         setCurrentQuestionIndex(currentQuestionIndex || 0);
-        setQuizStateRestored(true); // Set quizStateRestored to true after restoring the state
+        setQuizStateRestored(true);
+        setCorrect(correct) // Set array of 'correct' answers
       } catch (error) {
         console.error('Error parsing quiz state from localStorage:', error);
       }
@@ -100,16 +101,22 @@ function Core({
     console.log("quizStateRestored:", quizStateRestored);
     console.log("userInput:", userInput);
     console.log("currentQuestionIndex:", currentQuestionIndex);
+    console.log("correct array:", correct);
+    console.log("isRunning:", isRunning);
+    console.log("activeQuestion:", activeQuestion);
+    
+    
 
     if (quizStateRestored && (userInput.length > 0 || currentQuestionIndex > 0)) {
       const quizState = {
         userInput,
         currentQuestionIndex,
+        correct
       };
       localStorage.setItem('quizState', JSON.stringify(quizState));
       console.log("Selections changed, saving them.", quizState);
     }
-  }, [userInput, currentQuestionIndex, quizStateRestored]);
+  }, [userInput, currentQuestionIndex, quizStateRestored, correct]);
 
   useEffect(() => {
     if (endQuiz) {
@@ -283,49 +290,60 @@ function Core({
   const renderQuizResultQuestions = useCallback(() => {
     let filteredQuestions;
     let filteredUserInput;
-
-    if (filteredValue !== 'all') {
-      let targetQuestions = unanswered;
-      if (filteredValue === 'correct') {
-        targetQuestions = correct;
-      } else if (filteredValue === 'incorrect') {
-        targetQuestions = incorrect;
+  
+    if (isPersonalityQuiz) {
+      filteredQuestions = questions.filter((question, index) => {
+        return userInput[index] !== undefined && userInput[index] !== null;
+      });
+  
+      filteredUserInput = userInput.filter((input) => input !== undefined && input !== null);
+    } else {
+      if (filteredValue !== 'all') {
+        let targetQuestions = unanswered;
+        if (filteredValue === 'correct') {
+          targetQuestions = correct;
+        } else if (filteredValue === 'incorrect') {
+          targetQuestions = incorrect;
+        }
+        filteredQuestions = questions.filter(
+          (_, index) => targetQuestions.indexOf(index) !== -1,
+        );
+        filteredUserInput = userInput.filter(
+          (_, index) => targetQuestions.indexOf(index) !== -1,
+        );
       }
-      filteredQuestions = questions.filter(
-        (_, index) => targetQuestions.indexOf(index) !== -1,
-      );
-      filteredUserInput = userInput.filter(
-        (_, index) => targetQuestions.indexOf(index) !== -1,
-      );
     }
-
+  
     return (filteredQuestions || questions).map((question, index) => {
-      const userInputIndex = filteredUserInput
-        ? filteredUserInput[index]
-        : userInput[index];
-
+      const userInputIndex = filteredUserInput ? filteredUserInput[index] : userInput[index];
+  
       // Default single to avoid code breaking due to automatic version upgrade
       const answerSelectionType = question.answerSelectionType || 'single';
-
+  
+      // Check if the question is answered
+      if (userInputIndex === undefined || userInputIndex === null) {
+        return null;
+      }
+  
       return (
         <div className="result-answer-wrapper" key={nanoid()}>
           <h3
             dangerouslySetInnerHTML={rawMarkup(
-              `Q${question.questionIndex}: ${question.question
-              } ${appLocale.marksOfQuestion.replace('<marks>', question.point)}`,
+              `Q${question.questionIndex}: ${question.question} ${appLocale.marksOfQuestion.replace(
+                '<marks>',
+                question.point,
+              )}`,
             )}
           />
-          {question.questionPic && (
-            <img src={question.questionPic} alt="question" />
-          )}
+          {question.questionPic && <img src={question.questionPic} alt="question" />}
           {renderTags(
             answerSelectionType,
-            (answerSelectionType !== 'personality' && question.correctAnswer && Array.isArray(question.correctAnswer)) ? question.correctAnswer.length : 1,
-            question.segment || 'defaultSegment'
+            answerSelectionType !== 'personality' && question.correctAnswer && Array.isArray(question.correctAnswer)
+              ? question.correctAnswer.length
+              : 1,
+            question.segment || 'defaultSegment',
           )}
-          <div className="result-answer">
-            {renderAnswerInResult(question, userInputIndex)}
-          </div>
+          <div className="result-answer">{renderAnswerInResult(question, userInputIndex)}</div>
           <Explanation question={question} isResultPage />
         </div>
       );
@@ -333,6 +351,7 @@ function Core({
   }, [endQuiz, filteredValue]);
 
   const renderAnswers = (question, answerButtons) => {
+    console.log("calling renderAnswers");
     const {
       answers, correctAnswer, questionType, questionIndex,
     } = question;
@@ -396,7 +415,7 @@ function Core({
                   const newUserInput = [...prevUserInput];
                   newUserInput[questionIndex - 1] = null;
                   return newUserInput;
-                });
+                });                
               } else {
                 // Select the answer
                 setUserInput((prevUserInput) => {
@@ -428,12 +447,14 @@ function Core({
   };
 
   const renderResult = () => {
+    // Count non-null entries in userInput
+    const nonNullCount = userInput.filter(input => input !== null).length;
 
     return (
       <div className="card-body">
         <h2>
           {appLocale.resultPageHeaderText
-            .replace('<correctIndexLength>', correct.length)
+            .replace('<numAnswered>', nonNullCount)
             .replace('<questionLength>', questions.length)}
         </h2>
         {!isPersonalityQuiz && (
@@ -502,6 +523,12 @@ function Core({
     getUnansweredQuestions();
   };
 
+  const handleCancelQuiz = () => {   
+    // Reset quiz state
+    // rest of cleanup is done in useEffect with endquiz
+    setEndQuiz(true);  
+  };
+
   return (
     <div className="questionWrapper">
       {timer && !isRunning && (
@@ -534,6 +561,12 @@ function Core({
             {timer && allowPauseTimer && (
               <button type="button" className="timerBtn" onClick={toggleTimer}>
                 {isRunning ? appLocale.pauseScreenPause : appLocale.pauseScreenResume}
+              </button>
+            )}
+            {allowCancel && (
+              <button type="button" onClick={handleCancelQuiz}
+                className="cancelQuizBtn btn">
+                Cancel Quiz
               </button>
             )}
           </div>
