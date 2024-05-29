@@ -35,6 +35,8 @@ function Core({
   const [isRunning, setIsRunning] = useState(true);
   const [isPersonalityQuiz, setIsPersonalityQuiz] = useState(false);
   const [quizStateRestored, setQuizStateRestored] = useState(false);
+  const [onCompleteCalled, setOnCompleteCalled] = useState(false);
+
 
   const trigramTranslations = {
     'Qian': 'Heaven - The Creative',
@@ -134,9 +136,10 @@ function Core({
           questions,
           trigramTally
         };
-        if (onComplete) {
+        if (onComplete && !onCompleteCalled) {
           console.log("Completing personality quiz with summary:", personalitySummary);
           onComplete(personalitySummary);
+          setOnCompleteCalled(true); // Set the flag as called
         }
       } else {
         // Standard quiz logic

@@ -2389,6 +2389,10 @@ function Core(_ref) {
     _useState44 = _slicedToArray(_useState43, 2),
     quizStateRestored = _useState44[0],
     setQuizStateRestored = _useState44[1];
+  var _useState45 = require$$0.useState(false),
+    _useState46 = _slicedToArray(_useState45, 2),
+    onCompleteCalled = _useState46[0],
+    setOnCompleteCalled = _useState46[1];
   var trigramTranslations = {
     'Qian': 'Heaven - The Creative',
     'Dui': 'Lake - The Joyous',
@@ -2484,9 +2488,10 @@ function Core(_ref) {
           questions: questions,
           trigramTally: trigramTally
         };
-        if (onComplete) {
+        if (onComplete && !onCompleteCalled) {
           console.log("Completing personality quiz with summary:", personalitySummary);
           onComplete(personalitySummary);
+          setOnCompleteCalled(true); // Set the flag as called
         }
       } else {
         // Standard quiz logic
